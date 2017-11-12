@@ -2,13 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Area-51
- * Date: 11/5/2017
- * Time: 3:41 PM
+ * Date: 11/12/2017
+ * Time: 12:35 PM
  */
-
 function layoutSetContent($content){
-    //require_once ("header.php");
-    //require_once ("footer.php");
-    //require_once ($content);
+
+    require_once($content);
+    require_once("footer.php");
 }
-?>
