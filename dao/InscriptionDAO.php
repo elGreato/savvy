@@ -9,7 +9,7 @@
 namespace dao;
 
 
-class InscriptionDAO
+class InscriptionDAO extends \BasicDAO
 {
 
 }

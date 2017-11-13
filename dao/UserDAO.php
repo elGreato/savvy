@@ -9,7 +9,7 @@
 namespace dao;
 
 
-class UserDAO
+class UserDAO extends \BasicDAO
 {
 
 }

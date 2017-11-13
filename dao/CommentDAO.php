@@ -8,8 +8,9 @@
 
 namespace dao;
 
+use domain\comment;
 
-class CommentDAO
+class CommentDAO extends \BasicDAO
 {
 
 }

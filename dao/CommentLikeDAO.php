@@ -9,7 +9,7 @@
 namespace dao;
 
 
-class commentlikeDAO
+class CommentLikeDAO extends \BasicDAO
 {
 
 }

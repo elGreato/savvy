@@ -9,7 +9,7 @@
 namespace dao;
 
 
-class AuthTokenDAO
+class AuthTokenDAO extends \BasicDAO
 {
 
 }
