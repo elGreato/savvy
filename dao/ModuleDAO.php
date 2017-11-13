@@ -26,7 +26,7 @@ class ModuleDAO extends \BasicDAO
     {
         $stmt=$this->pdoInstance->prepare('SELECT * FROM "module" WHERE id = :id;');
         $stmt->bindValue(':id',$moduleID);
-        $module = $stmt->execute();
+        $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
 
     }
@@ -51,5 +51,6 @@ class ModuleDAO extends \BasicDAO
         $stmt->bindValue(':name',$module->getName());
         $stmt->bindValue(':id',$module->getDescription());
         $stmt->bindValue(':numcredits',$module->getNumcredits());
+        $stmt->execute();
     }
 }

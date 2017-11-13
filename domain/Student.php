@@ -1,21 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Kevin
- * Date: 13.11.2017
- * Time: 12:50
+ * User: Area-51
+ * Date: 11/12/2017
+ * Time: 3:47 PM
  */
-
-namespace domain;
-
-
-class Module
+class Student
 {
     private $id;
     private $name;
-    private $description;
-    private $numcredits;
-
+    private $password;
+    private $email;
     /**
      * @return mixed
      */
@@ -51,32 +46,33 @@ class Module
     /**
      * @return mixed
      */
-    public function getDescription()
+    public function getPassword()
     {
-        return $this->description;
+        return $this->password;
     }
 
     /**
-     * @param mixed $description
+     * @param mixed $password
      */
-    public function setDescription($description)
+    public function setPassword($password)
     {
-        $this->description = $description;
+        $this->password = $password;
     }
 
     /**
      * @return mixed
      */
-    public function getNumcredits()
+    public function getEmail()
     {
-        return $this->numcredits;
+        return $this->email;
     }
 
     /**
-     * @param mixed $numcredits
+     * @param mixed $email
      */
-    public function setNumcredits($numcredits)
+    public function setEmail($email)
     {
-        $this->numcredits = $numcredits;
+        $this->email = $email;
     }
+
 }

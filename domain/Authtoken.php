@@ -1,0 +1,82 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Kevin
+ * Date: 13.11.2017
+ * Time: 17:49
+ */
+
+namespace domain;
+
+
+class Authtoken
+{
+    private $studentid;
+    private $selector;
+    private $validator;
+    private $expiration;
+    /**
+     * @return mixed
+     */
+    public function getStudentid()
+    {
+        return $this->studentid;
+    }
+
+    /**
+     * @param mixed $studentid
+     */
+    public function setStudentid($studentid)
+    {
+        $this->studentid = $studentid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSelector()
+    {
+        return $this->selector;
+    }
+
+    /**
+     * @param mixed $selector
+     */
+    public function setSelector($selector)
+    {
+        $this->selector = $selector;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValidator()
+    {
+        return $this->validator;
+    }
+
+    /**
+     * @param mixed $validator
+     */
+    public function setValidator($validator)
+    {
+        $this->validator = $validator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExpiration()
+    {
+        return $this->expiration;
+    }
+
+    /**
+     * @param mixed $expiration
+     */
+    public function setExpiration($expiration)
+    {
+        $this->expiration = $expiration;
+    }
+
+}
