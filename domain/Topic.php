@@ -87,11 +87,11 @@ class Topic
      * @param $description
      * @param $numcredits
      */
-    public function __construct($name, $description, $numcredits)
+   /* public function __construct($name, $description, $numcredits)
     {
         $this->name = $name;
         $this->description = $description;
         $this->numcredits = $numcredits;
-    }
+    }*/
 
 }
