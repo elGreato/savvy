@@ -9,7 +9,7 @@
 namespace domain;
 
 
-class Topic
+class Module
 {
     private $id;
     private $name;
@@ -82,12 +82,12 @@ class Topic
 
 
     /**
-     * Topic constructor.
+     * Module constructor.
      * @param $name
      * @param $description
      * @param $numcredits
      */
-   /* public function __construct($name, $description, $numcredits)
+  /* public function __construct($name, $description, $numcredits)
     {
         $this->name = $name;
         $this->description = $description;
