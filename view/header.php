@@ -4,7 +4,9 @@
  * User: Area-51
  * Date: 11/12/2017
  * Time: 2:57 PM
- */ ?>
+ */
+
+?>
 <html>
 
 <head>
@@ -31,8 +33,8 @@
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active" role="presentation"><a href="#" style="height:55px;color:rgb(0,2,6);font-size:30px;"><strong>Register</strong> </a></li>
-                    <li role="presentation"><a href="#" style="height:55px;color:rgb(0,2,6);font-size:30px;"><strong>Login</strong> </a></li>
+                    <li class="active" role="presentation"><a href="register.php" style="height:55px;color:rgb(0,2,6);font-size:30px;"><strong>Register</strong> </a></li>
+                    <li role="presentation"><a href="view/login.php" style="height:55px;color:rgb(0,2,6);font-size:30px;"><strong>Login</strong> </a></li>
                     <li role="presentation"><a href="#" style="height:55px;color:rgb(0,1,1);font-size:30px;"><strong>Contact us</strong></a></li>
                 </ul>
             </div>

@@ -1,0 +1,14 @@
+{
+  "name": "savvy-fhnw",
+  "description": "WebEng Project",
+  "authors": [
+    {
+      "name": "Ali Habbabeh"
+    }
+  ],
+  "require": {
+    "php": "~7.1.0"
+  }
+
+  
+}
