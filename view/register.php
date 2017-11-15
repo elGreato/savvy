@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active" role="presentation"><a href="#"><strong>Register</strong> </a></li>
-                    <li role="presentation"><a href="#"><strong>Login</strong> </a></li>
+                    <li role="presentation"><a href="login.php"><strong>Login</strong> </a></li>
                     <li role="presentation"><a href="#"><strong>Contact us</strong></a></li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-                </div><a href="#" class="already">You already have an account? Login here.</a></form>
+                </div><a href="login.php" class="already">You already have an account? Login here.</a></form>
         </div>
     </div>
 
