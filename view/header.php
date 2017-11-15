@@ -5,8 +5,7 @@
  * Date: 11/12/2017
  * Time: 2:57 PM
  */
-include_once '../util/initialize.php';
-require_once 'router/Router.php';
+
 ?>
 <html>
 
@@ -17,7 +16,6 @@ require_once 'router/Router.php';
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
-    <link rel="stylesheet" href=<?php echo url_for("/fonts/ionicons.min.css") ?>>
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Features-Blue.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
