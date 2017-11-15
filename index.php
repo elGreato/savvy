@@ -1,8 +1,9 @@
 <?php
-require_once "welcome.php";
- require_once"footer.php";
+require_once "router/Router.php";
+require_once "view/welcome.php";
+ require_once "view/footer.php";
  use router\Router;
- require_once "router/Router.php";
+
 
 Router::route_auth("GET", "/", $authFunction, function () {
     global $topics;
