@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-                </div><a href="view/login.php" class="already">You already have an account? Login here.</a></form>
+                </div><a href="login.php" class="already">You already have an account? Login here.</a></form>
         </div>
     </div>
 
