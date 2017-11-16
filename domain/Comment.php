@@ -15,6 +15,7 @@ class Comment
     private $comment;
     private $studentid;
     private $moduleid;
+    private $vote;
     /**
      * @return mixed
      */
@@ -77,6 +78,39 @@ class Comment
     public function setModuleid($moduleid)
     {
         $this->moduleid = $moduleid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
+
+    /**
+     * @param mixed $vote
+     */
+    public function setVote($vote)
+    {
+        $this->vote = $vote;
+    }
+    public function getVoteResult()
+    {
+        $result = 0;
+        global $vote;
+        foreach($vote as $singleVote)
+        {
+            if ($singleVote.getVote() ==0)
+            {
+                $result -=1;
+            }
+            else
+            {
+                $result +=1;
+            }
+        }
+        return $result;
     }
 
 }

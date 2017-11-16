@@ -7,11 +7,11 @@
  */
 
 namespace dao;
-use domain\Commentlike;
+use domain\Commentvote;
 
-class CommentLikeDAO extends \BasicDAO
+class CommentVoteDAO extends \BasicDAO
 {
-    public function create(Commentlike $commentlike)
+    public function create(Commentvote $commentlike)
     {
         $stmt=$this->pdoInstance->prepare('INSERT INTO commentlike 
           (studentid,commentid) VALUES 
@@ -25,7 +25,7 @@ class CommentLikeDAO extends \BasicDAO
         $stmt=$this->pdoInstance->prepare('SELECT * FROM commentlike WHERE commentid = :commentid;');
         $stmt->bindValue(':commentid',$commentID);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Commentlike");
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Commentvote");
 
     }
 

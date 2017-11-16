@@ -6,6 +6,8 @@ require_once(realpath(dirname(__FILE__)) . '/CommentingService.php');
  * @access public
  * @author Kevin
  */
+use dao\CommentDAO;
+use dao\CommentVoteDAO;
 class CommentingServiceImpl implements CommentingService {
 
 	/**
@@ -37,8 +39,18 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ParamType moduleId int
 	 * @ReturnType Comment[]
 	 */
-	public function readCommentsForModule(&$moduleId) {
-		// Not yet implemented
+	public function readCommentsForModule(&$moduleId)
+    {
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $commentDAO = new CommentDAO();
+            $commentVoteDAO = new CommentVoteDAO();
+            $comments = $commentDAO->readCommentsForModule();
+            foreach ($comments as $comment) {
+                $votes = $commentVoteDAO->readCommentLikes();
+                $comment->setVote($votes);
+            }
+            return $comments;
+        }
 	}
 
 	/**
