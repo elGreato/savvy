@@ -18,7 +18,12 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function addComment(Comment $comment) {
-		// Not yet implemented
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $comment->setStudentid(StudentServiceImpl::getInstance()->getCurrentStudentId());
+            $commentDAO = new CommentDAO();
+            $commentDAO->create($comment);
+
+        }
 	}
 
 	/**
@@ -29,9 +34,15 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function deleteComment(&$id) {
-		// Not yet implemented
-	}
-
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $commentDAO = new CommentDAO();
+            $comment = $commentDAO->read($id);
+            if($comment->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId())
+            {
+                $commentDAO->delete($id);
+            }
+	    }
+    }
 	/**
 	 * @access public
 	 * @param int moduleId
@@ -61,18 +72,36 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function updateComment(Comment $comment) {
-		// Not yet implemented
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $commentDAO = new CommentDAO();
+            $commentToEdit = $commentDAO->read($comment->getId());
+            if($commentToEdit->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId())
+            {
+                $commentDAO->update($comment);
+            }
+        }
 	}
 
 	/**
 	 * @access public
 	 * @param int id
+     * @param boolean isLike
 	 * @return Comment
 	 * @ParamType id int
+     * @ParamType isLike boolean
 	 * @ReturnType Comment
 	 */
-	public function voteOnComment(&$id) {
-		// Not yet implemented
+	public function voteOnComment(&$id, &$isLike) {
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $commentVoteDAO = new CommentVoteDAO();
+            $studentid = StudentServiceImpl::getInstance()->getCurrentStudentId();
+            $commentVote = new CommentVote();
+            $commentVote->setModuleid($id);
+            $commentVote->setStudentid($studentid);
+            $commentVote->setVote($isLike);
+            $commentVoteDAO->create($commentVote);
+
+        }
 	}
 }
 ?>

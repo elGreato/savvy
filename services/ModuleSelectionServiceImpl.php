@@ -1,6 +1,7 @@
 <?php
 require_once(realpath(dirname(__FILE__)) . '/ModuleSelectionService.php');
-
+use dao\InscriptionDAO;
+use domain\Inscription;
 /**
  * @access public
  * @author Kevin
@@ -15,7 +16,14 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
 	 * @ReturnType Module
 	 */
 	public function selectModule(&$id) {
-		// Not yet implemented
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
+            $inscriptionDAO = new InscriptionDAO();
+            $inscription = new Inscription();
+            $inscription->setModuleid($id);
+            $inscription->setStudentid($studentId);
+            $inscriptionDAO->create($inscription);
+        }
 	}
 
 	/**
@@ -26,7 +34,11 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
 	 * @ReturnType Module
 	 */
 	public function deselectModule(&$moduleId) {
-		// Not yet implemented
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
+            $inscriptionDAO = new InscriptionDAO();
+            $inscriptionDAO->delete($moduleId,$studentId);
+        }
 	}
 
 	/**
@@ -35,7 +47,11 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
 	 * @ReturnType Module[]
 	 */
 	public function showSelectedModules() {
-		// Not yet implemented
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
+            $inscriptionDAO = new InscriptionDAO();
+            return $inscriptionDAO->readInscriptions($studentId);
+        }
 	}
 
 	/**
@@ -44,7 +60,15 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
 	 * @ReturnType int
 	 */
 	public function showNumCredits() {
-		// Not yet implemented
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $modules = $this->showSelectedModules();
+            $numcredits = 0;
+            foreach($modules as $module)
+            {
+                $numcredits+=$module->getNumcredits();
+            }
+            return $numcredits;
+        }
 	}
 }
 ?>

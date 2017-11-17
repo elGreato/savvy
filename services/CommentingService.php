@@ -44,12 +44,14 @@ interface CommentingService {
 	public function updateComment(Comment $comment);
 
 	/**
-	 * @access public
-	 * @param int id
-	 * @return Comment
-	 * @ParamType id int
-	 * @ReturnType Comment
+     * @access public
+     * @param int id
+     * @param boolean isLike
+     * @return Comment
+     * @ParamType id int
+     * @ParamType isLike boolean
+     * @ReturnType Comment
 	 */
-	public function voteOnComment(&$id);
+	public function voteOnComment(&$id, &$isLike);
 }
 ?>

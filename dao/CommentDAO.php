@@ -15,9 +15,10 @@ class CommentDAO extends \BasicDAO
     public function create(Comment $comment)
     {
         $stmt=$this->pdoInstance->prepare('INSERT INTO "comment" 
-          (comment,moduleid,studentid) VALUES 
-          (:comment,:moduleid,:studentid);');
+          (comment, image, moduleid,studentid) VALUES 
+          (:comment, :image, :moduleid,:studentid);');
         $stmt->bindValue(':comment',$comment->getComment());
+        $stmt->bindValue(':image',$comment->getImage());
         $stmt->bindValue(':moduleid',$comment->getModuleid());
         $stmt->bindValue(':studentid',$comment->getStudentid());
         $stmt->execute();
@@ -46,9 +47,10 @@ class CommentDAO extends \BasicDAO
     }
     public  function update(Comment $comment)
     {
-        $stmt = $this->pdoInstance->prepare('UPDATE "comment" SET comment = :comment,moduleid = :moduleid, studentid = :studentid WHERE id=:id');
+        $stmt = $this->pdoInstance->prepare('UPDATE "comment" SET comment = :comment, image = :image, moduleid = :moduleid, studentid = :studentid WHERE id=:id');
         $stmt->bindValue(':id',$comment->getID());
         $stmt->bindValue(':comment',$comment->getComment());
+        $stmt->bindValue(':image',$comment->getImage());
         $stmt->bindValue(':moduleid',$comment->getModuleid());
         $stmt->bindValue(':studentid',$comment->getStudentid());
         $stmt->execute();

@@ -14,7 +14,7 @@ class StudentServiceImpl implements StudentService {
 	/**
 	 * @AttributeType int
 	 */
-	private $currentAgentId;
+	private $currentStudentId;
 
 	/**
 	 * @access public
@@ -54,8 +54,8 @@ class StudentServiceImpl implements StudentService {
 	 * @return int
 	 * @ReturnType int
 	 */
-	public function getCurrentAgentId() {
-		return $this->currentAgentId;
+	public function getCurrentStudentId() {
+		return $this->currentStudentId;
 	}
 
 	/**

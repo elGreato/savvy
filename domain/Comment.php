@@ -13,6 +13,7 @@ class Comment
 {
     private $id;
     private $comment;
+    private $image;
     private $studentid;
     private $moduleid;
     private $vote;
@@ -46,6 +47,22 @@ class Comment
     public function setComment($comment)
     {
         $this->comment = $comment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 
     /**
