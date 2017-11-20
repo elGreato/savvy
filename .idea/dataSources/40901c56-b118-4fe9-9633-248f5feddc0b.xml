@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-11-20.13:02:23.973</IntrospectionTimestamp>
-      <IntrospectionStateNumber>329607400</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-11-20.17:56:16.056</IntrospectionTimestamp>
+      <IntrospectionStateNumber>329877792</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -75,7 +75,7 @@
     </table>
     <table id="18" parent="3" name="student">
       <ObjectId>4772590</ObjectId>
-      <StateNumber>329607400</StateNumber>
+      <StateNumber>329877792</StateNumber>
     </table>
     <column id="19" parent="13" name="id">
       <Position>1</Position>
@@ -334,9 +334,9 @@ studentid</ColNames>
     </column>
     <column id="60" parent="18" name="password">
       <Position>3</Position>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>329607369</StateNumber>
+      <StateNumber>329877792</StateNumber>
     </column>
     <column id="61" parent="18" name="email">
       <Position>4</Position>

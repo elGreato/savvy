@@ -192,9 +192,12 @@ class StudentServiceImpl implements StudentService {
             return true;
         }
         else{
-            if(!is_null($studentDAO->findByEmail($email))){
+            echo sizeof($studentDAO->findByEmail($email));
+            if(sizeof($studentDAO->findByEmail($email))!=0){
+
                 return false;
             }
+
             $studentDAO->create($student);
             return true;
         }

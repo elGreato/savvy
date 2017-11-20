@@ -33,11 +33,16 @@ Router::route_auth("POST", "/login", $authFunction, function () {
 
 });
 Router::route_auth("GET", "/register", $authFunction, function () {
+
     require_once("view/register.php");
 
 });
 Router::route_auth("POST", "/register", $authFunction, function () {
-    require_once("view/register.php");
+    $studentController = new StudentController();
+    if($studentController->register())
+    {
+        Router::redirect("/");
+    }
 
 });
 try {

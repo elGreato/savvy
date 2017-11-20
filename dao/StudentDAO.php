@@ -9,18 +9,18 @@
 namespace dao;
 use domain\Student;
 
-class StudentDAO extends \BasicDAO
+class StudentDAO extends BasicDAO
 {
     public function create(Student $student)
     {
         $stmt=$this->pdoInstance->prepare('INSERT INTO student 
           (username,password,email) VALUES 
           (:username,:password,:email);');
-        $stmt->bindValue(':id',$student->getId());
         $stmt->bindValue(':username',$student->getName());
         $stmt->bindValue(':password',$student->getPassword());
         $stmt->bindValue(':email',$student->getEmail());
         $stmt->execute();
+
         return $this->read($this->pdoInstance->lastInsertId());
     }
     public function read($studentID)

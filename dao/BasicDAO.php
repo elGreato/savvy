@@ -6,9 +6,9 @@
  * Date: 11/12/2017
  * Time: 3:47 PM
  */
-
+namespace dao;
 use database\Database;
-//use \PDO;
+use \PDO;
 
 abstract class BasicDAO {
 
