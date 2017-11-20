@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-11-16.14:47:46.692</IntrospectionTimestamp>
-      <IntrospectionStateNumber>324696221</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-11-20.13:02:23.973</IntrospectionTimestamp>
+      <IntrospectionStateNumber>329607400</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -30,58 +30,58 @@
       <ObjectId>13003</ObjectId>
     </schema>
     <sequence id="9" parent="3" name="authtoken_id_seq">
-      <ObjectId>4758495</ObjectId>
-      <StateNumber>324696215</StateNumber>
+      <ObjectId>4772621</ObjectId>
+      <StateNumber>329607389</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
     <sequence id="10" parent="3" name="comment_id_seq">
-      <ObjectId>4758474</ObjectId>
-      <StateNumber>324696204</StateNumber>
+      <ObjectId>4772600</ObjectId>
+      <StateNumber>329607370</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
     <sequence id="11" parent="3" name="module_id_seq">
-      <ObjectId>4758464</ObjectId>
-      <StateNumber>324696203</StateNumber>
+      <ObjectId>4772632</ObjectId>
+      <StateNumber>329607391</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
     <sequence id="12" parent="3" name="student_id_seq">
-      <ObjectId>4758452</ObjectId>
-      <StateNumber>324696202</StateNumber>
+      <ObjectId>4772588</ObjectId>
+      <StateNumber>329607369</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
     <table id="13" parent="3" name="authtoken">
-      <ObjectId>4758497</ObjectId>
-      <StateNumber>324696215</StateNumber>
+      <ObjectId>4772623</ObjectId>
+      <StateNumber>329607395</StateNumber>
     </table>
     <table id="14" parent="3" name="comment">
-      <ObjectId>4758476</ObjectId>
-      <StateNumber>324696221</StateNumber>
+      <ObjectId>4772602</ObjectId>
+      <StateNumber>329607399</StateNumber>
     </table>
     <table id="15" parent="3" name="commentvote">
-      <ObjectId>4758485</ObjectId>
-      <StateNumber>324696218</StateNumber>
+      <ObjectId>4772611</ObjectId>
+      <StateNumber>329607394</StateNumber>
     </table>
     <table id="16" parent="3" name="inscription">
-      <ObjectId>4758490</ObjectId>
-      <StateNumber>324696220</StateNumber>
+      <ObjectId>4772616</ObjectId>
+      <StateNumber>329607400</StateNumber>
     </table>
     <table id="17" parent="3" name="module">
-      <ObjectId>4758466</ObjectId>
-      <StateNumber>324696221</StateNumber>
+      <ObjectId>4772634</ObjectId>
+      <StateNumber>329607398</StateNumber>
     </table>
     <table id="18" parent="3" name="student">
-      <ObjectId>4758454</ObjectId>
-      <StateNumber>324696219</StateNumber>
+      <ObjectId>4772590</ObjectId>
+      <StateNumber>329607400</StateNumber>
     </table>
     <column id="19" parent="13" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696215</StateNumber>
+      <StateNumber>329607389</StateNumber>
       <SequenceName>authtoken_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;authtoken_id_seq&apos;::regclass)</DefaultExpression>
     </column>
@@ -89,273 +89,289 @@
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696215</StateNumber>
+      <StateNumber>329607389</StateNumber>
     </column>
     <column id="21" parent="13" name="selector">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>324696215</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>329607389</StateNumber>
     </column>
     <column id="22" parent="13" name="validator">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>324696215</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>329607389</StateNumber>
     </column>
     <column id="23" parent="13" name="expiration">
       <Position>5</Position>
       <DataType>timestamp|0</DataType>
-      <StateNumber>324696215</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>329607389</StateNumber>
     </column>
-    <index id="24" parent="13" name="id">
-      <ObjectId>4758504</ObjectId>
+    <column id="24" parent="13" name="type">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>329607389</StateNumber>
+    </column>
+    <index id="25" parent="13" name="id">
+      <ObjectId>4772630</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="25" parent="13" name="id">
-      <ObjectId>4758505</ObjectId>
+    <key id="26" parent="13" name="id">
+      <ObjectId>4772631</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="26" parent="14" name="id">
-      <Position>1</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>324696204</StateNumber>
-      <SequenceName>comment_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;comment_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="27" parent="14" name="comment">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>324696204</StateNumber>
-    </column>
-    <column id="28" parent="14" name="moduleid">
-      <Position>3</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>324696204</StateNumber>
-    </column>
-    <column id="29" parent="14" name="studentid">
-      <Position>4</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>324696204</StateNumber>
-    </column>
-    <column id="30" parent="14" name="image">
-      <Position>5</Position>
-      <DataType>bytea|0</DataType>
-      <StateNumber>324696204</StateNumber>
-    </column>
-    <index id="31" parent="14" name="comment_pkey">
-      <ObjectId>4758483</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="32" parent="14" name="comment_pkey">
-      <ObjectId>4758484</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="33" parent="14" name="fkcomment524391">
-      <ObjectId>4758531</ObjectId>
-      <ColNames>moduleid</ColNames>
-      <RefTableName>module</RefTableName>
-      <RefKeyName>module_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="34" parent="14" name="writes">
-      <ObjectId>4758506</ObjectId>
+    <foreign-key id="27" parent="13" name="fkauthtoken902530">
+      <ObjectId>4772657</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="35" parent="15" name="commentid">
+    <column id="28" parent="14" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696205</StateNumber>
+      <StateNumber>329607370</StateNumber>
+      <SequenceName>comment_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;comment_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="36" parent="15" name="studentid">
+    <column id="29" parent="14" name="comment">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>329607370</StateNumber>
+    </column>
+    <column id="30" parent="14" name="moduleid">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>329607370</StateNumber>
+    </column>
+    <column id="31" parent="14" name="studentid">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>329607370</StateNumber>
+    </column>
+    <column id="32" parent="14" name="image">
+      <Position>5</Position>
+      <DataType>bytea|0</DataType>
+      <StateNumber>329607370</StateNumber>
+    </column>
+    <index id="33" parent="14" name="comment_pkey">
+      <ObjectId>4772609</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="34" parent="14" name="comment_pkey">
+      <ObjectId>4772610</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="14" name="fkcomment524391">
+      <ObjectId>4772647</ObjectId>
+      <ColNames>moduleid</ColNames>
+      <RefTableName>module</RefTableName>
+      <RefKeyName>module_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="36" parent="14" name="writes">
+      <ObjectId>4772667</ObjectId>
+      <ColNames>studentid</ColNames>
+      <RefTableName>student</RefTableName>
+      <RefKeyName>student_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="37" parent="15" name="commentid">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>329607371</StateNumber>
+    </column>
+    <column id="38" parent="15" name="studentid">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696205</StateNumber>
+      <StateNumber>329607371</StateNumber>
     </column>
-    <column id="37" parent="15" name="islike">
+    <column id="39" parent="15" name="islike">
       <Position>3</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696205</StateNumber>
+      <StateNumber>329607371</StateNumber>
     </column>
-    <index id="38" parent="15" name="commentvote_pkey">
-      <ObjectId>4758488</ObjectId>
+    <index id="40" parent="15" name="commentvote_pkey">
+      <ObjectId>4772614</ObjectId>
       <ColNames>commentid
 studentid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="39" parent="15" name="commentvote_pkey">
-      <ObjectId>4758489</ObjectId>
+    <key id="41" parent="15" name="commentvote_pkey">
+      <ObjectId>4772615</ObjectId>
       <ColNames>commentid
 studentid</ColNames>
       <UnderlyingIndexName>commentvote_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="40" parent="15" name="isvoted">
-      <ObjectId>4758516</ObjectId>
+    <foreign-key id="42" parent="15" name="isvoted">
+      <ObjectId>4772642</ObjectId>
       <ColNames>commentid</ColNames>
       <RefTableName>comment</RefTableName>
       <RefKeyName>comment_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="41" parent="15" name="votes">
-      <ObjectId>4758511</ObjectId>
+    <foreign-key id="43" parent="15" name="votes">
+      <ObjectId>4772652</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="42" parent="16" name="moduleid">
+    <column id="44" parent="16" name="moduleid">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696207</StateNumber>
+      <StateNumber>329607379</StateNumber>
     </column>
-    <column id="43" parent="16" name="studentid">
+    <column id="45" parent="16" name="studentid">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696207</StateNumber>
+      <StateNumber>329607379</StateNumber>
     </column>
-    <index id="44" parent="16" name="inscription_pkey">
-      <ObjectId>4758493</ObjectId>
+    <index id="46" parent="16" name="inscription_pkey">
+      <ObjectId>4772619</ObjectId>
       <ColNames>moduleid
 studentid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="45" parent="16" name="inscription_pkey">
-      <ObjectId>4758494</ObjectId>
+    <key id="47" parent="16" name="inscription_pkey">
+      <ObjectId>4772620</ObjectId>
       <ColNames>moduleid
 studentid</ColNames>
       <UnderlyingIndexName>inscription_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="46" parent="16" name="hasinscriptions">
-      <ObjectId>4758526</ObjectId>
+    <foreign-key id="48" parent="16" name="hasinscriptions">
+      <ObjectId>4772662</ObjectId>
       <ColNames>moduleid</ColNames>
       <RefTableName>module</RefTableName>
       <RefKeyName>module_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="47" parent="16" name="isinscribed">
-      <ObjectId>4758521</ObjectId>
+    <foreign-key id="49" parent="16" name="isinscribed">
+      <ObjectId>4772672</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="48" parent="17" name="id">
+    <column id="50" parent="17" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696203</StateNumber>
+      <StateNumber>329607391</StateNumber>
       <SequenceName>module_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;module_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="49" parent="17" name="name">
+    <column id="51" parent="17" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696203</StateNumber>
+      <StateNumber>329607391</StateNumber>
     </column>
-    <column id="50" parent="17" name="description">
+    <column id="52" parent="17" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>324696203</StateNumber>
+      <StateNumber>329607391</StateNumber>
     </column>
-    <column id="51" parent="17" name="numcredits">
+    <column id="53" parent="17" name="numcredits">
       <Position>4</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>324696203</StateNumber>
+      <StateNumber>329607391</StateNumber>
     </column>
-    <index id="52" parent="17" name="module_pkey">
-      <ObjectId>4758470</ObjectId>
+    <index id="54" parent="17" name="module_pkey">
+      <ObjectId>4772638</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="53" parent="17" name="module_name_key">
-      <ObjectId>4758472</ObjectId>
+    <index id="55" parent="17" name="module_name_key">
+      <ObjectId>4772640</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="54" parent="17" name="module_pkey">
-      <ObjectId>4758471</ObjectId>
+    <key id="56" parent="17" name="module_pkey">
+      <ObjectId>4772639</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>module_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="55" parent="17" name="module_name_key">
-      <ObjectId>4758473</ObjectId>
+    <key id="57" parent="17" name="module_name_key">
+      <ObjectId>4772641</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>module_name_key</UnderlyingIndexName>
     </key>
-    <column id="56" parent="18" name="id">
+    <column id="58" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696202</StateNumber>
+      <StateNumber>329607369</StateNumber>
       <SequenceName>student_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;student_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="57" parent="18" name="username">
+    <column id="59" parent="18" name="username">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696202</StateNumber>
+      <StateNumber>329607369</StateNumber>
     </column>
-    <column id="58" parent="18" name="password">
+    <column id="60" parent="18" name="password">
       <Position>3</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696202</StateNumber>
+      <StateNumber>329607369</StateNumber>
     </column>
-    <column id="59" parent="18" name="email">
+    <column id="61" parent="18" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>324696202</StateNumber>
+      <StateNumber>329607369</StateNumber>
     </column>
-    <index id="60" parent="18" name="student_pkey">
-      <ObjectId>4758458</ObjectId>
+    <index id="62" parent="18" name="student_pkey">
+      <ObjectId>4772594</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="61" parent="18" name="student_username_key">
-      <ObjectId>4758460</ObjectId>
+    <index id="63" parent="18" name="student_username_key">
+      <ObjectId>4772596</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="62" parent="18" name="student_email_key">
-      <ObjectId>4758462</ObjectId>
+    <index id="64" parent="18" name="student_email_key">
+      <ObjectId>4772598</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="63" parent="18" name="student_pkey">
-      <ObjectId>4758459</ObjectId>
+    <key id="65" parent="18" name="student_pkey">
+      <ObjectId>4772595</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="64" parent="18" name="student_username_key">
-      <ObjectId>4758461</ObjectId>
+    <key id="66" parent="18" name="student_username_key">
+      <ObjectId>4772597</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>student_username_key</UnderlyingIndexName>
     </key>
-    <key id="65" parent="18" name="student_email_key">
-      <ObjectId>4758463</ObjectId>
+    <key id="67" parent="18" name="student_email_key">
+      <ObjectId>4772599</ObjectId>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>student_email_key</UnderlyingIndexName>
     </key>

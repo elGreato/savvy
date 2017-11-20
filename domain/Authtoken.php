@@ -15,6 +15,7 @@ class Authtoken
     private $selector;
     private $validator;
     private $expiration;
+    private $type;
     /**
      * @return mixed
      */
@@ -77,6 +78,22 @@ class Authtoken
     public function setExpiration($expiration)
     {
         $this->expiration = $expiration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
 }

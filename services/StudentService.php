@@ -6,7 +6,14 @@ require_once(realpath(dirname(__FILE__)) . '/Student.php');
  * @author Kevin
  */
 interface StudentService {
-
+    /**
+     * @AttributeType int
+     */
+    const STUDENT_TOKEN = 1;
+    /**
+     * @AttributeType int
+     */
+    const RESET_TOKEN = 2;
 	/**
 	 * @access public
 	 * @param String username

@@ -31,7 +31,20 @@ class StudentDAO extends \BasicDAO
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
 
     }
-
+    public function findByUsername($username)
+    {
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM student WHERE username = :username;');
+        $stmt->bindValue(':username',$username);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+    }
+    public function findByEmail($email)
+    {
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM student WHERE email = :email;');
+        $stmt->bindValue(':email',$email);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+    }
     public function delete($studentID)
     {
         $stmt=$this->pdoInstance->prepare('DELETE FROM "student" where id = :id');

@@ -1,7 +1,10 @@
 <?php
 require_once(realpath(dirname(__FILE__)) . '/Student.php');
 require_once(realpath(dirname(__FILE__)) . '/StudentService.php');
-
+use domain\authtoken;
+use domain\Student;
+use dao\StudentDAO;
+use dao\AuthtokenDAO;
 /**
  * @access public
  * @author Kevin
@@ -23,7 +26,10 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType StudentServiceImpl
 	 */
 	public static function getInstance() {
-		return self::$instance;
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
 	}
 
 	/**
@@ -46,7 +52,9 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType boolean
 	 */
 	public function verifyAuth() {
-		// Not yet implemented
+        if(isset($this->currentStudentId))
+            return true;
+        return false;
 	}
 
 	/**
@@ -68,7 +76,19 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType boolean
 	 */
 	public function verifyStudent(&$username, &$password) {
-		// Not yet implemented
+        $studentDAO = new StudentDAO();
+        $student = $studentDAO->findByUsername($username);
+        if (isset($student)) {
+            if (password_verify($password, $student->getPassword())) {
+                if (password_needs_rehash($student->getPassword(), PASSWORD_DEFAULT)) {
+                    $student->setPassword(password_hash($password, PASSWORD_DEFAULT));
+                    $studentDAO->update($student);
+                }
+                $this->currentStudentId = $student->getId();
+                return true;
+            }
+        }
+        return false;
 	}
 
 	/**
@@ -77,7 +97,11 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType Student
 	 */
 	public function readStudent() {
-		// Not yet implemented
+        if($this->verifyAuth()) {
+            $studentDAO = new StudentDAO();
+            return $studentDAO->read($this->currentStudentId);
+        }
+        throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
 	}
 
 	/**
@@ -88,7 +112,22 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType boolean
 	 */
 	public function validateToken(&$token) {
-		// Not yet implemented
+        $tokenArray = explode(":", $token);
+        $authTokenDAO = new AuthTokenDAO();
+        $authToken = $authTokenDAO->findBySelector($tokenArray[0]);
+        if (!empty($authToken)) {
+            if(time()<=(new \DateTime($authToken->getExpiration()))->getTimestamp()){
+                if (hash_equals(hash('sha384', hex2bin($tokenArray[1])), $authToken->getValidator())) {
+                    $this->currentStudentId = $authToken->getStudentid();
+                    if($authToken->getType()===self::RESET_TOKEN){
+                        $authTokenDAO->delete($authToken);
+                    }
+                    return true;
+                }
+            }
+            $authTokenDAO->delete($authToken);
+        }
+        return false;
 	}
 
 	/**
@@ -100,8 +139,27 @@ class StudentServiceImpl implements StudentService {
 	 * @ParamType email String = null
 	 * @ReturnType String
 	 */
-    public function issueToken($type = self__STUDENT_TOKEN, $email = null) {
-		// Not yet implemented
+    public function issueToken($type = self::STUDENT_TOKEN, $email = null) {
+        $token = new AuthToken();
+        $token->setSelector(bin2hex(random_bytes(5)));
+        if($type===self::STUDENT_TOKEN) {
+            $token->setType(self::STUDENT_TOKEN);
+            $token->setStudentid($this->currentStudentId);
+            $timestamp = (new \DateTime('now'))->modify('+30 days');
+        }
+        elseif(isset($email)){
+            $token->setType(self::RESET_TOKEN);
+            $token->setStudentid((new StudentDAO())->findByUsername($email)->getId());
+            $timestamp = (new \DateTime('now'))->modify('+1 hour');
+        }else{
+            throw new HTTPException(HTTPStatusCode::HTTP_406_NOT_ACCEPTABLE, 'RESET_TOKEN without email');
+        }
+        $token->setExpiration($timestamp->format("Y-m-d H:i:s"));
+        $validator = random_bytes(20);
+        $token->setValidator(hash('sha384', $validator));
+        $authTokenDAO = new AuthTokenDAO();
+        $authTokenDAO->create($token);
+        return $token->getSelector() .":". bin2hex($validator);
 	}
 
 	/**
@@ -116,7 +174,28 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType boolean
 	 */
     public function addStudent($username, $password, $email) {
-		// Not yet implemented
+        $studentDAO = new StudentDAO();
+        $student = new Student();
+		$student->setName($username);
+		$student->setPassword(password_hash($password, PASSWORD_DEFAULT));
+		$student->setEmail($email);
+		if($this->verifyAuth())
+        {
+            $dbStudent = $studentDAO->read($this->currentStudentId);
+            if($dbStudent->getEmail()!==$student->getEmail()&&!is_null($studentDAO->findByEmail($email)))
+            {
+                return false;
+            }
+            $studentDAO->update($student);
+            return true;
+        }
+        else{
+            if(!is_null($studentDAO->findByEmail($email))){
+                return false;
+            }
+            $studentDAO->create($student);
+            return true;
+        }
 	}
 }
 ?>
