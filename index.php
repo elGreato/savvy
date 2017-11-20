@@ -29,7 +29,8 @@ Router::route_auth("GET", "/login", $authFunction, function () {
 
 });
 Router::route_auth("POST", "/login", $authFunction, function () {
-    require_once("view/login.php");
+    $authController = new AuthController();
+    $authController->login();
 
 });
 Router::route_auth("GET", "/register", $authFunction, function () {

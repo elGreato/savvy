@@ -7,14 +7,18 @@ namespace controller;
  * Time: 13:33
  */
 use services\StudentServiceImpl;
+use router\Router;
 class AuthController
 {
     public function login(){
         $authService = StudentServiceImpl::getInstance();
         if($authService->verifyStudent($_POST["username"],$_POST["password"]))
         {
+            echo"verification successful";
+            Router::redirect("/");
             return true;
         }
+        echo "verification failed";
         return false;
     }
 }

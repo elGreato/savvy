@@ -24,10 +24,10 @@ require_once "header.php";
             <button>create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
-        <form class="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
+        <form method="post" class="login-form">
+            <input type="text" name="username" placeholder="username"/>
+            <input type="password" name="password" placeholder="password"/>
+            <button type="submit">login</button>
             <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>
     </div>

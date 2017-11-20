@@ -81,12 +81,13 @@ class StudentServiceImpl implements StudentService {
         $studentDAO = new StudentDAO();
         $student = $studentDAO->findByUsername($username);
         if (isset($student)) {
-            if (password_verify($password, $student->getPassword())) {
-                if (password_needs_rehash($student->getPassword(), PASSWORD_DEFAULT)) {
-                    $student->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            $extractedstudent = $student[0];
+            if (password_verify($password, $extractedstudent->getPassword())) {
+                if (password_needs_rehash($extractedstudent->getPassword(), PASSWORD_DEFAULT)) {
+                    $extractedstudent->setPassword(password_hash($password, PASSWORD_DEFAULT));
                     $studentDAO->update($student);
                 }
-                $this->currentStudentId = $student->getId();
+                $this->currentStudentId = $extractedstudent->getId();
                 return true;
             }
         }
@@ -193,12 +194,26 @@ class StudentServiceImpl implements StudentService {
         }
         else{
             echo sizeof($studentDAO->findByEmail($email));
-            if(sizeof($studentDAO->findByEmail($email))!=0){
+            $dbEmail = $studentDAO->findByEmail($email);
+            $dbUsername = $studentDAO->findByUsername($username);
+            if(sizeof($dbUsername)!=0&&sizeof($dbEmail !=0)){
 
-                return false;
+                return "bothTaken";
+            }
+            else if(sizeof($dbUsername) !=0)
+            {
+                return "usernameTaken";
+            }
+            else if (sizeof($dbEmail)!=0)
+            {
+                return "emailTaken";
+            }
+            else
+            {
+
+                return "successful";
             }
 
-            $studentDAO->create($student);
             return true;
         }
 	}

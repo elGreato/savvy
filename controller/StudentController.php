@@ -13,11 +13,19 @@ class StudentController
     public function register()
     {
         $studentService = StudentServiceImpl::getInstance();
-        $hasWorked = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
-        if($hasWorked)
+        $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
+        if($workStatus == "successful")
         {
             return true;
 
+        }
+        else if($workStatus == "usernameTaken")
+        {
+            return false;
+        }
+        else if($workStatus == "emailTaken")
+        {
+            return false;
         }
         else
         {
