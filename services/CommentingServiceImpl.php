@@ -1,4 +1,5 @@
 <?php
+namespace services;
 require_once(realpath(dirname(__FILE__)) . '/Comment.php');
 require_once(realpath(dirname(__FILE__)) . '/CommentingService.php');
 

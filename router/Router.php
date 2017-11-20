@@ -6,6 +6,7 @@
  * Time: 9:19 PM
  */
 namespace router;
+
 class Router
 {
     protected static $routes = [];
@@ -27,18 +28,33 @@ class Router
         $path = trim($path, '/');
         self::$routes[$method][$path] = array("authFunction" => $authFunction, "routeFunction" => $routeFunction);
     }
-    public static function call_route($method, $path, $errorFunction) {
+    public static function call_route($method, $path) {
+
         $path = trim(parse_url($path, PHP_URL_PATH), '/');
-        if(!array_key_exists($method, self::$routes) || !array_key_exists($path, self::$routes[$method])) {
-            $errorFunction(); return;
+        $path_pieces = explode('/', $path);
+        $parameters = [];
+        $parameter_number = 0;
+        foreach($path_pieces as $path_value) {
+            if(is_numeric($path_value)) {
+                $parameters[$parameter_number] = $path_value;
+                $path = str_replace("/".$path_value,"/"."{parameter" . $parameter_number++ . "}",$path);
+            }
         }
+        if(!array_key_exists($method, self::$routes) || !array_key_exists($path, self::$routes[$method])) {
+            //throw new HTTPException(HTTPStatusCode::HTTP_404_NOT_FOUND);
+
+        }
+
         $route = self::$routes[$method][$path];
-        if(isset($route["authFunction"])) {
+        /*if(isset($route["authFunction"])) {
             if (!$route["authFunction"]()) {
                 return;
             }
-        }
-        $route["routeFunction"]();
+        }*/
+
+
+
+        $route["routeFunction"](...$parameters);
     }
     public static function errorHeader() {
         header("HTTP/1.0 404 Not Found");
@@ -46,4 +62,5 @@ class Router
     public static function redirect($redirect_path) {
         header("Location: " . $GLOBALS["ROOT_URL"] . $redirect_path);
     }
+
 }

@@ -1,10 +1,12 @@
 <?php
-require_once(realpath(dirname(__FILE__)) . '/Student.php');
+namespace services;
+//require_once(realpath(dirname(__FILE__)) . '/Student.php');
 require_once(realpath(dirname(__FILE__)) . '/StudentService.php');
 use domain\authtoken;
 use domain\Student;
 use dao\StudentDAO;
 use dao\AuthtokenDAO;
+use services\StudentService;
 /**
  * @access public
  * @author Kevin

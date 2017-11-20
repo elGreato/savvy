@@ -3,6 +3,7 @@
  * @access public
  * @author Kevin
  */
+namespace services;
 use domain\Module;
 interface ModuleService {
 

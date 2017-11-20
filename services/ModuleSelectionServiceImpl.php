@@ -1,4 +1,5 @@
 <?php
+namespace services;
 require_once(realpath(dirname(__FILE__)) . '/ModuleSelectionService.php');
 use dao\InscriptionDAO;
 use domain\Inscription;

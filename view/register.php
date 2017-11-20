@@ -1,4 +1,8 @@
+<?php
+require_once "header.php";
 
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -20,25 +24,15 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#"><strong><em>Savvy</em> </strong></a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active" role="presentation"><a href="#"><strong>Register</strong> </a></li>
-                    <li role="presentation"><a href="view/login.php"><strong>Login</strong> </a></li>
-                    <li role="presentation"><a href="#"><strong>Contact us</strong></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder" style="background-image:url(&quot;assets/img/register.jpg&quot;);"></div>
             <form method="post">
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group">
+                    <input class="form-control" type="username" name="username" placeholder="Username">
+                </div>
                 <div class="form-group">
                     <input class="form-control" type="email" name="email" placeholder="Email">
                 </div>

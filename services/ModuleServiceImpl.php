@@ -1,4 +1,5 @@
 <?php
+namespace services;
 require_once(realpath(dirname(__FILE__)) . '/ModuleService.php');
 use dao\ModuleDAO;
 use domain\Module;

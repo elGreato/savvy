@@ -1,4 +1,5 @@
 <?php
+namespace domain;
 /**
  * Created by PhpStorm.
  * User: Area-51
