@@ -9,7 +9,7 @@
 namespace dao;
 use domain\Module;
 
-class ModuleDAO extends \BasicDAO
+class ModuleDAO extends BasicDAO
 {
     public function create(Module $module)
     {

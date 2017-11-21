@@ -10,7 +10,7 @@ namespace dao;
 
 use domain\comment;
 
-class CommentDAO extends \BasicDAO
+class CommentDAO extends BasicDAO
 {
     public function create(Comment $comment)
     {

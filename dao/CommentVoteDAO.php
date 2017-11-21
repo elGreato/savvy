@@ -8,8 +8,8 @@
 
 namespace dao;
 use domain\Commentvote;
-
-class CommentVoteDAO extends \BasicDAO
+use \PDO;
+class CommentVoteDAO extends BasicDAO
 {
     public function create(Commentvote $commentlike)
     {

@@ -9,7 +9,7 @@
 namespace dao;
 use domain\Authtoken;
 
-class AuthtokenDAO extends \BasicDAO
+class AuthtokenDAO extends BasicDAO
 {
     public function create(Authtoken $authtoken)
     {

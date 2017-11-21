@@ -81,13 +81,12 @@ class StudentServiceImpl implements StudentService {
         $studentDAO = new StudentDAO();
         $student = $studentDAO->findByUsername($username);
         if (isset($student)) {
-            $extractedstudent = $student[0];
-            if (password_verify($password, $extractedstudent->getPassword())) {
-                if (password_needs_rehash($extractedstudent->getPassword(), PASSWORD_DEFAULT)) {
-                    $extractedstudent->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            if (password_verify($password, $student->getPassword())) {
+                if (password_needs_rehash($student->getPassword(), PASSWORD_DEFAULT)) {
+                    $student->setPassword(password_hash($password, PASSWORD_DEFAULT));
                     $studentDAO->update($student);
                 }
-                $this->currentStudentId = $extractedstudent->getId();
+                $this->currentStudentId = $student->getId();
                 return true;
             }
         }
@@ -210,11 +209,10 @@ class StudentServiceImpl implements StudentService {
             }
             else
             {
-
+                $studentDAO->create($student);
                 return "successful";
             }
 
-            return true;
         }
 	}
 }

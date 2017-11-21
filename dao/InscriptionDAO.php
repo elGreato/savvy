@@ -8,7 +8,7 @@
 
 namespace dao;
 use domain\Inscription;
-class InscriptionDAO extends \BasicDAO
+class InscriptionDAO extends BasicDAO
 {
     public function create(Inscription $inscription)
     {

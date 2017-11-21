@@ -28,7 +28,12 @@ class StudentDAO extends BasicDAO
         $stmt=$this->pdoInstance->prepare('SELECT * FROM student WHERE id = :id;');
         $stmt->bindValue(':id',$studentID);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+        $result =$stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+        $student = null;
+        if(!empty($result)){
+            $student = $result[0];
+        }
+        return $student;
 
     }
     public function findByUsername($username)
@@ -36,14 +41,24 @@ class StudentDAO extends BasicDAO
         $stmt=$this->pdoInstance->prepare('SELECT * FROM student WHERE username = :username;');
         $stmt->bindValue(':username',$username);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+        $student = null;
+        if(!empty($result)){
+            $student = $result[0];
+        }
+        return $student;
     }
     public function findByEmail($email)
     {
         $stmt=$this->pdoInstance->prepare('SELECT * FROM student WHERE email = :email;');
         $stmt->bindValue(':email',$email);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Student");
+        $student = null;
+        if(!empty($result)){
+            $student = $result[0];
+        }
+        return $student;
     }
     public function delete($studentID)
     {
