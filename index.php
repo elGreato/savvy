@@ -24,16 +24,6 @@ Router::route_auth("GET", "/", $authFunction, function () {
     require_once("view/welcome.php");
 
 });
-Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
-    ModuleController::showAddModule();
-
-
-});
-Router::route_auth("GET", "/main", $authFunction, function () {
-    ModuleController::showModules();
-
-
-});
 
 Router::route_auth("GET", "/login", $authFunction, function () {
     require_once("view/login.php");
@@ -53,6 +43,22 @@ Router::route_auth("POST", "/register", $authFunction, function () {
     {
         Router::redirect("/");
     }
+
+});
+Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
+    ModuleController::showAddModule();
+
+
+});
+Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
+    ModuleController::addModule();
+    Router::redirect("/main");
+
+
+});
+Router::route_auth("GET", "/main", $authFunction, function () {
+    ModuleController::showModules();
+
 
 });
 try {

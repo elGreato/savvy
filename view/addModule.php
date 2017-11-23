@@ -13,13 +13,13 @@ require_once "headerLoggedIn.php";
 ?>
 <body>
     <div class="addModuleDiv">
-        <div class="page-header">
+        <div class="page-header" style="width:50vw">
             <h1>Add Module<small>FHNW </small></h1>
             <form><span class="label label-default inputDescription">Name </span>
-                <input class="form-control textInputs" type="text"><span class="label label-default inputDescription">Description </span>
-                <textarea class="form-control textInputs"></textarea><span class="label label-default inputDescription">ECTS </span>
-                <input class="form-control" type="number">
-                <button class="btn btn-default" type="button" style="margin-top:10px;">Create </button>
+                <input name="module_name" class="form-control textInputs" type="text"><span class="label label-default inputDescription">Description </span>
+                <textarea name="module_description" class="form-control textInputs"></textarea><span class="label label-default inputDescription">ECTS </span>
+                <input name="num_credits" class="form-control" type="number">
+                <button class="btn btn-default" type="submit" formmethod="post" style="margin-top:10px;">Create </button>
             </form>
         </div>
     </div>

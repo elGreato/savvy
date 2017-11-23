@@ -7,6 +7,8 @@
  */
 
 namespace controller;
+use dao\ModuleDAO;
+use domain\Module;
 use services\ModuleServiceImpl;
 use view\TemplateView;
 
@@ -25,5 +27,14 @@ class ModuleController
     {
         $tempView = new TemplateView("view/addModule.php");
         echo $tempView->createView();
+    }
+    public static function addModule()
+    {
+        $module = new Module();
+        $module->setName($_POST["module_name"]);
+        $module->setDescription($_POST["module_description"]);
+        $module->setNumcredits($_POST["num_credits"]);
+        $moduleDAO = new ModuleDAO();
+        $moduleDAO->create($module);
     }
 }
