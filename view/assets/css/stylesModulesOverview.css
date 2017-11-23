@@ -1,0 +1,39 @@
+#content {
+  position:relative;
+  margin-left:20px;
+}
+
+.table-responsive > .table > tbody > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tfoot > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > thead > tr > th {
+}
+
+.h1, h1 {
+  text-align:left;
+}
+
+.tableheader {
+  background:lightgrey;
+}
+
+.numberColumn {
+  text-align:center;
+}
+
+searchButton {
+  background:lightgreen;
+}
+
+.openButton {
+  background:lightGreen;
+  opacity:0.7;
+}
+
+.deleteButton {
+  background:tomato;
+  opacity:0.7;
+}
+
+.editButton {
+  background:yellow;
+  opacity:0.7;
+}
+

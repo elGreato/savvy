@@ -1,5 +1,5 @@
 <?php
-
+require_once "headerLoggedIn.php";
 ?>
 
 
@@ -27,20 +27,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#"><strong><em>Savvy</em> </strong></a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active" role="presentation"><a href="#"><strong>All topics</strong></a></li>
-                    <li role="presentation"><a href="#"><strong>My Topics</strong></a></li>
-                    <li role="presentation"><a href="#"><strong>My Profile</strong></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
     <div id="content">
         <div class="page-header" style="width:800px;">
             <h1>Modules List<small> FHNW </small></h1></div>
