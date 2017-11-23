@@ -7,6 +7,7 @@
  */
 
 namespace controller;
+use services\ModuleServiceImpl;
 use view\TemplateView;
 
 class ModuleController
@@ -14,7 +15,11 @@ class ModuleController
     public static function showModules()
     {
         $tempView = new TemplateView("view/main.php");
+        $moduleService = new ModuleServiceImpl();
+        $modules = $moduleService->readAllModules();
+        $tempView->modules = $modules;
         echo $tempView->createView();
+
     }
     public static function showAddModule()
     {

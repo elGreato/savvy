@@ -26,7 +26,7 @@ class AuthController
         $authService = StudentServiceImpl::getInstance();
         if($authService->verifyStudent($_POST["username"],$_POST["password"]))
         {
-            echo"verification successful";
+            $authService->issueToken();
             Router::redirect("/main");
             return true;
         }

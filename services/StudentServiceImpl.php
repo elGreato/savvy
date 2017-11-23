@@ -88,6 +88,7 @@ class StudentServiceImpl implements StudentService {
                 }
                 $this->currentStudentId = $student->getId();
                 $_SESSION["loginData"]["token"]=  $this->issueToken();
+                echo "verification successful";
                 return true;
             }
         }
@@ -142,7 +143,7 @@ class StudentServiceImpl implements StudentService {
 	 * @ParamType email String = null
 	 * @ReturnType String
 	 */
-    public function issueToken($type = self::STUDENT_TOKEN, $email = null) {
+    public function issueToken($type = self::STUDENT_TOKEN, $username = null) {
         $token = new AuthToken();
         $token->setSelector(bin2hex(random_bytes(5)));
         if($type===self::STUDENT_TOKEN) {
@@ -152,7 +153,7 @@ class StudentServiceImpl implements StudentService {
         }
         elseif(isset($email)){
             $token->setType(self::RESET_TOKEN);
-            $token->setStudentid((new StudentDAO())->findByUsername($email)->getId());
+            $token->setStudentid((new StudentDAO())->findByUsername($username)->getId());
             $timestamp = (new \DateTime('now'))->modify('+1 hour');
         }else{
             throw new HTTPException(HTTPStatusCode::HTTP_406_NOT_ACCEPTABLE, 'RESET_TOKEN without email');

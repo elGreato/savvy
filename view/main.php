@@ -45,11 +45,13 @@ require_once "headerLoggedIn.php";
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                foreach ($this->modules as $module):?>
                 <tr>
-                    <td class="numberColumn">1</td>
-                    <td style="font-weight:bold;">Programming I</td>
-                    <td class="numberColumn">4 </td>
-                    <td class="numberColumn">14 </td>
+                    <td class="numberColumn"><?php echo $module->getId()?></td>
+                    <td style="font-weight:bold;"><?php echo $module->getName()?></td>
+                    <td class="numberColumn"><?php echo $module->getNumCredits()?></td>
+                    <td class="numberColumn"><?php echo $module->getInscriptions()?> </td>
                     <td style="color:rgb(100,0,0);">
                         <button class="btn btn-default openButton" type="button"> <i class="glyphicon glyphicon-search searchButton"></i></button>
                     </td>
@@ -60,21 +62,8 @@ require_once "headerLoggedIn.php";
                         <button class="btn btn-default deleteButton" type="button"> <i class="glyphicon glyphicon-trash"></i></button>
                     </td>
                 </tr>
-                <tr>
-                    <td class="numberColumn">2 </td>
-                    <td style="font-weight:bold;">Practical Project</td>
-                    <td class="numberColumn">12 </td>
-                    <td class="numberColumn">9 </td>
-                    <td>
-                        <button class="btn btn-default openButton" type="button"> <i class="glyphicon glyphicon-search"></i></button>
-                    </td>
-                    <td>
-                        <button class="btn btn-default editButton" type="button"> <i class="glyphicon glyphicon-pencil"></i></button>
-                    </td>
-                    <td>
-                        <button class="btn btn-default deleteButton" type="button"> <i class="glyphicon glyphicon-trash"></i></button>
-                    </td>
-                </tr>
+                <?php endforeach;?>
+
                 </tbody>
             </table>
 

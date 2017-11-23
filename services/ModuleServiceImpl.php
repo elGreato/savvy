@@ -55,10 +55,10 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module[]
 	 */
 	public function readAllModules() {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             return $moduleDAO->readAll();
-        }
+       // }
 	}
 
 	/**
