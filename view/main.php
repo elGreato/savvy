@@ -79,7 +79,8 @@ require_once "headerLoggedIn.php";
             </table>
 
         </div>
-        <button class="btn btn-default addButton" type="button" style="margin-top: 10px">Add Module</button>
+
+        <button onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  class="btn btn-default addButton" type="button" style="margin-top: 10px"><a href="/main/addmodule">Add Module</a></button>
 
     </div>
     <script src="assets/js/jquery.min.js"></script>

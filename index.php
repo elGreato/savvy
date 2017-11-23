@@ -5,6 +5,8 @@ use router\Router;
 use services\ModuleServiceImpl;
 use controller\StudentController;
 use controller\AuthController;
+use controller\ModuleController;
+use view\TemplateView;
 session_start();
 require_once("config/Autoloader.php");
 /*require_once 'view/welcome.php';
@@ -22,9 +24,17 @@ Router::route_auth("GET", "/", $authFunction, function () {
     require_once("view/welcome.php");
 
 });
-Router::route_auth("GET", "/main", $authFunction, function () {
-    require_once("view/main.php");
+Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
+    ModuleController::showAddModule();
+
+
 });
+Router::route_auth("GET", "/main", $authFunction, function () {
+    ModuleController::showModules();
+
+
+});
+
 Router::route_auth("GET", "/login", $authFunction, function () {
     require_once("view/login.php");
 
