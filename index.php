@@ -12,10 +12,10 @@ require_once 'view/footer.php';*/
 
 
 $authFunction = function () {
-   /* if (AuthController::authenticate())
+   if (AuthController::authenticate())
         return true;
     Router::redirect("/login");
-    return false;*/
+    return false;
 };
 
 Router::route_auth("GET", "/", $authFunction, function () {
@@ -29,8 +29,7 @@ Router::route_auth("GET", "/login", $authFunction, function () {
 
 });
 Router::route_auth("POST", "/login", $authFunction, function () {
-    $authController = new AuthController();
-    $authController->login();
+    AuthController::login();
 
 });
 Router::route_auth("GET", "/register", $authFunction, function () {
@@ -39,8 +38,7 @@ Router::route_auth("GET", "/register", $authFunction, function () {
 
 });
 Router::route_auth("POST", "/register", $authFunction, function () {
-    $studentController = new StudentController();
-    if($studentController->register())
+    if(StudentController::register())
     {
         Router::redirect("/");
     }

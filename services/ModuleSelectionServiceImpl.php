@@ -2,7 +2,9 @@
 namespace services;
 require_once(realpath(dirname(__FILE__)) . '/ModuleSelectionService.php');
 use dao\InscriptionDAO;
+use dao\ModuleDAO;
 use domain\Inscription;
+use domain\Module;
 /**
  * @access public
  * @author Kevin
@@ -50,8 +52,8 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
 	public function showSelectedModules() {
         if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
-            $inscriptionDAO = new InscriptionDAO();
-            return $inscriptionDAO->readInscriptions($studentId);
+            $moduleDAO = new ModuleDAO();
+            return $moduleDAO->readInscribedModules($studentId);
         }
 	}
 

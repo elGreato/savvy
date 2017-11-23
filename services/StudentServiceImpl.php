@@ -87,6 +87,7 @@ class StudentServiceImpl implements StudentService {
                     $studentDAO->update($student);
                 }
                 $this->currentStudentId = $student->getId();
+                $_SESSION["loginData"]["token"]=  $this->issueToken();
                 return true;
             }
         }

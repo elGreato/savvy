@@ -10,7 +10,7 @@ use services\StudentServiceImpl;
 
 class StudentController
 {
-    public function register()
+    public static function register()
     {
         $studentService = StudentServiceImpl::getInstance();
         $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);

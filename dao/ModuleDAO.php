@@ -24,7 +24,7 @@ class ModuleDAO extends BasicDAO
     }
     public function read($moduleID)
     {
-        $stmt=$this->pdoInstance->prepare('SELECT * FROM "module" WHERE id = :id;');
+        $stmt=$this->pdoInstance->prepare('SELECT module.*, COUNT(inscription.studentid) as inscriptions FROM module join inscription on inscription.moduleid = module.id WHERE "module".id = :id;');
         $stmt->bindValue(':id',$moduleID);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
@@ -32,13 +32,19 @@ class ModuleDAO extends BasicDAO
     }
     public function readAll()
     {
-        $stmt=$this->pdoInstance->prepare('SELECT * FROM "module";');
+        $stmt=$this->pdoInstance->prepare('SELECT module.*, COUNT(inscription.studentid) as inscriptions FROM module join inscription on inscription.moduleid = module.id');
         $stmt->execute();
         $modules = $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
         return $modules;
 
     }
-
+    public function readInscribedModules($studentid)
+    {
+        $stmt=$this->pdoInstance->prepare('SELECT module.* FROM inscription JOIN module on inscription.moduleid = module.id WHERE studentid = :studentid;');
+        $stmt->bindValue(':student',$studentid);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Inscription");
+    }
     public function delete($moduleID)
     {
         $stmt=$this->pdoInstance->prepare('DELETE FROM "module" where id = :id');

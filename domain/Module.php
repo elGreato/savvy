@@ -15,6 +15,7 @@ class Module
     private $name;
     private $description;
     private $numcredits;
+    private $inscriptions;
 
     /**
      * @return mixed
@@ -79,4 +80,21 @@ class Module
     {
         $this->numcredits = $numcredits;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInscriptions()
+    {
+        return $this->inscriptions;
+    }
+
+    /**
+     * @param mixed $inscriptions
+     */
+    public function setInscriptions($inscriptions)
+    {
+        $this->inscriptions = $inscriptions;
+    }
+
 }

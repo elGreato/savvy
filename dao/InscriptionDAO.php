@@ -19,15 +19,22 @@ class InscriptionDAO extends BasicDAO
         $stmt->bindValue(':moduleid',$inscription->getSelector());
         $stmt->execute();
     }
-    public function readInscriptions($studentid)
+    public function readInscriptionsOfStudent($studentid)
     {
-        $stmt=$this->pdoInstance->prepare('SELECT module.* FROM inscription JOIN module on inscription.moduleid = module.id WHERE studentid = :studentid;');
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM inscription WHERE studentid = :studentid;');
         $stmt->bindValue(':student',$studentid);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Inscription");
 
     }
+    public function readInscriptionsByModule($moduleid)
+    {
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM inscription WHERE moduleid = :moduleid;');
+        $stmt->bindValue(':module',$moduleid);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Inscription");
 
+    }
     public function delete($moduleid,$studentID)
     {
         $stmt=$this->pdoInstance->prepare('DELETE FROM "inscription" where moduleid = :moduleid AND $studentID = :$studentID');
