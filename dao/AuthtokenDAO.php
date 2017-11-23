@@ -37,7 +37,12 @@ class AuthtokenDAO extends BasicDAO
         $stmt=$this->pdoInstance->prepare('SELECT * FROM authtoken WHERE selector= :selector;');
         $stmt->bindValue(':selector',$selector);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Authtoken");
+        $result =  $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Authtoken");
+        $student = null;
+        if(!empty($result)){
+            $student = $result[0];
+        }
+        return $student;
     }
     public function delete($authtokenID)
     {

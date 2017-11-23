@@ -46,20 +46,34 @@ Router::route_auth("POST", "/register", $authFunction, function () {
 
 });
 Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
-    ModuleController::showAddModule();
+    if(AuthController::authenticate())
+    {
+        ModuleController::showAddModule();
+    }
+    else{
+        Router::redirect("/login");
+    }
 
 
 });
 Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
-    ModuleController::addModule();
-    Router::redirect("/main");
+    if(AuthController::authenticate()) {
+        ModuleController::addModule();
+        Router::redirect("/main");
+    }
+    else{
+        Router::redirect("/login");
+    }
 
 
 });
 Router::route_auth("GET", "/main", $authFunction, function () {
+    if(AuthController::authenticate()) {
     ModuleController::showModules();
-
-
+    }
+    else{
+        Router::redirect("/login");
+    }
 });
 try {
     Router::call_route($_SERVER['REQUEST_METHOD'], $_SERVER['PATH_INFO']);
