@@ -20,9 +20,10 @@ $authFunction = function () {
 
 Router::route_auth("GET", "/", $authFunction, function () {
     require_once("view/welcome.php");
-    global $module;
-    $module = (new ModuleServiceImpl())->readAllModules();
 
+});
+Router::route_auth("GET", "/main", $authFunction, function () {
+    require_once("view/main.php");
 });
 Router::route_auth("GET", "/login", $authFunction, function () {
     require_once("view/login.php");

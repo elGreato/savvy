@@ -27,7 +27,7 @@ class AuthController
         if($authService->verifyStudent($_POST["username"],$_POST["password"]))
         {
             echo"verification successful";
-            Router::redirect("/");
+            Router::redirect("/main");
             return true;
         }
         echo "verification failed";
