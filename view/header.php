@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active" role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/register" style="height:55px;color:rgb(0,2,6);font-size:30px;"><strong>Register</strong> </a></li>
                     <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/login" style="height:55px;color:rgb(0,2,6);font-size:30px;"><strong>Login</strong> </a></li>
-                    <li role="presentation"><a href="#" style="height:55px;color:rgb(0,1,1);font-size:30px;"><strong>Contact us</strong></a></li>
+                    <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/contactus" style="height:55px;color:rgb(0,1,1);font-size:30px;"><strong>Contact us</strong></a></li>
                 </ul>
             </div>
         </div>

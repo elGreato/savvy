@@ -29,6 +29,10 @@ Router::route_auth("GET", "/login", $authFunction, function () {
     require_once("view/login.php");
 
 });
+Router::route_auth("GET", "/contactus", $authFunction, function () {
+    require_once("view/contactUs.php");
+
+});
 Router::route_auth("POST", "/login", $authFunction, function () {
     AuthController::login();
 
