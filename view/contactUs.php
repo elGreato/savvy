@@ -6,7 +6,9 @@
  * Time: 4:41 PM
  */
 
+require_once '../util/initialize.php';
 require_once "header.php";
+
 ?>
     <!DOCTYPE html>
     <html>
@@ -16,8 +18,8 @@ require_once "header.php";
                 <title>Contact Us</title>
         </head>
         <body>
-             <div class="contactUs_page">
-                 <form id="contact_form" action="#" method="POST" >
+             <div class="contactUs_page" align="center">
+                 <form id="contact_form" action="<?php echo url_for('contactUs.php') ?>" method="POST" >
                      <div class="row">
                          <label for="name">Your name:</label><br />
                          <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
@@ -35,8 +37,10 @@ require_once "header.php";
              </div>
         </body>
     </html>
-<?php //
-//handle the contact submit button
-// ?>
+<?php
+    if(is_post_request()){
+        echo "Thank you for contacting us, we will reply as soon as possible";
+    }
+ ?>
 
 <?php require_once "footer.php"; ?>
