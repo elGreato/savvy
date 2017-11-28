@@ -20,7 +20,7 @@ require_once "header.php";
         </head>
         <body>
              <div class="contactUs_page" align="center">
-                 <form id="contact_form" action="<?php echo $GLOBALS["ROOT_URL"]; ?>/login" method="POST" >
+                 <form id="contact_form" action="<?php echo $GLOBALS["ROOT_URL"]; ?>/contactus" method="POST" name="contactForm" >
                      <div class="row">
                          <label for="name">Your name:</label><br />
                          <input id="name" class="input" name="name" type="text" value="" size="30" /><br />

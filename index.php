@@ -38,7 +38,7 @@ Router::route_auth("POST", "/login", $authFunction, function () {
     AuthController::login();
 
 });
-Router::route_auth("POST", "/contactus", $authFunction, function () {
+Router::route_auth("POST", "/contactus", true, function () {
     ContactUsController::handleContactUs();
 
 });
