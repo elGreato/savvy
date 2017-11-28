@@ -6,7 +6,8 @@
  * Time: 4:41 PM
  */
 
-require_once '../util/initialize.php';
+require_once 'util/initialize.php';
+
 require_once "header.php";
 
 ?>
