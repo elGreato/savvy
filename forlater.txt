@@ -1,0 +1,81 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Area-51
+ * Date: 11/13/2017
+ * Time: 6:58 PM
+ */
+include_once '../private/initialize.php';
+include_once SHARED_PATH . "/pdo_connect.php";
+?>
+
+
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title> Lynda Bank</title>
+    <meta charset="utf-8">
+    <style>
+        table{
+            border-collapse:collapse;
+            border:1px solid #FF0000;
+        }
+
+        table td{
+            border:1px solid #FF0000;
+            height: 5px;
+        }
+
+        .shape {
+            display: inline-table;
+            text-align: center;
+            background-color: rgba(3, 78, 136, 0.7);
+            width: 200px;
+            height: 100px;
+            line-height: 60px;
+            color: white;
+            margin: 20px;
+            position: relative;
+            padding: 10px;
+        }
+
+        /*            .shape:before{
+                      !*  content:"";
+                        width:10px;
+                        height:10px;*!
+                     !*   border-top:60px solid rgba(3,78,136,0.7);*!
+                        border-left:60px solid transparent;
+                        position:absolute;
+                        right:100%;
+                        top:0px;
+                    }*/
+
+    </style>
+</head>
+
+<body>
+<h1> Lynda Bank: Coming Soon!</h1>
+<?php if ($db) {
+    echo "<h2> connection is successful</h2>";
+} elseif (isset($error)) {
+    echo "Error";
+} ?>
+<?php $sql = 'SELECT name, meaning , gender FROM names'; ?>
+<div><?php
+    foreach ($db->query($sql) as $row) { ?>
+        <span class="shape">
+          <table>
+                 <col width="120">
+                <col width="120">
+              <tr> <th >  <?php echo $row['name'] ?></th> </tr>
+              <tr> <td ><img src="https://www.w3schools.com/html/img_girl.jpg" style="width:30px;height:30px;"></td>
+                   <td><button name="Edit this">edit</button></td>
+              </tr>
+          </table>
+        </span> <?php } ?>
+
+
+</div>
+</body>
+</html>
