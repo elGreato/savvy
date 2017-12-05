@@ -9,14 +9,16 @@
 require_once "headerLoggedIn.php";
 
 ?>
-
+<head>
 <title> <?php echo $this->mod->getName();?> </title>
-<h1> <?php echo $this->mod->getName();?>    </h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<h1 align="center"> <?php echo $this->mod->getName();?>    </h1>
 <h4> <?php echo $this->mod->getDescription();?></h4>
 
 <?php
 foreach ($this->comments as $comment):?>
-    <span class="commentBody">
+       <span class="commentBody">
         <style>
              .commentBody {
                  display: inline-table;
@@ -29,12 +31,14 @@ foreach ($this->comments as $comment):?>
                  margin: 10px;
                  position: relative;
                  padding: 10px;
+
              }
         </style>
-
+    <i class="glyphicon glyphicon-user"></i>
+       <?php echo $comment->getStudentname() ?>
         <?php echo $comment->getComment()?>
 
-        <?php echo $comment->getStudentname() ?>
+
 
 
     </span>
