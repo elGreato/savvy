@@ -34,7 +34,7 @@ class ModuleController
         $module->setName($_POST["module_name"]);
         $module->setDescription($_POST["module_description"]);
         $module->setNumcredits($_POST["num_credits"]);
-        $moduleDAO = new ModuleDAO();
-        $moduleDAO->create($module);
+        $moduleServiceImpl = new ModuleServiceImpl();
+        $moduleServiceImpl->create($module);
     }
 }

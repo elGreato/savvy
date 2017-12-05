@@ -48,10 +48,7 @@ Router::route_auth("GET", "/register", $authFunction, function () {
 
 });
 Router::route_auth("POST", "/register", $authFunction, function () {
-    if(StudentController::register())
-    {
-        Router::redirect("/");
-    }
+   StudentController::register();
 
 });
 Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
