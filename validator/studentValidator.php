@@ -5,6 +5,8 @@
  * Date: 11/12/2017
  * Time: 3:48 PM
  */
+namespace validator;
+use domain\Student;
 class StudentValidator
 {
     private $valid = true;

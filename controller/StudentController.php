@@ -1,8 +1,9 @@
 <?php
 namespace controller;
+use domain\Student;
 use services\StudentServiceImpl;
 use view\TemplateView;
-
+use validator\studentValidator;
 /**
  * Created by PhpStorm.
  * User: Area-51
@@ -16,6 +17,15 @@ class StudentController
     {
         $studentService = StudentServiceImpl::getInstance();
         $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
+        $student = new Student();
+        $student->setName($_POST["username"]);
+        $student->setPassword($_POST["password"]);
+        $student->setEmail($_POST["email"]);
+        $studentVal = new StudentValidator($student);
+        if($studentVal->getNameError() == null)
+        {
+
+        }
         if($workStatus == "successful")
         {
             Router::redirect("/main");
