@@ -18,7 +18,7 @@ class StudentController
         $studentService = StudentServiceImpl::getInstance();
         $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
         $student = new Student();
-        $student->setName($_POST["username"]);
+        $student->setUsername($_POST["username"]);
         $student->setPassword($_POST["password"]);
         $student->setEmail($_POST["email"]);
         $studentVal = new StudentValidator($student);

@@ -22,7 +22,7 @@ class StudentValidator
     public function validate(Student $student)
     {
         if (!is_null($student)) {
-            if (empty($student->getName())) {
+            if (empty($student->getUsername())) {
                 $this->nameError = 'Oops! you didnt Enter a name';
                 $this->valid = false;
             }

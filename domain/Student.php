@@ -9,7 +9,7 @@ namespace domain;
 class Student
 {
     private $id;
-    private $name;
+    private $username;
     private $password;
     private $email;
     /**
@@ -31,17 +31,17 @@ class Student
     /**
      * @return mixed
      */
-    public function getName()
+    public function getUsername()
     {
-        return $this->name;
+        return $this->username;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $username
      */
-    public function setName($name)
+    public function setUsername($username)
     {
-        $this->name = $name;
+        $this->username = $username;
     }
 
     /**

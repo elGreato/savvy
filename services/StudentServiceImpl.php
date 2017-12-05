@@ -180,7 +180,7 @@ class StudentServiceImpl implements StudentService {
     public function addStudent($username, $password, $email) {
         $studentDAO = new StudentDAO();
         $student = new Student();
-		$student->setName($username);
+		$student->setUsername($username);
 		$student->setPassword(password_hash($password, PASSWORD_DEFAULT));
 		$student->setEmail($email);
 		if($this->verifyAuth())

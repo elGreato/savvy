@@ -16,7 +16,7 @@ class StudentDAO extends BasicDAO
         $stmt=$this->pdoInstance->prepare('INSERT INTO student 
           (username,password,email) VALUES 
           (:username,:password,:email);');
-        $stmt->bindValue(':username',$student->getName());
+        $stmt->bindValue(':username',$student->getUsername());
         $stmt->bindValue(':password',$student->getPassword());
         $stmt->bindValue(':email',$student->getEmail());
         $stmt->execute();
@@ -69,7 +69,7 @@ class StudentDAO extends BasicDAO
     {
         $stmt = $this->pdoInstance->prepare('UPDATE "student" SET name = :name,description = :description, numcredits = :numcredits WHERE id=:id');
         $stmt->bindValue(':id',$student->getId());
-        $stmt->bindValue(':username',$student->getName());
+        $stmt->bindValue(':username',$student->getUsername());
         $stmt->bindValue(':password',$student->getPassword());
         $stmt->bindValue(':email',$student->getEmail());
         $stmt->execute();

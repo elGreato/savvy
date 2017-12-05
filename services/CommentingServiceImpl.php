@@ -63,7 +63,8 @@ class CommentingServiceImpl implements CommentingService {
                 $votes = $commentVoteDAO->readCommentLikes($moduleId);
                 $comment->setVote($votes);
                 $student = $studentDAO->read($comment->getStudentid());
-                $comment->setStudentname($student->getName());
+                echo var_dump($student);
+                $comment->setStudentname($student->getUsername());
             }
             return $comments;
       //  }
