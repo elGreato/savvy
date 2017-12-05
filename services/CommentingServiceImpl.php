@@ -57,10 +57,13 @@ class CommentingServiceImpl implements CommentingService {
         //if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentDAO = new CommentDAO();
             $commentVoteDAO = new CommentVoteDAO();
+            $studentDAO = new StudentDAO();
             $comments = $commentDAO->readCommentsForModule($moduleId);
             foreach ($comments as $comment) {
                 $votes = $commentVoteDAO->readCommentLikes($moduleId);
                 $comment->setVote($votes);
+                $studentname = $studentDAO->read($comment->getStudentid());
+                $comment->setStudentname($studentname);
             }
             return $comments;
       //  }
@@ -105,11 +108,5 @@ class CommentingServiceImpl implements CommentingService {
 
        // }
 	}
-	public function readCommentAuthor($comment)
-    {
-        $studentDAO = new StudentDAO();
-        return $studentDAO->read($comment->getStudentid());
-
-    }
 }
 ?>

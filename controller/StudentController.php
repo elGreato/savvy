@@ -22,22 +22,36 @@ class StudentController
         $student->setPassword($_POST["password"]);
         $student->setEmail($_POST["email"]);
         $studentVal = new StudentValidator($student);
-        if($studentVal->getNameError() == null)
+        if($studentVal->getNameError() == 'Oops! you didnt Enter a name')
         {
+            $view = new TemplateView("view/register.php");
+            $view->usernameMsg = 'Oops! you didnt Enter a name';
+            echo $view->createView();
+        }
+        else if($studentVal->getNameError() == 'You have forgot to enter an email address')
+        {
+            $view = new TemplateView("view/register.php");
+            $view->emailMsg = 'You have forgot to enter an email address';
+            echo $view->createView();
+        }
+        else if($studentVal->getNameError() == 'Please enter a password')
+        {
+            $view = new TemplateView("view/register.php");
+            $view->usernameMsg = 'Please enter a password';
+            echo $view->createView();
+        }
+        else if($workStatus == 'successful')
+        {
+            Router::redirect('/main');
 
         }
-        if($workStatus == "successful")
-        {
-            Router::redirect("/main");
-
-        }
-        else if($workStatus == "usernameTaken")
+        else if($workStatus == 'usernameTaken')
         {
             $view = new TemplateView("view/register.php");
             $view->usernameMsg = "Username already taken";
             echo $view->createView();
         }
-        else if($workStatus == "emailTaken")
+        else if($workStatus == 'emailTaken')
         {
             $view = new TemplateView("view/register.php");
             $view->emailMsg = "Email already taken";

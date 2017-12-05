@@ -15,6 +15,7 @@ class Comment
     private $comment;
     private $image;
     private $studentid;
+    private $studentname;
     private $moduleid;
     private $vote;
     /**
@@ -128,6 +129,21 @@ class Comment
             }
         }
         return $result;
+    }
+    /**
+     * @return mixed
+     */
+    public function getStudentname()
+    {
+        return $this->studentname;
+    }
+
+    /**
+     * @param mixed $studentname
+     */
+    public function setStudentname($studentname)
+    {
+        $this->studentname = $studentname;
     }
 
 }
