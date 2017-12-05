@@ -19,12 +19,12 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function addComment(Comment $comment) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $comment->setStudentid(StudentServiceImpl::getInstance()->getCurrentStudentId());
             $commentDAO = new CommentDAO();
             $commentDAO->create($comment);
 
-        }
+        //}
 	}
 
 	/**
@@ -35,14 +35,14 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function deleteComment(&$id) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+        //if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentDAO = new CommentDAO();
             $comment = $commentDAO->read($id);
             if($comment->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId())
             {
                 $commentDAO->delete($id);
             }
-	    }
+	    //}
     }
 	/**
 	 * @access public
@@ -53,7 +53,7 @@ class CommentingServiceImpl implements CommentingService {
 	 */
 	public function readCommentsForModule(&$moduleId)
     {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+        //if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentDAO = new CommentDAO();
             $commentVoteDAO = new CommentVoteDAO();
             $comments = $commentDAO->readCommentsForModule();
@@ -62,7 +62,7 @@ class CommentingServiceImpl implements CommentingService {
                 $comment->setVote($votes);
             }
             return $comments;
-        }
+      //  }
 	}
 
 	/**
@@ -73,14 +73,14 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function updateComment(Comment $comment) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+        //if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentDAO = new CommentDAO();
             $commentToEdit = $commentDAO->read($comment->getId());
             if($commentToEdit->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId())
             {
                 $commentDAO->update($comment);
             }
-        }
+       // }
 	}
 
 	/**
@@ -93,7 +93,7 @@ class CommentingServiceImpl implements CommentingService {
 	 * @ReturnType Comment
 	 */
 	public function voteOnComment(&$id, &$isLike) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+      //  if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentVoteDAO = new CommentVoteDAO();
             $studentid = StudentServiceImpl::getInstance()->getCurrentStudentId();
             $commentVote = new CommentVote();
@@ -102,7 +102,7 @@ class CommentingServiceImpl implements CommentingService {
             $commentVote->setVote($isLike);
             $commentVoteDAO->create($commentVote);
 
-        }
+       // }
 	}
 }
 ?>

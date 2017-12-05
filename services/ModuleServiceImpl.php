@@ -17,10 +17,10 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module
 	 */
 	public function addModule(Module $module) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+      //  if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             $moduleDAO->create($module);
-        }
+       // }
 	}
 
 	/**
@@ -29,10 +29,10 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ParamType id int
 	 */
 	public function deleteModule(&$id) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+        //if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             $moduleDAO->delete($id);
-        }
+       // }
 	}
 
 	/**
@@ -43,10 +43,10 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module
 	 */
 	public function readModule(&$id) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             return $moduleDAO->read($id);
-        }
+       // }
 	}
 
 	/**
@@ -69,10 +69,10 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module
 	 */
 	public function updateModule(Module $module) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             $moduleDAO->update($module);
-        }
+     //   }
 	}
 }
 ?>

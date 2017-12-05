@@ -54,6 +54,7 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType boolean
 	 */
 	public function verifyAuth() {
+	    echo "student id: ".$this->currentStudentId;
         if(isset($this->currentStudentId))
             return true;
         return false;
@@ -88,7 +89,6 @@ class StudentServiceImpl implements StudentService {
                 }
                 $this->currentStudentId = $student->getId();
                 $_SESSION["loginData"]["token"]=  $this->issueToken();
-                echo "verification successful";
                 return true;
             }
         }
