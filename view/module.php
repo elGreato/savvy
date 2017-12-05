@@ -6,12 +6,26 @@
  * Time: 10:48 AM
  */
 
-require_once "header.php";
+require_once "headerLoggedIn.php";
+
 ?>
 
-<h1> <?php echo $this->mod->getId();?>    </h1>
+<title> <?php echo $this->mod->getName();?> </title>
+<h1> <?php echo $this->mod->getName();?>    </h1>
+<h4> <?php echo $this->mod->getDescription();?></h4>
+
+<?php
+foreach ($this->comments as $comment):?>
+    <span class="commentBody">
+
+        <?php echo $comment->get     ?>
 
 
+        <?php echo ?></span>
+
+
+
+<?php  endforeach;?>
 
 
 

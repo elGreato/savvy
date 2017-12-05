@@ -22,9 +22,14 @@ class ModelContentController{
         $modImp = new ModuleServiceImpl();
 
         $conView->mod = $modImp->readModule($_GET["id"]) ;
-  //  echo $conView->mod->getDescription();
 
-        
+
+        $commentController = new CommentController();
+
+
+
+        $conView->comments = $commentController->showComments();
+
 
        echo $conView->createView();
     }
