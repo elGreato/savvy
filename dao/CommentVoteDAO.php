@@ -13,7 +13,7 @@ class CommentVoteDAO extends BasicDAO
 {
     public function create(Commentvote $commentlike)
     {
-        $stmt=$this->pdoInstance->prepare('INSERT INTO commentlike 
+        $stmt=$this->pdoInstance->prepare('INSERT INTO commentvote 
           (studentid,commentid) VALUES 
           (:studentid,:commentid);');
         $stmt->bindValue(':studentid',$commentlike->getStudentID());
@@ -22,7 +22,7 @@ class CommentVoteDAO extends BasicDAO
     }
     public function readCommentLikes($commentID)
     {
-        $stmt=$this->pdoInstance->prepare('SELECT * FROM commentlike WHERE commentid = :commentid;');
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM commentvote WHERE commentid = :commentid;');
         $stmt->bindValue(':commentid',$commentID);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Commentvote");
@@ -31,7 +31,7 @@ class CommentVoteDAO extends BasicDAO
 
     public function delete($commentID,$studentID)
     {
-        $stmt=$this->pdoInstance->prepare('DELETE FROM "commentlike" where commentid = :commentid AND $studentID = :$studentID');
+        $stmt=$this->pdoInstance->prepare('DELETE FROM commentvote where commentid = :commentid AND $studentID = :$studentID');
         $stmt->bindValue(':commentid', $commentID);
         $stmt->bindValue(':studentid', $studentID);
         $stmt->execute();
