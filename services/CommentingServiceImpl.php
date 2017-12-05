@@ -7,6 +7,7 @@ namespace services;
  */
 use dao\CommentDAO;
 use dao\CommentVoteDAO;
+use dao\StudentDAO;
 use domain\Comment;
 use domain\Commentvote;
 class CommentingServiceImpl implements CommentingService {
@@ -104,5 +105,11 @@ class CommentingServiceImpl implements CommentingService {
 
        // }
 	}
+	public function readCommentAuthor($comment)
+    {
+        $studentDAO = new StudentDAO();
+        return $studentDAO->read($comment->getStudentid());
+
+    }
 }
 ?>
