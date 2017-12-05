@@ -9,7 +9,7 @@
 require_once "header.php";
 ?>
 
-
+<h1> <?php echo $this->mod->getId();?>    </h1>
 
 
 

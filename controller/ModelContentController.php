@@ -20,9 +20,7 @@ class ModelContentController{
 
         $conView = new TemplateView("view/module.php");
         $modImp = new ModuleServiceImpl();
-        $conView->mod = $modImp->readModule($_GET[id]) ;
-
-
+        $conView->mod = $modImp->readModule($_GET["id"]) ;
 
         echo $conView->createView();
     }
