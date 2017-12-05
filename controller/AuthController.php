@@ -8,6 +8,7 @@ namespace controller;
  */
 use services\StudentServiceImpl;
 use router\Router;
+use view\TemplateView;
 class AuthController
 {
     public static function authenticate()
@@ -30,7 +31,9 @@ class AuthController
             Router::redirect("/main");
             return true;
         }
-        echo "verification failed";
+        $view = new TemplateView("view/login.php");
+        $view->reply = "Wrong username or password";
+        echo $view->createView();
         return false;
     }
 }

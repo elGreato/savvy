@@ -27,7 +27,8 @@ Router::route_auth("GET", "/", $authFunction, function () {
 });
 
 Router::route_auth("GET", "/login", $authFunction, function () {
-    require_once("view/login.php");
+    $view = new TemplateView("view/login.php");
+    echo $view->createView();
 
 });
 Router::route_auth("GET", "/contactus", $authFunction, function () {

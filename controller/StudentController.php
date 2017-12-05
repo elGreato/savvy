@@ -1,6 +1,8 @@
 <?php
 namespace controller;
 use services\StudentServiceImpl;
+use view\TemplateView;
+
 /**
  * Created by PhpStorm.
  * User: Area-51
@@ -16,12 +18,12 @@ class StudentController
         $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
         if($workStatus == "successful")
         {
-            return true;
+            Router::redirect("/main");
 
         }
         else if($workStatus == "usernameTaken")
         {
-            return false;
+
         }
         else if($workStatus == "emailTaken")
         {

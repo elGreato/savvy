@@ -27,6 +27,7 @@ require_once "header.php";
         <form method="post" class="login-form">
             <input type="text" name="username" placeholder="username"/>
             <input type="password" name="password" placeholder="password"/>
+            <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->reply)){echo $this->reply;}?></p>
             <button type="submit">login</button>
             <p class="message">Not registered? <a href="register.php">Create an account</a></p>
         </form>
