@@ -18,10 +18,8 @@ require_once "headerLoggedIn.php";
 foreach ($this->comments as $comment):?>
     <span class="commentBody">
 
-        <?php echo $comment->get     ?>
 
-
-        <?php echo ?></span>
+        <?php echo $comment->getComment()?></span>
 
 
 

@@ -27,8 +27,13 @@ class CommentController {
      // echo var_dump($comments);
         return $comments;
 
-
 }
+    public static function getAuthors($comment){
+        $commentImp = new CommentingServiceImpl();
+
+        return $commentImp->readCommentAuthor($comment);
+    }
+
 
 
 }
