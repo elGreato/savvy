@@ -7,6 +7,7 @@ use controller\StudentController;
 use controller\AuthController;
 use controller\ModuleController;
 use controller\ContactUsController;
+use controller\ModelContentController;
 use view\TemplateView;
 session_start();
 require_once("config/Autoloader.php");
@@ -41,6 +42,10 @@ Router::route_auth("POST", "/login", $authFunction, function () {
 });
 Router::route_auth("POST", "/contactus", true, function () {
     ContactUsController::handleContactUs();
+
+});
+Router::route_auth("GET", "/module", true, function () {
+    ModelContentController::handleModule();
 
 });
 Router::route_auth("GET", "/register", $authFunction, function () {

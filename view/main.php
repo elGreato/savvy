@@ -59,16 +59,17 @@ require_once "headerLoggedIn.php";
                     <td class="numberColumn"><?php echo $module->getNumCredits()?></td>
                     <td class="numberColumn"><?php echo $module->getInscriptions()?> </td>
                     <td style="color:rgb(100,0,0);">
-                        <button class="btn btn-default openButton" type="button"> <i class="glyphicon glyphicon-search searchButton"></i></button>
+                        <a class="btn btn-default openButton" type="button" id="opnModuleBtn" href=" <?php echo $GLOBALS["ROOT_URL"]. "/module?id=".$module->getId(); ?> "> <i class="glyphicon glyphicon-search searchButton"></i></a>
                     </td>
+
                     <td>
-                        <button class="btn btn-default editButton" type="button"> <i class="glyphicon glyphicon-pencil"></i></button>
+                        <button class="btn btn-default editButton" type="button" onclick=""> <i class="glyphicon glyphicon-pencil"></i></button>
                     </td>
                     <td>
                         <button class="btn btn-default deleteButton" type="button"> <i class="glyphicon glyphicon-trash"></i></button>
                     </td>
                 </tr>
-                <?php endforeach;?>
+                <?php  endforeach;?>
 
                 </tbody>
             </table>
