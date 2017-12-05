@@ -9,6 +9,8 @@ require_once(realpath(dirname(__FILE__)) . '/CommentingService.php');
  */
 use dao\CommentDAO;
 use dao\CommentVoteDAO;
+use domain\Comment;
+use domain\Commentvote;
 class CommentingServiceImpl implements CommentingService {
 
 	/**
@@ -56,9 +58,9 @@ class CommentingServiceImpl implements CommentingService {
         //if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentDAO = new CommentDAO();
             $commentVoteDAO = new CommentVoteDAO();
-            $comments = $commentDAO->readCommentsForModule();
+            $comments = $commentDAO->readCommentsForModule($moduleId);
             foreach ($comments as $comment) {
-                $votes = $commentVoteDAO->readCommentLikes();
+                $votes = $commentVoteDAO->readCommentLikes($moduleId);
                 $comment->setVote($votes);
             }
             return $comments;

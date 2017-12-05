@@ -1,7 +1,8 @@
 <?php
 namespace services;
 require_once(realpath(dirname(__FILE__)) . '/Comment.php');
-
+use domain\Comment;
+use domain\Commentvote;
 /**
  * @access public
  * @author Kevin

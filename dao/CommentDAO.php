@@ -29,13 +29,19 @@ class CommentDAO extends BasicDAO
         $stmt=$this->pdoInstance->prepare('SELECT * FROM "comment" WHERE id = :id;');
         $stmt->bindValue(':id',$commentID);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Comment");
+        $comment = null;
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Comment");
+        if(!empty($result)){
+            $comment = $result[0];
+        }
+        return $comment;
+
 
     }
     public function readCommentsForModule($moduleID)
     {
         $stmt=$this->pdoInstance->prepare('SELECT * FROM "comment" WHERE moduleid = :moduleId;');
-        $stmt->bindValue(':moduleId',moduleID);
+        $stmt->bindValue(':moduleId',$moduleID);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Comment");
 
