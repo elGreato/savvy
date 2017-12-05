@@ -17,7 +17,20 @@ require_once "headerLoggedIn.php";
 <?php
 foreach ($this->comments as $comment):?>
     <span class="commentBody">
-        
+        <style>
+             .commentBody {
+                 display: inline-table;
+                 text-align: center;
+                 background-color: rgba(3, 78, 136, 0.7);
+                 width: 200px;
+                 height: 10px;
+                 line-height: 20px;
+                 color: white;
+                 margin: 10px;
+                 position: relative;
+                 padding: 10px;
+             }
+        </style>
 
         <?php echo $comment->getComment()?>
 
