@@ -4,6 +4,7 @@ use domain\Student;
 use services\StudentServiceImpl;
 use view\TemplateView;
 use validator\studentValidator;
+use router\Router;
 /**
  * Created by PhpStorm.
  * User: Area-51
@@ -28,16 +29,28 @@ class StudentController
             $view->usernameMsg = 'Oops! you didnt Enter a name';
             echo $view->createView();
         }
-        else if($studentVal->getNameError() == 'You have forgot to enter an email address')
+        else if($studentVal->getEmailError() == 'You have forgot to enter an email address')
         {
             $view = new TemplateView("view/register.php");
             $view->emailMsg = 'You have forgot to enter an email address';
             echo $view->createView();
         }
-        else if($studentVal->getNameError() == 'Please enter a password')
+        else if($studentVal->getPasswordError() == 'Please enter a password')
         {
             $view = new TemplateView("view/register.php");
-            $view->usernameMsg = 'Please enter a password';
+            $view->passwordMsg = 'Please enter a password';
+            echo $view->createView();
+        }
+        else if ($_POST["password"]!=$_POST["password-repeat"])
+        {
+            $view = new TemplateView("view/register.php");
+            $view->passwordMsg = 'Passwords do not match';
+            echo $view->createView();
+        }
+        else if (!isset($_POST["agreement"]))
+        {
+            $view = new TemplateView("view/register.php");
+            $view->passwordMsg = 'Please accept the license agreement';
             echo $view->createView();
         }
         else if($workStatus == 'successful')

@@ -29,7 +29,7 @@ require_once "header.php";
             <input type="password" name="password" placeholder="password"/>
             <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->reply)){echo $this->reply;}?></p>
             <button type="submit">login</button>
-            <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+            <p class="message">Not registered? <a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/register">Create an account</a></p>
         </form>
     </div>
 </div>
