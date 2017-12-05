@@ -44,8 +44,12 @@ Router::route_auth("POST", "/contactus", true, function () {
     ContactUsController::handleContactUs();
 
 });
-Router::route_auth("GET", "/module", true, function () {
+Router::route_auth("GET", "/module", $authFunction, function () {
+    if (AuthController::authenticate())
     ModelContentController::handleModule();
+    else{
+        Router::redirect("/login");
+    }
 
 });
 Router::route_auth("GET", "/register", $authFunction, function () {
