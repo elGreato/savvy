@@ -31,21 +31,25 @@ require_once "header.php";
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
                     <input class="form-control" type="username" name="username" placeholder="Username">
+                    <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->usernameMsg)){echo $this->usernameMsg;}?></p>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="email" name="email" placeholder="Email">
+                    <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->emailMsg)){echo $this->emailMsg;}?></p>
+
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="password" name="password" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)">
+                    <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->passwordMsg)){echo $this->passwordMsg;}?></p>
                 </div>
                 <div class="form-group">
                     <div class="checkbox">
                         <label class="control-label">
-                            <input type="checkbox">I agree to the license terms.</label>
-                    </div>
+                            <input type="checkbox" name="agreement">I agree to the license terms.</label>
+                        <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->agreementMsg)){echo $this->agreementMsg;}?></p></div>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Sign Up</button>

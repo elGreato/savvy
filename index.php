@@ -53,8 +53,8 @@ Router::route_auth("GET", "/module", $authFunction, function () {
 
 });
 Router::route_auth("GET", "/register", $authFunction, function () {
-
-    require_once("view/register.php");
+    $view = new TemplateView("view/register.php");
+    echo $view->createView();
 
 });
 Router::route_auth("POST", "/register", $authFunction, function () {

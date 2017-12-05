@@ -23,15 +23,22 @@ class StudentController
         }
         else if($workStatus == "usernameTaken")
         {
-
+            $view = new TemplateView("view/register.php");
+            $view->usernameMsg = "Username already taken";
+            echo $view->createView();
         }
         else if($workStatus == "emailTaken")
         {
-            return false;
+            $view = new TemplateView("view/register.php");
+            $view->emailMsg = "Email already taken";
+            echo $view->createView();
         }
         else
         {
-            return false;
+            $view = new TemplateView("view/register.php");
+            $view->usernameMsg = "Username already taken";
+            $view->emailMsg = "Email already taken";
+            echo $view->createView();
         }
     }
 }

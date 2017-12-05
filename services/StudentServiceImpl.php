@@ -194,11 +194,9 @@ class StudentServiceImpl implements StudentService {
             return true;
         }
         else{
-            echo sizeof($studentDAO->findByEmail($email));
             $dbEmail = $studentDAO->findByEmail($email);
             $dbUsername = $studentDAO->findByUsername($username);
-            if(sizeof($dbUsername)!=0&&sizeof($dbEmail !=0)){
-
+            if((sizeof($dbUsername)!=0)&&(sizeof($dbEmail )!=0)){
                 return "bothTaken";
             }
             else if(sizeof($dbUsername) !=0)

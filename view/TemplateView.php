@@ -30,6 +30,7 @@ class TemplateView
     }
     public function __get($key)
     {
+
         return $this->variables[$key];
     }
     public function createView()
