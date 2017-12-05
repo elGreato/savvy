@@ -1,7 +1,5 @@
 <?php
 namespace services;
-require_once(realpath(dirname(__FILE__)) . '/Comment.php');
-require_once(realpath(dirname(__FILE__)) . '/CommentingService.php');
 
 /**
  * @access public
@@ -99,7 +97,7 @@ class CommentingServiceImpl implements CommentingService {
             $commentVoteDAO = new CommentVoteDAO();
             $studentid = StudentServiceImpl::getInstance()->getCurrentStudentId();
             $commentVote = new CommentVote();
-            $commentVote->setModuleid($id);
+            $commentVote->setCommentid($id);
             $commentVote->setStudentid($studentid);
             $commentVote->setVote($isLike);
             $commentVoteDAO->create($commentVote);
