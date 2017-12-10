@@ -37,6 +37,7 @@ class ModuleServiceImpl implements ModuleService {
 	 */
 	public function deleteModule(&$id) {
         //if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            echo "delete: ".$id;
             $moduleDAO = new ModuleDAO();
             $moduleDAO->delete($id);
        // }

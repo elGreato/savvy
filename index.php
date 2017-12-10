@@ -72,6 +72,15 @@ Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
 
 
 });
+Router::route_auth("GET", "/main/deletemodule", $authFunction, function () {
+    echo "delete exec";
+    if (AuthController::authenticate()) {
+        ModuleController::deleteModule();
+        Router::redirect("/main");
+    } else {
+        Router::redirect("/login");
+    }
+});
 Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
     if(AuthController::authenticate()) {
         ModuleController::addModule();

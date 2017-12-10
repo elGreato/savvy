@@ -72,4 +72,14 @@ class ModuleController
 
         }
     }
+    public static function deleteModule()
+    {
+        $moduleService = new ModuleServiceImpl();
+        $moduleToDelete = $moduleService->readModule($_GET["id"]);
+        $studentService =StudentServiceImpl::getInstance();
+        if($studentService->getCurrentStudentId()==$moduleToDelete->getEditorid())
+        {
+            $moduleService->deleteModule($_GET["id"]);
+        }
+    }
 }

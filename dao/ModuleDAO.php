@@ -64,12 +64,13 @@ class ModuleDAO extends BasicDAO
     }
     public function delete($moduleID)
     {
-        $stmt=$this->pdoInstance->prepare('DELETE FROM "module" where id = :id');
+        echo "deleteDAO: ".$moduleID;
+        $stmt=$this->pdoInstance->prepare('DELETE FROM module where id = :id');
         $stmt->bindValue(':id', $moduleID);
     }
     public  function update($module)
     {
-        $stmt = $this->pdoInstance->prepare('UPDATE "module" SET name = :name,description = :description, numcredits = :numcredits WHERE id=:id');
+        $stmt = $this->pdoInstance->prepare('UPDATE module SET name = :name,description = :description, numcredits = :numcredits WHERE id=:id');
         $stmt->bindValue(':id',$module->getID());
         $stmt->bindValue(':name',$module->getName());
         $stmt->bindValue(':description',$module->getDescription());

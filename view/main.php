@@ -69,7 +69,7 @@ require_once "headerLoggedIn.php";
                         </td>
                     <td>
                         <?php  if ($this->studentid == $module->getEditorid()):?>
-                        <button class="btn btn-default deleteButton" type="button"> <i class="glyphicon glyphicon-trash"></i></button>
+                        <button class="btn btn-default deleteButton" type="button" onclick="deleteModule(<?php echo $module->getId();?>)"> <i class="glyphicon glyphicon-trash"></i></button>
                         <?php endif; ?>
                     </td>
 
@@ -84,6 +84,16 @@ require_once "headerLoggedIn.php";
         <button onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  class="btn btn-default addButton" type="button" style="margin-top: 10px"><a href="/main/addmodule">Add Module</a></button>
 
     </div>
+    <script type="text/javascript">
+        function deleteModule(id) {
+            if(confirm("Do you really want to delete this module?"))
+            {
+               location.replace(location.href + "/deletemodule?id="+id);
+
+            }
+        }
+
+    </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
