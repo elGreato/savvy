@@ -63,11 +63,16 @@ require_once "headerLoggedIn.php";
                     </td>
 
                     <td>
+                        <?php if ($this->studentid == $module->getEditorid()):?>
                         <button class="btn btn-default editButton" type="button" onclick=""> <i class="glyphicon glyphicon-pencil"></i></button>
-                    </td>
+                        <?php endif; ?>
+                        </td>
                     <td>
+                        <?php  if ($this->studentid == $module->getEditorid()):?>
                         <button class="btn btn-default deleteButton" type="button"> <i class="glyphicon glyphicon-trash"></i></button>
+                        <?php endif; ?>
                     </td>
+
                 </tr>
                 <?php  endforeach;?>
 

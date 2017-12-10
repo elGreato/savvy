@@ -10,6 +10,7 @@ namespace controller;
 use dao\ModuleDAO;
 use domain\Module;
 use services\ModuleServiceImpl;
+use services\StudentServiceImpl;
 use view\TemplateView;
 
 class ModuleController
@@ -20,6 +21,9 @@ class ModuleController
         $moduleService = new ModuleServiceImpl();
         $modules = $moduleService->readAllModules();
         $tempView->modules = $modules;
+        $studentService = StudentServiceImpl::getInstance();
+        $tempView->studentid = $studentService->getCurrentStudentId();
+
         echo $tempView->createView();
 
     }
@@ -35,6 +39,6 @@ class ModuleController
         $module->setDescription($_POST["module_description"]);
         $module->setNumcredits($_POST["num_credits"]);
         $moduleServiceImpl = new ModuleServiceImpl();
-        $moduleServiceImpl->create($module);
+        $moduleServiceImpl->addModule($module);
     }
 }

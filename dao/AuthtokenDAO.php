@@ -38,11 +38,11 @@ class AuthtokenDAO extends BasicDAO
         $stmt->bindValue(':selector',$selector);
         $stmt->execute();
         $result =  $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Authtoken");
-        $student = null;
+        $authtoken = null;
         if(!empty($result)){
-            $student = $result[0];
+            $authtoken = $result[0];
         }
-        return $student;
+        return $authtoken;
     }
     public function delete($authtokenID)
     {
