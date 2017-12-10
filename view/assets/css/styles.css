@@ -46,4 +46,17 @@
   padding:10px;
   font-weight:900;
 }
+.commentBody {
+  display: inline-table;
+  text-align: center;
+  background-color: rgba(3, 78, 136, 0.7);
+  width: 200px;
+  height: 10px;
+  line-height: 20px;
+  color: white;
+  margin: 10px;
+  position: relative;
+  padding: 10px;
+
+}
 

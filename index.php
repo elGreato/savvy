@@ -72,18 +72,10 @@ Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
 
 
 });
-Router::route_auth("GET", "/main/deletemodule", $authFunction, function () {
-    echo "delete exec";
-    if (AuthController::authenticate()) {
-        ModuleController::deleteModule();
-        Router::redirect("/main");
-    } else {
-        Router::redirect("/login");
-    }
-});
 Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
     if(AuthController::authenticate()) {
         ModuleController::addModule();
+        Router::redirect("/main");
     }
     else{
         Router::redirect("/login");
@@ -104,5 +96,15 @@ try {
 } catch (HTTPException $exception) {
     $exception->getHeader();
     ErrorController::show404();
-}
-?>
+}?>
+
+<link rel="stylesheet" type="text/css" href="view/assets/css/jquery-comments.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
+<script type="text/javascript" src="view/assets/js/jquery-comments.js"></script>
+<!-- Data to be deleted later Ali-->
+<script type="text/javascript" src="data/comments-data.js"></script>
+
+
