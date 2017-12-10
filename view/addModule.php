@@ -16,9 +16,14 @@ require_once "headerLoggedIn.php";
         <div class="page-header" style="width:50vw">
             <h1>Add Module<small>FHNW </small></h1>
             <form><span class="label label-default inputDescription">Name </span>
-                <input name="module_name" class="form-control textInputs" type="text"><span class="label label-default inputDescription">Description </span>
-                <textarea name="module_description" class="form-control textInputs"></textarea><span class="label label-default inputDescription">ECTS </span>
+                <input name="module_name" class="form-control textInputs" type="text">
+                <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->nameReply)){echo $this->nameReply;}?></p>
+                <span class="label label-default inputDescription">Description </span>
+                <textarea name="module_description" class="form-control textInputs"></textarea>
+                <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->descriptionReply)){echo $this->descriptionReply;}?></p>
+                <span class="label label-default inputDescription">ECTS </span>
                 <input name="num_credits" class="form-control" type="number">
+                <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->ectsReply)){echo $this->ectsReply;}?></p>
                 <button class="btn btn-default" type="submit" formmethod="post" style="margin-top:10px;">Create </button>
             </form>
         </div>

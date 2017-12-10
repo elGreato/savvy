@@ -75,7 +75,6 @@ Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
 Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
     if(AuthController::authenticate()) {
         ModuleController::addModule();
-        Router::redirect("/main");
     }
     else{
         Router::redirect("/login");

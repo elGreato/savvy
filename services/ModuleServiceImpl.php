@@ -14,12 +14,19 @@ class ModuleServiceImpl implements ModuleService {
 	 * @param Module module
 	 * @return Module
 	 * @ParamType module Module
-	 * @ReturnType Module
+	 * @ReturnType String
 	 */
 	public function addModule(Module $module) {
       //  if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
-            $moduleDAO->create($module);
+            $searchedModule = $moduleDAO->readByName($module->getName());
+            if(!isset($searchedModule)){
+                $moduleDAO->create($module);
+                return null;
+            }
+            else{
+                return $module;
+            }
        // }
 	}
 

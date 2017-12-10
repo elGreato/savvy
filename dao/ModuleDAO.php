@@ -14,11 +14,12 @@ class ModuleDAO extends BasicDAO
     public function create(Module $module)
     {
         $stmt=$this->pdoInstance->prepare('INSERT INTO "module" 
-          (name,description,numcredits) VALUES 
-          (:name,:description,:numcredits);');
+          (name,description,numcredits,editorid) VALUES 
+          (:name,:description,:numcredits,:editorid);');
         $stmt->bindValue(':name',$module->getName());
         $stmt->bindValue(':description',$module->getDescription());
         $stmt->bindValue(':numcredits',$module->getNumcredits());
+        $stmt->bindValue(':editorid',$module->getEditorid());
         $stmt->execute();
         return $this->read($this->pdoInstance->lastInsertId());
     }
@@ -26,6 +27,18 @@ class ModuleDAO extends BasicDAO
     {
         $stmt=$this->pdoInstance->prepare('SELECT module.*, COUNT(inscription.studentid) as inscriptions FROM module left outer join inscription on inscription.moduleid = module.id WHERE module.id = :id GROUP BY module.id ORDER BY module.id;');
         $stmt->bindValue(':id',$moduleID);
+        $stmt->execute();
+        $result= $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
+        $module = null;
+        if(!empty($result)){
+            $module = $result[0];
+        }
+        return $module;
+    }
+    public function readByName($moduleName)
+    {
+        $stmt=$this->pdoInstance->prepare('SELECT module.*, COUNT(inscription.studentid) as inscriptions FROM module left outer join inscription on inscription.moduleid = module.id WHERE module.name = :name GROUP BY module.id ORDER BY module.id;');
+        $stmt->bindValue(':name',$moduleName);
         $stmt->execute();
         $result= $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
         $module = null;
@@ -59,7 +72,7 @@ class ModuleDAO extends BasicDAO
         $stmt = $this->pdoInstance->prepare('UPDATE "module" SET name = :name,description = :description, numcredits = :numcredits WHERE id=:id');
         $stmt->bindValue(':id',$module->getID());
         $stmt->bindValue(':name',$module->getName());
-        $stmt->bindValue(':id',$module->getDescription());
+        $stmt->bindValue(':description',$module->getDescription());
         $stmt->bindValue(':numcredits',$module->getNumcredits());
         $stmt->execute();
     }

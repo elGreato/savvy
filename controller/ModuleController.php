@@ -11,7 +11,9 @@ use dao\ModuleDAO;
 use domain\Module;
 use services\ModuleServiceImpl;
 use services\StudentServiceImpl;
+use validator\ModuleValidator;
 use view\TemplateView;
+use router\Router;
 
 class ModuleController
 {
@@ -38,7 +40,36 @@ class ModuleController
         $module->setName($_POST["module_name"]);
         $module->setDescription($_POST["module_description"]);
         $module->setNumcredits($_POST["num_credits"]);
+        $editorid = StudentServiceImpl::getInstance()->getCurrentStudentId();
+        $module->setEditorid($editorid);
         $moduleServiceImpl = new ModuleServiceImpl();
-        $moduleServiceImpl->addModule($module);
+
+
+        $moduleValidator = new ModuleValidator($module);
+        if($moduleValidator->isValid()) {
+            if($moduleServiceImpl->addModule($module)!=null)
+            {
+                $tempView = new TemplateView("view/addModule.php");
+                $tempView->nameReply = "The selected module name is already used!";
+                echo $tempView->createView();
+            }
+            else {
+                Router::redirect("/main");
+            }
+        }
+        else{
+            $tempView = new TemplateView("view/addModule.php");
+            if ($moduleValidator->getNameError() != null) {
+                $tempView->nameReply = $moduleValidator->getNameError();
+            }
+            if ($moduleValidator->getDescriptionError() != null) {
+                $tempView->descriptionReply = $moduleValidator->getDescriptionError();
+            }
+            if ($moduleValidator->getEctsError() != null) {
+                $tempView->ectsReply = $moduleValidator->getEctsError();
+            }
+            echo $tempView->createView();
+
+        }
     }
 }
