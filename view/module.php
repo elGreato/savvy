@@ -4,6 +4,12 @@
  * User: Ali-Surface
  * Date: 12/5/2017
  * Time: 10:48 AM
+ *     <span class="commentBody">
+
+<i class="glyphicon glyphicon-user"></i>
+<?php echo $comment->getStudentname() ?>
+<?php echo $comment->getComment() ?>
+</span>
  */
 
 require_once "headerLoggedIn.php";
@@ -17,16 +23,31 @@ require_once "headerLoggedIn.php";
 <h4> <?php echo $this->mod->getDescription(); ?></h4>
 
 <?php
-foreach ($this->comments as $comment):?>
+$comArray = $this->comments;
+$arrayOfArrays = array();
+foreach ($comArray as $comment) {
 
-    <span class="commentBody">
+    $com->id = $comment->getId();
+    $com->parent = null;
+    $com->created = "2015-01-02";
+    $com->modified = "2015-01-02";
+    $com->content = $comment->getComment();
+    $com->pings = [];
+    $com->creator = $comment->getStudentid();
+    $com->fullname = $comment->getStudentname();
+    $com->profile_picture_url = null;
+    $com->created_by_admin = false;
+    $com->created_by_current_user = false;
+    $com->upvote_count = 3;
+    $com->has_upvoted = false;
+    $com->is_new = false;
 
-          <i class="glyphicon glyphicon-user"></i>
-        <?php echo $comment->getStudentname() ?>
-        <?php echo $comment->getComment() ?>
-    </span>
+    array_push($arrayOfArrays,$com);
+}
 
-<?php endforeach; ?>
+$myJson = json_encode($arrayOfArrays);
+?>
+
 
 <body><div id="comments-container"></div></body>
 
@@ -62,12 +83,15 @@ foreach ($this->comments as $comment):?>
             },
             getComments: function(success, error) {
                 setTimeout(function() {
-                    success(commentsArray);
+
+                  //  success(commentsArray);
+                    var ar =<?php print $myJson ?>;
+                    success(ar);
+                    console.log(ar);
+                    console.log(commentsArray)
+
                 }, 500);
             },
-
-
-
             postComment: function(data, success, error) {
                 setTimeout(function() {
                     success(saveComment(data));
