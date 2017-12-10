@@ -16,6 +16,7 @@ class Module
     private $description;
     private $numcredits;
     private $inscriptions;
+    private $editorid;
 
     /**
      * @return mixed
@@ -95,6 +96,22 @@ class Module
     public function setInscriptions($inscriptions)
     {
         $this->inscriptions = $inscriptions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEditorid()
+    {
+        return $this->editorid;
+    }
+
+    /**
+     * @param mixed $editorid
+     */
+    public function setEditorid($editorid)
+    {
+        $this->editorid = $editorid;
     }
 
 }

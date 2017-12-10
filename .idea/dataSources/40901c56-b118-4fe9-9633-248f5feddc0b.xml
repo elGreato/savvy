@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-11-20.17:56:16.056</IntrospectionTimestamp>
-      <IntrospectionStateNumber>329877792</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-10.12:05:05.071</IntrospectionTimestamp>
+      <IntrospectionStateNumber>350065339</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -71,11 +71,11 @@
     </table>
     <table id="17" parent="3" name="module">
       <ObjectId>4772634</ObjectId>
-      <StateNumber>329607398</StateNumber>
+      <StateNumber>350063751</StateNumber>
     </table>
     <table id="18" parent="3" name="student">
       <ObjectId>4772590</ObjectId>
-      <StateNumber>329877792</StateNumber>
+      <StateNumber>350063751</StateNumber>
     </table>
     <column id="19" parent="13" name="id">
       <Position>1</Position>
@@ -297,28 +297,41 @@ studentid</ColNames>
       <DataType>integer|0</DataType>
       <StateNumber>329607391</StateNumber>
     </column>
-    <index id="54" parent="17" name="module_pkey">
+    <column id="54" parent="17" name="editorid">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>350065339</StateNumber>
+    </column>
+    <index id="55" parent="17" name="module_pkey">
       <ObjectId>4772638</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="55" parent="17" name="module_name_key">
+    <index id="56" parent="17" name="module_name_key">
       <ObjectId>4772640</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="56" parent="17" name="module_pkey">
+    <key id="57" parent="17" name="module_pkey">
       <ObjectId>4772639</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>module_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="57" parent="17" name="module_name_key">
+    <key id="58" parent="17" name="module_name_key">
       <ObjectId>4772641</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>module_name_key</UnderlyingIndexName>
     </key>
-    <column id="58" parent="18" name="id">
+    <foreign-key id="59" parent="17" name="created_by">
+      <ObjectId>5487872</ObjectId>
+      <ColNames>editorid</ColNames>
+      <RefTableName>student</RefTableName>
+      <RefKeyName>student_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="60" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -326,51 +339,51 @@ studentid</ColNames>
       <SequenceName>student_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;student_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="59" parent="18" name="username">
+    <column id="61" parent="18" name="username">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607369</StateNumber>
     </column>
-    <column id="60" parent="18" name="password">
+    <column id="62" parent="18" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329877792</StateNumber>
     </column>
-    <column id="61" parent="18" name="email">
+    <column id="63" parent="18" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607369</StateNumber>
     </column>
-    <index id="62" parent="18" name="student_pkey">
+    <index id="64" parent="18" name="student_pkey">
       <ObjectId>4772594</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="63" parent="18" name="student_username_key">
+    <index id="65" parent="18" name="student_username_key">
       <ObjectId>4772596</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="64" parent="18" name="student_email_key">
+    <index id="66" parent="18" name="student_email_key">
       <ObjectId>4772598</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="65" parent="18" name="student_pkey">
+    <key id="67" parent="18" name="student_pkey">
       <ObjectId>4772595</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="66" parent="18" name="student_username_key">
+    <key id="68" parent="18" name="student_username_key">
       <ObjectId>4772597</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>student_username_key</UnderlyingIndexName>
     </key>
-    <key id="67" parent="18" name="student_email_key">
+    <key id="69" parent="18" name="student_email_key">
       <ObjectId>4772599</ObjectId>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>student_email_key</UnderlyingIndexName>
