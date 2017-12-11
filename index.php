@@ -88,7 +88,15 @@ Router::route_auth("GET", "/main/editmodule", $authFunction, function () {
     else{
         Router::redirect("/login");
     }
-
+});
+Router::route_auth("POST", "/main/editmodule", $authFunction, function () {
+    if(AuthController::authenticate())
+    {
+        ModuleController::editModule();
+    }
+    else{
+        Router::redirect("/login");
+    }
 });
 Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
     if(AuthController::authenticate()) {

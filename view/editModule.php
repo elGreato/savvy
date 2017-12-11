@@ -15,15 +15,16 @@ require_once "headerLoggedIn.php";
     <div class="addModuleDiv">
         <div class="page-header" style="width:50vw">
             <h1>Edit Module<small>FHNW </small></h1>
-            <form><span class="label label-default inputDescription">Name </span>
-                <input type="hidden"name="id" class="form-control textInputs" value="<?php $this->id;?>">
-                <input name="module_name" class="form-control textInputs" type="text"value="<?php echo $this->name;?>">
+            <form>
+                <input type="hidden" name="module_id" class="form-control textInputs" value="<?php if(isset($this->id)){echo $this->id;}?>">
+                <span class="label label-default inputDescription">Name </span>
+                <input name="module_name" class="form-control textInputs" type="text"value="<?php if(isset($this->name)){echo $this->name;}?>">
                 <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->nameReply)){echo $this->nameReply;}?></p>
                 <span class="label label-default inputDescription">Description </span>
-                <textarea name="module_description" class="form-control textInputs"><?php echo $this->description;?></textarea>
+                <textarea name="module_description" class="form-control textInputs"><?php if(isset($this->description)){echo $this->description;}?></textarea>
                 <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->descriptionReply)){echo $this->descriptionReply;}?></p>
                 <span class="label label-default inputDescription">ECTS </span>
-                <input name="num_credits" class="form-control" type="number"value="<?php echo $this->ects;?>">
+                <input name="num_credits" class="form-control" type="number"value="<?php if(isset($this->ects)){echo $this->ects;}?>">
                 <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->ectsReply)){echo $this->ectsReply;}?></p>
                 <button class="btn btn-default" type="submit" formmethod="post" style="margin-top:10px;">Save Changes</button>
             </form>

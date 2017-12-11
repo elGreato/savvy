@@ -37,9 +37,11 @@ class ModuleServiceImpl implements ModuleService {
 	 */
 	public function deleteModule(&$id) {
         //if(StudentServiceImpl::getInstance()->verifyAuth()) {
-
+        $readModule = $this->readModule($id);
+        if(StudentServiceImpl::getInstance()->getCurrentStudentId()==$readModule->getEditorid()) {
             $moduleDAO = new ModuleDAO();
             $moduleDAO->delete($id);
+        }
        // }
 	}
 
@@ -77,10 +79,11 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module
 	 */
 	public function updateModule(Module $module) {
-       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
+	    $readModule = $this->readModule($module->getId());
+       if(StudentServiceImpl::getInstance()->getCurrentStudentId()==$readModule->getEditorid()) {
             $moduleDAO = new ModuleDAO();
             $moduleDAO->update($module);
-     //   }
+        }
 	}
 }
 ?>

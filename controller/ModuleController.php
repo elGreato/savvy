@@ -83,6 +83,50 @@ class ModuleController
 
         }
     }
+    public static function editModule()
+    {
+        $module = new Module();
+        $module->setId($_POST["module_id"]);
+        $module->setName($_POST["module_name"]);
+        $module->setDescription($_POST["module_description"]);
+        $module->setNumcredits($_POST["num_credits"]);
+        $editorid = StudentServiceImpl::getInstance()->getCurrentStudentId();
+        $module->setEditorid($editorid);
+        $moduleServiceImpl = new ModuleServiceImpl();
+
+
+        $moduleValidator = new ModuleValidator($module);
+        if($moduleValidator->isValid()) {
+            if($moduleServiceImpl->updateModule($module)!=null)
+            {
+                $tempView = new TemplateView("view/addModule.php");
+                $tempView->nameReply = "The selected module name is already used!";
+                echo $tempView->createView();
+            }
+            else {
+               Router::redirect("/main");
+            }
+        }
+        else{
+            $tempView = new TemplateView("view/editModule.php");
+            if ($moduleValidator->getNameError() != null) {
+                $tempView->nameReply = $moduleValidator->getNameError();
+            }
+            if ($moduleValidator->getDescriptionError() != null) {
+                $tempView->descriptionReply = $moduleValidator->getDescriptionError();
+            }
+            if ($moduleValidator->getEctsError() != null) {
+                $tempView->ectsReply = $moduleValidator->getEctsError();
+            }
+
+            $tempView->id = $module->getId();
+            $tempView->name = $module->getName();
+            $tempView->description = $module->getDescription();
+            $tempView->ects = $module->getNumcredits();
+            echo $tempView->createView();
+
+        }
+    }
     public static function deleteModule()
     {
         $moduleService = new ModuleServiceImpl();

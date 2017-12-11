@@ -71,7 +71,7 @@ class ModuleDAO extends BasicDAO
     public  function update($module)
     {
         $stmt = $this->pdoInstance->prepare('UPDATE module SET name = :name,description = :description, numcredits = :numcredits WHERE id=:id');
-        $stmt->bindValue(':id',$module->getID());
+        $stmt->bindValue(':id',$module->getId());
         $stmt->bindValue(':name',$module->getName());
         $stmt->bindValue(':description',$module->getDescription());
         $stmt->bindValue(':numcredits',$module->getNumcredits());
