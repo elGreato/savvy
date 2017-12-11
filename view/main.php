@@ -64,7 +64,7 @@ require_once "headerLoggedIn.php";
 
                     <td>
                         <?php if ($this->studentid == $module->getEditorid()):?>
-                        <button class="btn btn-default editButton" type="button" onclick=""> <i class="glyphicon glyphicon-pencil"></i></button>
+                        <a class="btn btn-default editButton" type="button" href="<?php echo $GLOBALS["ROOT_URL"]. "/main/editmodule?id=".$module->getId();?>"> <i class="glyphicon glyphicon-pencil"></i></a>
                         <?php endif; ?>
                         </td>
                     <td>

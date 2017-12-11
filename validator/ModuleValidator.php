@@ -33,7 +33,8 @@ class ModuleValidator
                 $this->descriptionError = 'Please enter a description';
                 $this->valid = false;
             }
-            if (!is_integer($module->getNumcredits())) {
+            $number = filter_var($module->getNumcredits(), FILTER_VALIDATE_INT);
+            if (!is_integer($number)) {
                 echo "ectsError";
                 $this->ectsError = 'Please insert a number as an ECTS value';
                 $this->valid = false;

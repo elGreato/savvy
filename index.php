@@ -80,6 +80,16 @@ Router::route_auth("GET", "/main/deletemodule", $authFunction, function () {
     }
 
 });
+Router::route_auth("GET", "/main/editmodule", $authFunction, function () {
+    if(AuthController::authenticate())
+    {
+        ModuleController::showEditModule();
+    }
+    else{
+        Router::redirect("/login");
+    }
+
+});
 Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
     if(AuthController::authenticate()) {
         ModuleController::addModule();

@@ -34,6 +34,17 @@ class ModuleController
         $tempView = new TemplateView("view/addModule.php");
         echo $tempView->createView();
     }
+    public static function showEditModule()
+    {
+        $moduleService = new ModuleServiceImpl();
+        $module = $moduleService->readModule($_GET["id"]);
+        $tempView = new TemplateView("view/editModule.php");
+        $tempView->id = $module->getId();
+        $tempView->name = $module->getName();
+        $tempView->description = $module->getDescription();
+        $tempView->ects = $module->getNumcredits();
+        echo $tempView->createView();
+    }
     public static function addModule()
     {
         $module = new Module();
