@@ -38,12 +38,17 @@ class ModuleController
     {
         $moduleService = new ModuleServiceImpl();
         $module = $moduleService->readModule($_GET["id"]);
-        $tempView = new TemplateView("view/editModule.php");
-        $tempView->id = $module->getId();
-        $tempView->name = $module->getName();
-        $tempView->description = $module->getDescription();
-        $tempView->ects = $module->getNumcredits();
-        echo $tempView->createView();
+        if($module->getEditorid()==StudentServiceImpl::getInstance()->getCurrentStudentId()) {
+            $tempView = new TemplateView("view/editModule.php");
+            $tempView->id = $module->getId();
+            $tempView->name = $module->getName();
+            $tempView->description = $module->getDescription();
+            $tempView->ects = $module->getNumcredits();
+            echo $tempView->createView();
+        }
+        else{
+            Router::redirect("/main");
+        }
     }
     public static function addModule()
     {
@@ -62,6 +67,9 @@ class ModuleController
             {
                 $tempView = new TemplateView("view/addModule.php");
                 $tempView->nameReply = "The selected module name is already used!";
+                $tempView->name = $module->getName();
+                $tempView->description = $module->getDescription();
+                $tempView->ects = $module->getNumcredits();
                 echo $tempView->createView();
             }
             else {
@@ -79,6 +87,9 @@ class ModuleController
             if ($moduleValidator->getEctsError() != null) {
                 $tempView->ectsReply = $moduleValidator->getEctsError();
             }
+            $tempView->name = $module->getName();
+            $tempView->description = $module->getDescription();
+            $tempView->ects = $module->getNumcredits();
             echo $tempView->createView();
 
         }
@@ -90,41 +101,43 @@ class ModuleController
         $module->setName($_POST["module_name"]);
         $module->setDescription($_POST["module_description"]);
         $module->setNumcredits($_POST["num_credits"]);
-        $editorid = StudentServiceImpl::getInstance()->getCurrentStudentId();
-        $module->setEditorid($editorid);
         $moduleServiceImpl = new ModuleServiceImpl();
+        $readModule =$moduleServiceImpl->readModule($_POST["module_id"]);
+        if ($readModule->getEditorid()==StudentServiceImpl::getInstance()->getCurrentStudentId()) {
 
 
-        $moduleValidator = new ModuleValidator($module);
-        if($moduleValidator->isValid()) {
-            if($moduleServiceImpl->updateModule($module)!=null)
-            {
-                $tempView = new TemplateView("view/addModule.php");
-                $tempView->nameReply = "The selected module name is already used!";
+            $moduleValidator = new ModuleValidator($module);
+            if ($moduleValidator->isValid()) {
+                if ($moduleServiceImpl->updateModule($module) != null) {
+                    $tempView = new TemplateView("view/editModule.php");
+                    $tempView->nameReply = "The selected module name is already used!";
+                    echo $tempView->createView();
+                } else {
+                    Router::redirect("/main");
+                }
+            } else {
+                $tempView = new TemplateView("view/editModule.php");
+                if ($moduleValidator->getNameError() != null) {
+                    $tempView->nameReply = $moduleValidator->getNameError();
+                }
+                if ($moduleValidator->getDescriptionError() != null) {
+                    $tempView->descriptionReply = $moduleValidator->getDescriptionError();
+                }
+                if ($moduleValidator->getEctsError() != null) {
+                    $tempView->ectsReply = $moduleValidator->getEctsError();
+                }
+
+                $tempView->id = $module->getId();
+                $tempView->name = $module->getName();
+                $tempView->description = $module->getDescription();
+                $tempView->ects = $module->getNumcredits();
                 echo $tempView->createView();
-            }
-            else {
-               Router::redirect("/main");
+
             }
         }
-        else{
-            $tempView = new TemplateView("view/editModule.php");
-            if ($moduleValidator->getNameError() != null) {
-                $tempView->nameReply = $moduleValidator->getNameError();
-            }
-            if ($moduleValidator->getDescriptionError() != null) {
-                $tempView->descriptionReply = $moduleValidator->getDescriptionError();
-            }
-            if ($moduleValidator->getEctsError() != null) {
-                $tempView->ectsReply = $moduleValidator->getEctsError();
-            }
-
-            $tempView->id = $module->getId();
-            $tempView->name = $module->getName();
-            $tempView->description = $module->getDescription();
-            $tempView->ects = $module->getNumcredits();
-            echo $tempView->createView();
-
+        else
+        {
+            router::redirect("/main");
         }
     }
     public static function deleteModule()
@@ -135,7 +148,7 @@ class ModuleController
         if($studentService->getCurrentStudentId()==$moduleToDelete->getEditorid())
         {
             $moduleService->deleteModule($_GET["id"]);
-            Router::redirect("/main");
         }
+        Router::redirect("/main");
     }
 }
