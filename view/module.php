@@ -24,27 +24,30 @@ require_once "headerLoggedIn.php";
 
 <?php
 $comArray = $this->comments;
+global $com ;
 $arrayOfArrays = array();
 foreach ($comArray as $comment) {
 
     $com->id = $comment->getId();
-    $com->parent = null;
-    $com->created = "2015-01-02";
-    $com->modified = "2015-01-02";
+    $com->parent = $comment->getParent();
+    $com->created = $comment->getCreated();
+    $com->modified = null;
     $com->content = $comment->getComment();
     $com->pings = [];
     $com->creator = $comment->getStudentid();
     $com->fullname = $comment->getStudentname();
     $com->profile_picture_url = null;
     $com->created_by_admin = false;
-    $com->created_by_current_user = false;
+    $com->created_by_current_user = $comment->getIsFromUser();
     $com->upvote_count = 3;
     $com->has_upvoted = false;
-    $com->is_new = false;
+    $com->is_new = $comment->isNew();
 
-    array_push($arrayOfArrays,$com);
+    $arrayOfArrays[] = $com;
+    unset($com);
+
 }
-
+var_dump($arrayOfArrays);
 $myJson = json_encode($arrayOfArrays);
 ?>
 
@@ -87,8 +90,8 @@ $myJson = json_encode($arrayOfArrays);
                   //  success(commentsArray);
                     var ar =<?php print $myJson ?>;
                     success(ar);
-                    console.log(ar);
-                    console.log(commentsArray)
+                   // console.log(ar);
+                   // console.log(commentsArray)
 
                 }, 500);
             },
