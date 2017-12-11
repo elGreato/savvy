@@ -10,6 +10,7 @@ use dao\CommentVoteDAO;
 use dao\StudentDAO;
 use domain\Comment;
 use domain\Commentvote;
+use services\StudentServiceImpl;
 class CommentingServiceImpl implements CommentingService {
 
 	/**
@@ -59,11 +60,19 @@ class CommentingServiceImpl implements CommentingService {
             $commentVoteDAO = new CommentVoteDAO();
             $studentDAO = new StudentDAO();
             $comments = $commentDAO->readCommentsForModule($moduleId);
+            $studentService = StudentServiceImpl::getInstance();
             foreach ($comments as $comment) {
                 $votes = $commentVoteDAO->readCommentLikes($moduleId);
                 $comment->setVote($votes);
                 $student = $studentDAO->read($comment->getStudentid());
                 $comment->setStudentname($student->getUsername());
+                if($studentService->getCurrentStudentId() == $comment->getStudentid())
+                {
+                    $comment->setIsFromUser(true);
+                }
+                else{
+                    $comment->setIsFromUser(false);
+                }
             }
             return $comments;
       //  }

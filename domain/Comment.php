@@ -17,7 +17,10 @@ class Comment
     private $studentid;
     private $studentname;
     private $moduleid;
+    private $created;
     private $vote;
+    private $parent;
+    private $isFromUser;
     /**
      * @return mixed
      */
@@ -101,6 +104,22 @@ class Comment
     /**
      * @return mixed
      */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getVote()
     {
         return $this->vote;
@@ -144,6 +163,50 @@ class Comment
     public function setStudentname($studentname)
     {
         $this->studentname = $studentname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param mixed $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsFromUser()
+    {
+        return $this->isFromUser;
+    }
+
+    /**
+     * @param mixed $isFromUser
+     */
+    public function setIsFromUser($isFromUser)
+    {
+        $this->isFromUser = $isFromUser;
+    }
+    public function isNew()
+    {
+        $today = date("dd-mm-YYYY");
+        if(date_diff($today,$this->created)<=1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

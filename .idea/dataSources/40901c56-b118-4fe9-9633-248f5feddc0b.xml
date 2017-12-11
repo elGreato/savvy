@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-12-10.12:05:05.071</IntrospectionTimestamp>
-      <IntrospectionStateNumber>350065339</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-11.09:36:12.401</IntrospectionTimestamp>
+      <IntrospectionStateNumber>350784103</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -59,7 +59,7 @@
     </table>
     <table id="14" parent="3" name="comment">
       <ObjectId>4772602</ObjectId>
-      <StateNumber>329607399</StateNumber>
+      <StateNumber>350784103</StateNumber>
     </table>
     <table id="15" parent="3" name="commentvote">
       <ObjectId>4772611</ObjectId>
@@ -164,116 +164,133 @@
       <DataType>bytea|0</DataType>
       <StateNumber>329607370</StateNumber>
     </column>
-    <index id="33" parent="14" name="comment_pkey">
+    <column id="33" parent="14" name="created">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>350777235</StateNumber>
+    </column>
+    <column id="34" parent="14" name="parent">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>350781328</StateNumber>
+    </column>
+    <index id="35" parent="14" name="comment_pkey">
       <ObjectId>4772609</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="34" parent="14" name="comment_pkey">
+    <key id="36" parent="14" name="comment_pkey">
       <ObjectId>4772610</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="35" parent="14" name="fkcomment524391">
+    <foreign-key id="37" parent="14" name="fkcomment524391">
       <ObjectId>4772647</ObjectId>
       <ColNames>moduleid</ColNames>
       <RefTableName>module</RefTableName>
       <RefKeyName>module_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="36" parent="14" name="writes">
+    <foreign-key id="38" parent="14" name="writes">
       <ObjectId>4772667</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="37" parent="15" name="commentid">
+    <foreign-key id="39" parent="14" name="reply_to">
+      <ObjectId>5543480</ObjectId>
+      <ColNames>parent</ColNames>
+      <RefTableName>comment</RefTableName>
+      <RefKeyName>comment_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="40" parent="15" name="commentid">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607371</StateNumber>
     </column>
-    <column id="38" parent="15" name="studentid">
+    <column id="41" parent="15" name="studentid">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607371</StateNumber>
     </column>
-    <column id="39" parent="15" name="islike">
+    <column id="42" parent="15" name="islike">
       <Position>3</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607371</StateNumber>
     </column>
-    <index id="40" parent="15" name="commentvote_pkey">
+    <index id="43" parent="15" name="commentvote_pkey">
       <ObjectId>4772614</ObjectId>
       <ColNames>commentid
 studentid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="41" parent="15" name="commentvote_pkey">
+    <key id="44" parent="15" name="commentvote_pkey">
       <ObjectId>4772615</ObjectId>
       <ColNames>commentid
 studentid</ColNames>
       <UnderlyingIndexName>commentvote_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="42" parent="15" name="isvoted">
+    <foreign-key id="45" parent="15" name="isvoted">
       <ObjectId>4772642</ObjectId>
       <ColNames>commentid</ColNames>
       <RefTableName>comment</RefTableName>
       <RefKeyName>comment_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="43" parent="15" name="votes">
+    <foreign-key id="46" parent="15" name="votes">
       <ObjectId>4772652</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="44" parent="16" name="moduleid">
+    <column id="47" parent="16" name="moduleid">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607379</StateNumber>
     </column>
-    <column id="45" parent="16" name="studentid">
+    <column id="48" parent="16" name="studentid">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607379</StateNumber>
     </column>
-    <index id="46" parent="16" name="inscription_pkey">
+    <index id="49" parent="16" name="inscription_pkey">
       <ObjectId>4772619</ObjectId>
       <ColNames>moduleid
 studentid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="47" parent="16" name="inscription_pkey">
+    <key id="50" parent="16" name="inscription_pkey">
       <ObjectId>4772620</ObjectId>
       <ColNames>moduleid
 studentid</ColNames>
       <UnderlyingIndexName>inscription_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="48" parent="16" name="hasinscriptions">
+    <foreign-key id="51" parent="16" name="hasinscriptions">
       <ObjectId>4772662</ObjectId>
       <ColNames>moduleid</ColNames>
       <RefTableName>module</RefTableName>
       <RefKeyName>module_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="49" parent="16" name="isinscribed">
+    <foreign-key id="52" parent="16" name="isinscribed">
       <ObjectId>4772672</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="50" parent="17" name="id">
+    <column id="53" parent="17" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -281,57 +298,57 @@ studentid</ColNames>
       <SequenceName>module_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;module_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="51" parent="17" name="name">
+    <column id="54" parent="17" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607391</StateNumber>
     </column>
-    <column id="52" parent="17" name="description">
+    <column id="55" parent="17" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>329607391</StateNumber>
     </column>
-    <column id="53" parent="17" name="numcredits">
+    <column id="56" parent="17" name="numcredits">
       <Position>4</Position>
       <DataType>integer|0</DataType>
       <StateNumber>329607391</StateNumber>
     </column>
-    <column id="54" parent="17" name="editorid">
+    <column id="57" parent="17" name="editorid">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>350065339</StateNumber>
     </column>
-    <index id="55" parent="17" name="module_pkey">
+    <index id="58" parent="17" name="module_pkey">
       <ObjectId>4772638</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="56" parent="17" name="module_name_key">
+    <index id="59" parent="17" name="module_name_key">
       <ObjectId>4772640</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="57" parent="17" name="module_pkey">
+    <key id="60" parent="17" name="module_pkey">
       <ObjectId>4772639</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>module_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="58" parent="17" name="module_name_key">
+    <key id="61" parent="17" name="module_name_key">
       <ObjectId>4772641</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>module_name_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="59" parent="17" name="created_by">
+    <foreign-key id="62" parent="17" name="created_by">
       <ObjectId>5487872</ObjectId>
       <ColNames>editorid</ColNames>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="60" parent="18" name="id">
+    <column id="63" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -339,51 +356,51 @@ studentid</ColNames>
       <SequenceName>student_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;student_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="61" parent="18" name="username">
+    <column id="64" parent="18" name="username">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607369</StateNumber>
     </column>
-    <column id="62" parent="18" name="password">
+    <column id="65" parent="18" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329877792</StateNumber>
     </column>
-    <column id="63" parent="18" name="email">
+    <column id="66" parent="18" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607369</StateNumber>
     </column>
-    <index id="64" parent="18" name="student_pkey">
+    <index id="67" parent="18" name="student_pkey">
       <ObjectId>4772594</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="65" parent="18" name="student_username_key">
+    <index id="68" parent="18" name="student_username_key">
       <ObjectId>4772596</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="66" parent="18" name="student_email_key">
+    <index id="69" parent="18" name="student_email_key">
       <ObjectId>4772598</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="67" parent="18" name="student_pkey">
+    <key id="70" parent="18" name="student_pkey">
       <ObjectId>4772595</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="68" parent="18" name="student_username_key">
+    <key id="71" parent="18" name="student_username_key">
       <ObjectId>4772597</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>student_username_key</UnderlyingIndexName>
     </key>
-    <key id="69" parent="18" name="student_email_key">
+    <key id="72" parent="18" name="student_email_key">
       <ObjectId>4772599</ObjectId>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>student_email_key</UnderlyingIndexName>
