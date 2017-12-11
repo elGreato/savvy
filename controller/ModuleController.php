@@ -80,6 +80,7 @@ class ModuleController
         if($studentService->getCurrentStudentId()==$moduleToDelete->getEditorid())
         {
             $moduleService->deleteModule($_GET["id"]);
+            Router::redirect("/main");
         }
     }
 }

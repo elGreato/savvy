@@ -64,9 +64,9 @@ class ModuleDAO extends BasicDAO
     }
     public function delete($moduleID)
     {
-        echo "deleteDAO: ".$moduleID;
         $stmt=$this->pdoInstance->prepare('DELETE FROM module where id = :id');
         $stmt->bindValue(':id', $moduleID);
+        $stmt->execute();
     }
     public  function update($module)
     {

@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-12-11.09:36:12.401</IntrospectionTimestamp>
-      <IntrospectionStateNumber>350784103</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-11.10:08:00.207</IntrospectionTimestamp>
+      <IntrospectionStateNumber>350810102</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -59,7 +59,7 @@
     </table>
     <table id="14" parent="3" name="comment">
       <ObjectId>4772602</ObjectId>
-      <StateNumber>350784103</StateNumber>
+      <StateNumber>350810102</StateNumber>
     </table>
     <table id="15" parent="3" name="commentvote">
       <ObjectId>4772611</ObjectId>
@@ -71,7 +71,7 @@
     </table>
     <table id="17" parent="3" name="module">
       <ObjectId>4772634</ObjectId>
-      <StateNumber>350063751</StateNumber>
+      <StateNumber>350810102</StateNumber>
     </table>
     <table id="18" parent="3" name="student">
       <ObjectId>4772590</ObjectId>
@@ -185,12 +185,13 @@
       <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="37" parent="14" name="fkcomment524391">
-      <ObjectId>4772647</ObjectId>
+    <foreign-key id="37" parent="14" name="in_module">
+      <ObjectId>5543544</ObjectId>
       <ColNames>moduleid</ColNames>
       <RefTableName>module</RefTableName>
       <RefKeyName>module_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="38" parent="14" name="writes">
       <ObjectId>4772667</ObjectId>
