@@ -27,7 +27,8 @@ $comArray = $this->comments;
 global $com ;
 $arrayOfArrays = array();
 foreach ($comArray as $comment) {
-
+    // to get rid of the warning
+    if(!isset($com)) $com= new stdClass(); $com->success=false;
     $com->id = $comment->getId();
     $com->parent = $comment->getParent();
     $com->created = $comment->getCreated();
@@ -47,7 +48,7 @@ foreach ($comArray as $comment) {
     unset($com);
 
 }
-var_dump($arrayOfArrays);
+
 $myJson = json_encode($arrayOfArrays);
 ?>
 
@@ -87,18 +88,33 @@ $myJson = json_encode($arrayOfArrays);
             getComments: function(success, error) {
                 setTimeout(function() {
 
-                  //  success(commentsArray);
                     var ar =<?php print $myJson ?>;
                     success(ar);
-                   // console.log(ar);
-                   // console.log(commentsArray)
+
 
                 }, 500);
             },
-            postComment: function(data, success, error) {
-                setTimeout(function() {
-                    success(saveComment(data));
-                }, 500);
+            /*
+
+A callback function that is used to create a new comment to the server. The first parameter of the callback
+is commentJSON that contains the data of the new comment. The callback provides both success and error callbacks which should be
+called based on the result from the server. The success callback takes the created comment as a parameter.
+             */
+                postComment: function(commentJSON, success, error) {
+                    $.ajax({
+                        type: 'post',
+                        url: 'view/module.php',
+                        data: commentJSON,
+                        success: function(comment) {
+                            success(comment)
+                        },
+                        error: error
+                    });
+                    console.log(commentJSON);
+
+
+
+
             },
             putComment: function(data, success, error) {
                 setTimeout(function() {
@@ -123,3 +139,8 @@ $myJson = json_encode($arrayOfArrays);
         });
     });
 </script>
+<?php
+foreach ($_POST as $row)
+    echo $row;
+
+?>

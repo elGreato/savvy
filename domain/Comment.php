@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Kevin
+ * User: Ali / Kevin
  * Date: 13.11.2017
  * Time: 17:48
  */
@@ -198,8 +198,17 @@ class Comment
     }
     public function isNew()
     {
-        $today = date("dd-mm-YYYY");
-        if(date_diff($today,$this->created)<=1)
+        date_default_timezone_set('UTC');
+       // echo date('d-m-Y');
+
+        $today = date("Ymd");
+
+        $cr = date("Ymd" , strtotime($this->created));
+    //   var_dump($cr);
+        $diff = $today - $cr;
+      //  var_dump($dif);
+
+        if($diff<=1)
         {
             return true;
         }
