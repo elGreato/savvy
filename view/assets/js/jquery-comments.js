@@ -2190,7 +2190,7 @@
         },
 
         normalizeSpaces: function(inputText) {
-            return inputText.replace(new RegExp('\u00a0', 'g'), ' ');   // Convert non-breaking spaces to reguar spaces
+            return inputText.replace(new RegExp('\u00a0','g'), ' ');   // Convert non-breaking spaces to reguar spaces
         },
 
         after: function(times, func) {

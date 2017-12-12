@@ -36,5 +36,37 @@ class CommentController {
 
 
 
+
+}
+?>
+<?php
+//require __DIR__.'config/Autoloader.php';
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+        $newCom = new Comment();
+
+        $newCom->setId($_POST['id']);
+        $newCom->setComment($_POST['content']);
+
+
+
+
+       $comSer = new CommentingServiceImpl();
+
+       $comSer->addComment($newCom);
+
+/*
+    $myObj = new \stdClass();
+    $myObj->id = $_POST['id'];
+    $myObj->age = 30;
+    $myObj->city = $_POST['content'];
+
+    $myJSON = json_encode($myObj);
+
+    echo $myJSON;*/
+
 }
 ?>
