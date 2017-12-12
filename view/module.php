@@ -100,19 +100,39 @@ A callback function that is used to create a new comment to the server. The firs
 is commentJSON that contains the data of the new comment. The callback provides both success and error callbacks which should be
 called based on the result from the server. The success callback takes the created comment as a parameter.
              */
-                postComment: function(commentJSON, success, error) {
+                /*postComment: function(commentJSON, success, error) {
                     $.ajax({
-                        type: 'post',
-                        url: 'view/module.php',
+                        type: 'POST',
+                        url: 'functions/commentPost.php',
+                        dataType: 'json',
                         data: commentJSON,
-                        success: function(comment) {
-                            success(comment)
+
+                        success: function(commentJSON) {
+                            console.log("suc")
+                            success(commentJSON)
                         },
                         error: error
+
                     });
-                    console.log(commentJSON);
+                    console.log(commentJSON);*/
+                postComment: function(commentJSON, success, error) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'functions/commentPost.php',
+                       // contentType: 'application/json; charset=utf-8',
+                        data: commentJSON,
+                        dataType: 'json',
+                        success: function(data) {
+                            alert(data);
+                            console.log("suc")
+                            success(data);
+                        },
+                    })
 
-
+                    setTimeout(function() {
+                        success(saveComment(commentJSON));
+                        alert("Error");
+                    }, 500);
 
 
             },
@@ -139,8 +159,3 @@ called based on the result from the server. The success callback takes the creat
         });
     });
 </script>
-<?php
-foreach ($_POST as $row)
-    echo $row;
-
-?>
