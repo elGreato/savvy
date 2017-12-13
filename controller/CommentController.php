@@ -49,8 +49,8 @@ class CommentController
 
            // $newCom->setId($_POST['id']);
             $newCom->setComment($_POST['content']);
-            $newCom->setModuleid('3');
-            $newCom->setStudentid('7');
+            $newCom->setModuleid(3);
+            $newCom->setStudentid(7);
             $jsonTest = json_encode($newCom);
             echo $jsonTest;
 
