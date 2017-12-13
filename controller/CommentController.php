@@ -14,59 +14,58 @@ use services\CommentingServiceImpl;
 //use view\TemplateView;
 
 
-class CommentController {
+class CommentController
+{
 
 
-
-    public static function showComments(){
+    public static function showComments()
+    {
 
         $comentImp = new CommentingServiceImpl();
 
-       $comments = $comentImp->readCommentsForModule($_GET["id"]) ;
+        $comments = $comentImp->readCommentsForModule($_GET["id"]);
 
-     // echo var_dump($comments);
+        // echo var_dump($comments);
         return $comments;
 
-}
-    public static function getAuthors($comment){
+    }
+
+    public static function getAuthors($comment)
+    {
         $commentImp = new CommentingServiceImpl();
 
         return $commentImp->readCommentAuthor($comment);
     }
 
 
-
-
-}
-?>
-<?php
 //require __DIR__.'config/Autoloader.php';
 
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
-        $newCom = new Comment();
-
-        $newCom->setId($_POST['id']);
-        $newCom->setComment($_POST['content']);
+    public static function saveComment()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
+            $newCom = new Comment();
+
+            $newCom->setId($_POST['id']);
+            $newCom->setComment($_POST['content']);
 
 
-       $comSer = new CommentingServiceImpl();
+            $comSer = new CommentingServiceImpl();
 
-       $comSer->addComment($newCom);
+            $comSer->addComment($newCom);
 
-/*
-    $myObj = new \stdClass();
-    $myObj->id = $_POST['id'];
-    $myObj->age = 30;
-    $myObj->city = $_POST['content'];
+            /*
+                $myObj = new \stdClass();
+                $myObj->id = $_POST['id'];
+                $myObj->age = 30;
+                $myObj->city = $_POST['content'];
 
-    $myJSON = json_encode($myObj);
+                $myJSON = json_encode($myObj);
 
-    echo $myJSON;*/
+                echo $myJSON;*/
 
+        }
+    }
 }
 ?>

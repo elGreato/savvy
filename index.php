@@ -9,6 +9,7 @@ use controller\ModuleController;
 use controller\ContactUsController;
 use controller\ModelContentController;
 use view\TemplateView;
+use controller\CommentController;
 session_start();
 require_once("config/Autoloader.php");
 /*require_once 'view/welcome.php';
@@ -59,6 +60,10 @@ Router::route_auth("GET", "/register", $authFunction, function () {
 });
 Router::route_auth("POST", "/register", $authFunction, function () {
    StudentController::register();
+
+});
+Router::route_auth("POST", "/CommentController", $authFunction, function () {
+    CommentController::saveComment();
 
 });
 Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
