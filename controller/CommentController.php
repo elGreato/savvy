@@ -46,7 +46,7 @@ class CommentController
 
             // instead of a fucking GET request
             $moduleId =(int) explode('=',$_SERVER['HTTP_REFERER'])[1];
-            $newCom->setId($_POST['id']);
+
             $newCom->setComment($_POST['content']);
             $newCom->setModuleid($moduleId);
             $newCom->setCreated($_POST['created']);
@@ -54,8 +54,15 @@ class CommentController
          //   $newCom->setParent($_POST['parent']);
 
             $comSer = new CommentingServiceImpl();
-
             $comSer->addComment($newCom);
+        // now reply to the ajax to set values not to fuck up parents
+        sleep(2);
+        $reply = new \StdClass();
+        $reply->id = $newCom->getId();
+       // $reply->parent = "baz";
+
+        $json = json_encode($reply);
+        echo $json;
 
     }
 }

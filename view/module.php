@@ -121,10 +121,11 @@ called based on the result from the server. The success callback takes the creat
                         type: 'POST',
                         url: 'CommentController',
                         data: commentJSON,
+                      //  dataType: 'json',
                         success: function(data) {
 
                             console.log(data)
-                           // success(data);
+                        //    success(data);
                         },
                         error: error
                     })
