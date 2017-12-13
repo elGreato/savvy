@@ -14,7 +14,7 @@ class CommentDAO extends BasicDAO
 {
     public function create(Comment $comment)
     {
-        $stmt=$this->pdoInstance->prepare('INSERT INTO "comment"
+        $stmt=$this->pdoInstance->prepare('INSERT INTO comment
           (comment, moduleid, studentid, image, created, parent) VALUES 
           (:comment, :moduleid, :studentid, :image, :created, :parent);');
         $stmt->bindValue(':comment',$comment->getComment());
