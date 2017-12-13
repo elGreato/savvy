@@ -119,7 +119,7 @@ called based on the result from the server. The success callback takes the creat
                 postComment: function(commentJSON, success, error) {
                     $.ajax({
                         type: 'POST',
-                        url: 'controller/CommentController.php',
+                        url: 'controller/CommentController',
                         data: commentJSON,
                         success: function(data) {
 
