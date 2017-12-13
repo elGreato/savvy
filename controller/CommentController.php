@@ -47,8 +47,12 @@ class CommentController
 
             $newCom = new Comment();
 
-            $newCom->setId($_POST['id']);
+           // $newCom->setId($_POST['id']);
             $newCom->setComment($_POST['content']);
+            $newCom->setModuleid('3');
+            $newCom->setStudentid('7');
+            $jsonTest = json_encode($newCom);
+            echo $jsonTest;
 
 
             $comSer = new CommentingServiceImpl();
