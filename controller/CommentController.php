@@ -42,17 +42,24 @@ class CommentController
 
     public static function saveComment()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        /*$myObj = new \stdClass();
+        $myObj->id = '23';
+        $myObj->age = 30;
+        $myObj->city = 'mothaaa';
+
+       // $myJSON = json_encode($myObj);
+
+        echo $myObj;*/
 
             $newCom = new Comment();
 
            // $newCom->setId($_POST['id']);
-            $newCom->setComment($_POST['content']);
+            $newCom->setComment('Hello motha');
             $newCom->setModuleid(3);
-            $newCom->setStudentid(7);
-            $jsonTest = json_encode($newCom);
-            echo $jsonTest;
+            //$newCom->setStudentid(7);
+          /*  $jsonTest = json_encode($newCom);
+            echo $jsonTest;*/
 
 
             $comSer = new CommentingServiceImpl();
@@ -69,7 +76,7 @@ class CommentController
 
                 echo $myJSON;*/
 
-        }
+
     }
 }
 ?>

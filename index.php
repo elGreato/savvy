@@ -63,7 +63,11 @@ Router::route_auth("POST", "/register", $authFunction, function () {
 
 });
 Router::route_auth("POST", "/CommentController", $authFunction, function () {
+    if (AuthController::authenticate())
     CommentController::saveComment();
+    else{
+        Router::redirect("/login");
+    }
 
 });
 Router::route_auth("GET", "/main/addmodule", $authFunction, function () {

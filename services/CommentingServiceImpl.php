@@ -22,7 +22,8 @@ class CommentingServiceImpl implements CommentingService {
 	 */
 	public function addComment(Comment $comment) {
        // if(StudentServiceImpl::getInstance()->verifyAuth()) {
-            $comment->setStudentid(StudentServiceImpl::getInstance()->getCurrentStudentId());
+        //    $comment->setStudentid(StudentServiceImpl::getInstance()->getCurrentStudentId());
+            $comment->setStudentid(7);
             $commentDAO = new CommentDAO();
             $commentDAO->create($comment);
 
