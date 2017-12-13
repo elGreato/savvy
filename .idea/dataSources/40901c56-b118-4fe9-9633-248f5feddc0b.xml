@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-12-13.19:02:30.992</IntrospectionTimestamp>
-      <IntrospectionStateNumber>354197612</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-13.19:06:53.592</IntrospectionTimestamp>
+      <IntrospectionStateNumber>354200117</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -59,11 +59,11 @@
     </table>
     <table id="14" parent="3" name="comment">
       <ObjectId>4772602</ObjectId>
-      <StateNumber>354192120</StateNumber>
+      <StateNumber>354200117</StateNumber>
     </table>
     <table id="15" parent="3" name="commentvote">
       <ObjectId>4772611</ObjectId>
-      <StateNumber>354191419</StateNumber>
+      <StateNumber>354200117</StateNumber>
     </table>
     <table id="16" parent="3" name="inscription">
       <ObjectId>4772616</ObjectId>
@@ -203,38 +203,56 @@
       <OnDelete>set-null</OnDelete>
       <OnUpdate>set-null</OnUpdate>
     </foreign-key>
-    <column id="39" parent="15" name="commentid">
+    <foreign-key id="39" parent="14" name="reply_to">
+      <ObjectId>5550495</ObjectId>
+      <ColNames>parent</ColNames>
+      <RefTableName>comment</RefTableName>
+      <RefKeyName>comment_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="40" parent="15" name="commentid">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>354191419</StateNumber>
     </column>
-    <column id="40" parent="15" name="studentid">
+    <column id="41" parent="15" name="studentid">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607371</StateNumber>
     </column>
-    <column id="41" parent="15" name="islike">
+    <column id="42" parent="15" name="islike">
       <Position>3</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607371</StateNumber>
     </column>
-    <index id="42" parent="15" name="commentvote_pkey">
+    <index id="43" parent="15" name="commentvote_pkey">
       <ObjectId>5550454</ObjectId>
       <ColNames>commentid
 studentid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="43" parent="15" name="commentvote_pkey">
+    <key id="44" parent="15" name="commentvote_pkey">
       <ObjectId>5550455</ObjectId>
       <ColNames>commentid
 studentid</ColNames>
       <UnderlyingIndexName>commentvote_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="44" parent="15" name="votes">
+    <foreign-key id="45" parent="15" name="voted_on">
+      <ObjectId>5550501</ObjectId>
+      <ColNames>commentid</ColNames>
+      <RefTableName>comment</RefTableName>
+      <RefKeyName>comment_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="46" parent="15" name="votes">
       <ObjectId>5550071</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
@@ -243,32 +261,32 @@ studentid</ColNames>
       <OnDelete>set-null</OnDelete>
       <OnUpdate>set-null</OnUpdate>
     </foreign-key>
-    <column id="45" parent="16" name="moduleid">
+    <column id="47" parent="16" name="moduleid">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607379</StateNumber>
     </column>
-    <column id="46" parent="16" name="studentid">
+    <column id="48" parent="16" name="studentid">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607379</StateNumber>
     </column>
-    <index id="47" parent="16" name="inscription_pkey">
+    <index id="49" parent="16" name="inscription_pkey">
       <ObjectId>4772619</ObjectId>
       <ColNames>moduleid
 studentid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="48" parent="16" name="inscription_pkey">
+    <key id="50" parent="16" name="inscription_pkey">
       <ObjectId>4772620</ObjectId>
       <ColNames>moduleid
 studentid</ColNames>
       <UnderlyingIndexName>inscription_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="49" parent="16" name="hasinscriptions">
+    <foreign-key id="51" parent="16" name="hasinscriptions">
       <ObjectId>5550076</ObjectId>
       <ColNames>moduleid</ColNames>
       <RefTableName>module</RefTableName>
@@ -277,7 +295,7 @@ studentid</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="50" parent="16" name="isinscribed">
+    <foreign-key id="52" parent="16" name="isinscribed">
       <ObjectId>5550081</ObjectId>
       <ColNames>studentid</ColNames>
       <RefTableName>student</RefTableName>
@@ -286,7 +304,7 @@ studentid</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="51" parent="17" name="id">
+    <column id="53" parent="17" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -294,50 +312,50 @@ studentid</ColNames>
       <SequenceName>module_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;module_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="52" parent="17" name="name">
+    <column id="54" parent="17" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607391</StateNumber>
     </column>
-    <column id="53" parent="17" name="description">
+    <column id="55" parent="17" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>329607391</StateNumber>
     </column>
-    <column id="54" parent="17" name="numcredits">
+    <column id="56" parent="17" name="numcredits">
       <Position>4</Position>
       <DataType>integer|0</DataType>
       <StateNumber>329607391</StateNumber>
     </column>
-    <column id="55" parent="17" name="editorid">
+    <column id="57" parent="17" name="editorid">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>350065339</StateNumber>
     </column>
-    <index id="56" parent="17" name="module_pkey">
+    <index id="58" parent="17" name="module_pkey">
       <ObjectId>4772638</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="57" parent="17" name="module_name_key">
+    <index id="59" parent="17" name="module_name_key">
       <ObjectId>4772640</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="58" parent="17" name="module_pkey">
+    <key id="60" parent="17" name="module_pkey">
       <ObjectId>4772639</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>module_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="59" parent="17" name="module_name_key">
+    <key id="61" parent="17" name="module_name_key">
       <ObjectId>4772641</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>module_name_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="60" parent="17" name="created_by">
+    <foreign-key id="62" parent="17" name="created_by">
       <ObjectId>5550086</ObjectId>
       <ColNames>editorid</ColNames>
       <RefTableName>student</RefTableName>
@@ -346,7 +364,7 @@ studentid</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="61" parent="18" name="id">
+    <column id="63" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -354,51 +372,51 @@ studentid</ColNames>
       <SequenceName>student_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;student_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="62" parent="18" name="username">
+    <column id="64" parent="18" name="username">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607369</StateNumber>
     </column>
-    <column id="63" parent="18" name="password">
+    <column id="65" parent="18" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329877792</StateNumber>
     </column>
-    <column id="64" parent="18" name="email">
+    <column id="66" parent="18" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>329607369</StateNumber>
     </column>
-    <index id="65" parent="18" name="student_pkey">
+    <index id="67" parent="18" name="student_pkey">
       <ObjectId>4772594</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="66" parent="18" name="student_username_key">
+    <index id="68" parent="18" name="student_username_key">
       <ObjectId>4772596</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="67" parent="18" name="student_email_key">
+    <index id="69" parent="18" name="student_email_key">
       <ObjectId>4772598</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="68" parent="18" name="student_pkey">
+    <key id="70" parent="18" name="student_pkey">
       <ObjectId>4772595</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="69" parent="18" name="student_username_key">
+    <key id="71" parent="18" name="student_username_key">
       <ObjectId>4772597</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>student_username_key</UnderlyingIndexName>
     </key>
-    <key id="70" parent="18" name="student_email_key">
+    <key id="72" parent="18" name="student_email_key">
       <ObjectId>4772599</ObjectId>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>student_email_key</UnderlyingIndexName>
