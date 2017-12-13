@@ -2036,7 +2036,7 @@
         createCommentJSON: function(textarea) {
             var time = new Date().toISOString();
             var commentJSON = {
-                id: 'c' +  (this.getComments().length + 1),   // Temporary id
+                id: 'com' +  (time + Math.floor((Math.random() * 10) + 1)),   // Temporary id
                 moduleId: 3,
                 parent: textarea.attr('data-parent') || null,
                 created: time,

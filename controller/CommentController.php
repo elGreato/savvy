@@ -46,7 +46,7 @@ class CommentController
 
             // instead of a fucking GET request
             $moduleId =(int) explode('=',$_SERVER['HTTP_REFERER'])[1];
-
+            $newCom->setId($_POST['id']);
             $newCom->setComment($_POST['content']);
             $newCom->setModuleid($moduleId);
             $newCom->setCreated($_POST['created']);
