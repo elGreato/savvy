@@ -135,6 +135,7 @@ called based on the result from the server. The success callback takes the creat
                     }, 500);
 
             },
+
             putComment: function(data, success, error) {
                 setTimeout(function() {
                     success(saveComment(data));

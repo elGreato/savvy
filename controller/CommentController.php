@@ -42,40 +42,20 @@ class CommentController
 
     public static function saveComment()
     {
-
-        /*$myObj = new \stdClass();
-        $myObj->id = '23';
-        $myObj->age = 30;
-        $myObj->city = 'mothaaa';
-
-       // $myJSON = json_encode($myObj);
-
-        echo $myObj;*/
-
             $newCom = new Comment();
 
-           // $newCom->setId($_POST['id']);
-            $newCom->setComment('Hello motha');
-            $newCom->setModuleid(3);
-            //$newCom->setStudentid(7);
-          /*  $jsonTest = json_encode($newCom);
-            echo $jsonTest;*/
+            // instead of a fucking GET request
+            $moduleId =(int) explode('=',$_SERVER['HTTP_REFERER'])[1];
 
+            $newCom->setComment($_POST['content']);
+            $newCom->setModuleid($moduleId);
+            $newCom->setCreated($_POST['created']);
+            // Tell Kev to turn off autoincrmenting comment ID
+           // $newCom->setParent()
 
             $comSer = new CommentingServiceImpl();
 
             $comSer->addComment($newCom);
-
-            /*
-                $myObj = new \stdClass();
-                $myObj->id = $_POST['id'];
-                $myObj->age = 30;
-                $myObj->city = $_POST['content'];
-
-                $myJSON = json_encode($myObj);
-
-                echo $myJSON;*/
-
 
     }
 }

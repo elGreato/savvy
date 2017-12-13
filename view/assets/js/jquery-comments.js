@@ -175,6 +175,7 @@
                 
                 fieldMappings: {
                     id: 'id',
+                    moduleId: 'moduleId',
                     parent: 'parent',
                     created: 'created',
                     modified: 'modified',
@@ -192,6 +193,7 @@
                     createdByCurrentUser: 'created_by_current_user',
                     upvoteCount: 'upvote_count',
                     userHasUpvoted: 'user_has_upvoted'
+
                 },
                 
                 getUsers: function(success, error) {success([])},
@@ -2035,6 +2037,7 @@
             var time = new Date().toISOString();
             var commentJSON = {
                 id: 'c' +  (this.getComments().length + 1),   // Temporary id
+                moduleId: 3,
                 parent: textarea.attr('data-parent') || null,
                 created: time,
                 modified: time,
@@ -2045,6 +2048,7 @@
                 createdByCurrentUser: true,
                 upvoteCount: 0,
                 userHasUpvoted: false
+
             };
             return commentJSON;
         },
