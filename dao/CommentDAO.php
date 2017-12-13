@@ -19,8 +19,8 @@ class CommentDAO extends BasicDAO
           (:comment, :image, :created, :parent :moduleid,:studentid);');
         $stmt->bindValue(':comment',$comment->getComment());
         $stmt->bindValue(':image',$comment->getImage());
-        $stmt->bindValue(':created',$comment->getModuleid());
-        $stmt->bindValue(':parent',$comment->getModuleid());
+        $stmt->bindValue(':created',$comment->getCreated());
+        $stmt->bindValue(':parent',$comment->getParent());
         $stmt->bindValue(':moduleid',$comment->getModuleid());
         $stmt->bindValue(':studentid',$comment->getStudentid());
         $stmt->execute();

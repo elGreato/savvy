@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>4710615</ObjectId>
-      <IntrospectionTimestamp>2017-12-11.13:06:17.332</IntrospectionTimestamp>
-      <IntrospectionStateNumber>350973638</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-13.11:20:45.762</IntrospectionTimestamp>
+      <IntrospectionStateNumber>353836547</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -59,7 +59,7 @@
     </table>
     <table id="14" parent="3" name="comment">
       <ObjectId>4772602</ObjectId>
-      <StateNumber>350973638</StateNumber>
+      <StateNumber>353836547</StateNumber>
     </table>
     <table id="15" parent="3" name="commentvote">
       <ObjectId>4772611</ObjectId>
@@ -202,11 +202,13 @@
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="39" parent="14" name="reply_to">
-      <ObjectId>5543480</ObjectId>
+      <ObjectId>5549875</ObjectId>
       <ColNames>parent</ColNames>
       <RefTableName>comment</RefTableName>
       <RefKeyName>comment_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="40" parent="15" name="commentid">
       <Position>1</Position>
