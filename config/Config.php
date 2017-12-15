@@ -29,6 +29,7 @@ class Config
             }
             if (isset($_ENV["SENDGRID_APIKEY"])) {
                 self::$config["email"]["sendgrid-apikey"] = getenv('SENDGRID_APIKEY');
+                echo "Email: " . self::$config["email"]["sendgrid-apikey"]." end";
             }
         }
 
