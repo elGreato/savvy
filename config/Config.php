@@ -40,8 +40,7 @@ class Config
         return self::$config["pdo"][$key];
     }
     public static function emailConfig(){
-        if(empty(self::$config))
-            self::init();
+        self::init();
         return self::$config["email"]["apikey"];
     }
 }
