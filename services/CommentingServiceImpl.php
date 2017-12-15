@@ -3,7 +3,7 @@ namespace services;
 
 /**
  * @access public
- * @author Kevin
+ * @author Ali, Kevin
  */
 use dao\CommentDAO;
 use dao\CommentVoteDAO;

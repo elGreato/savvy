@@ -126,6 +126,7 @@ called based on the result from the server. The success callback takes the creat
 
                         success: function(data,status,xhr) {
                             console.log(data)
+                           // console.log("what about "+data[0].id )
                             var dataJ = data.substr(1,15)
                             var numb = dataJ.match(/\d/g);
                             var comment_id = numb.join("");
