@@ -46,7 +46,9 @@ class Config
     {
         if(empty(self::$config)){
             self::init();
+            echo "initing";
         }
+        echo "inited";
         return self::$config["email"]["apikey"];
     }
 }
