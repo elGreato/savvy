@@ -97,6 +97,9 @@ class StudentController
            if(EmailService::passwordReset($student)){
              Router::redirect("/passwordreset/successful");
            }
+           else{
+               echo"not successful";
+           }
        }
     }
     public static function requestSent()
