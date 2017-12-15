@@ -28,7 +28,11 @@ class Config
                 self::$config["pdo"]["password"] = $dbopts["pass"];
             }
             if (isset($_ENV["EMAIL"])) {
-                self::$config["email"]["apikey"] = getenv('EMAIL');
+                echo self::$config["email"]["apikey"] = getenv('EMAIL');
+
+            }
+            else{
+                echo "does not exist";
             }
         }
 
