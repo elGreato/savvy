@@ -31,9 +31,6 @@ class Config
                 echo self::$config["email"]["apikey"] = getenv('EMAIL');
 
             }
-            else{
-                echo "does not exist";
-            }
         }
 
     }
@@ -42,13 +39,9 @@ class Config
             self::init();
         return self::$config["pdo"][$key];
     }
-    public static function emailConfig()
-    {
-        if(empty(self::$config)){
+    public static function emailConfig(){
+        if(empty(self::$config))
             self::init();
-            echo "initing";
-        }
-        echo "inited";
         return self::$config["email"]["apikey"];
     }
 }
