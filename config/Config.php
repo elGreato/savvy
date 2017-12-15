@@ -27,7 +27,7 @@ class Config
             self::$config["email"]["apikey"] = $emailconfig["apikey"];
         }elseif(isset($_ENV["EMAIL"])){
             $emailopts = parse_url(getenv('EMAIL'));
-            self::$config["email"]["apikey"] = $emailopts["apikey"];
+            self::$config["email"]["apikey"] = $emailopts;
         }
 
     }
