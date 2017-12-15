@@ -18,7 +18,7 @@ class EmailService
         $token = StudentServiceImpl::getInstance()->issueToken(StudentServiceImpl::RESET_TOKEN, $_POST["email"]);
         $mail = self::createEmail();
         $mail->personalizations[0]->to[0]->email = $student->getEmail();
-        $mail->content[0]->value = "<p>Dear" . $student->getUsername()."</p><br><p>Here is your new Password: </p><br><p>".StudentServiceImpl::getInstance()->resetPassword()."</p>";
+        $mail->content[0]->value = "<p>Dear" . $student->getUsername()."</p><br><p>Click this link to get your new password: </p><br><p>".$GLOBALS["ROOT_URL"] . "/password/reset?token=" . $token."</p>";
         $options = ["http" => [
             "method" => "POST",
             "header" => ["Content-Type: application/json",

@@ -103,4 +103,34 @@ class StudentController
     {
         echo "Succesful";
     }
+    public static function showNewPassword()
+    {
+        $view = new TemplateView("view/newpassword.php");
+        $view->token = $_GET["token"];
+        echo $view->createView();
+    }
+    public static function confirmNewPassword()
+    {
+        if(StudentServiceImpl::getInstance()->validateToken($_POST["token"])) {
+            $studentValidator = new StudentValidator();
+            $student = new Student();
+            $student->setPassword($_POST["password"]);
+            $studentValidator->validate($student);
+            if ($_POST["password"] == $_POST["repeatpassword"] && $studentValidator->getPasswordError() == null) {
+                $studentService = StudentServiceImpl::getInstance();
+                $studentService->updateStudent($student);
+                $view = new TemplateView("view/login.php");
+                echo $view->createView();
+            } elseif ($_POST["password"] == $_POST["repeatpassword"]) {
+                $view = new TemplateView("view/newpassword.php");
+                $view->errormsg = "The passwords do not match";
+                echo $view->createView();
+            } else {
+                $view = new TemplateView("view/newpassword.php");
+                $view->errormsg = $studentValidator->getPasswordError();
+                echo $view->createView();
+            }
+        }
+
+    }
 }

@@ -62,6 +62,12 @@ Router::route_auth("POST", "/passwordreset", $authFunction, function () {
 Router::route_auth("GET", "/passwordreset/successful", $authFunction, function () {
     StudentController::requestSent();
 });
+Router::route_auth("GET", "/passwordreset/reset", $authFunction, function () {
+    StudentController::showNewPassword();
+});
+Router::route_auth("POST", "/passwordreset/reset", $authFunction, function () {
+    StudentController::confirmNewPassword();
+});
 Router::route_auth("GET", "/module", $authFunction, function () {
     if (AuthController::authenticate())
     ModelContentController::handleModule();
