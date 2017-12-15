@@ -28,6 +28,10 @@ class CommentingServiceImpl implements CommentingService {
 
         //}
 	}
+	public function getLastInsertId(Comment $comment){
+        $commentDAO = new CommentDAO();
+	    return $commentDAO->getLastInsertId($comment);
+    }
 
 	/**
 	 * @access public

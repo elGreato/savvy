@@ -56,9 +56,9 @@ class CommentController
             $comSer = new CommentingServiceImpl();
             $comSer->addComment($newCom);
         // now reply to the ajax to set values not to fuck up parents
-        sleep(2);
+
         $reply = new \StdClass();
-        $reply->id = $newCom->getId();
+        $reply->id = $comSer->getLastInsertId($newCom);
        // $reply->parent = "baz";
 
         $json = json_encode($reply);
