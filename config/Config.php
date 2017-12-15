@@ -10,24 +10,26 @@ class Config
 {
     protected static $iniFile = "config/config.env";
     protected static $config = [];
-    public static function init(){
-        if(file_exists(self::$iniFile)) {
+    public static function init()
+    {
+        if (file_exists(self::$iniFile)) {
             $databaseConfig = parse_ini_file(self::$iniFile, true)["database"];
             self::$config["pdo"]["dsn"] = $databaseConfig ["driver"] . ":host=" . $databaseConfig ["host"] . ";port=" . $databaseConfig["port"] . "; dbname=" . $databaseConfig ["database"] . "; sslmode=require";
             self::$config["pdo"]["user"] = $databaseConfig["user"];
             self::$config["pdo"]["password"] = $databaseConfig["password"];
-        }elseif(isset($_ENV["DATABASE_URL"])){
-            $dbopts = parse_url(getenv('DATABASE_URL'));
-            self::$config["pdo"]["dsn"] = "pgsql" . ":host=" . $dbopts["host"] . ";port=" . $dbopts["port"] . "; dbname=" . ltrim($dbopts["path"],'/') . "; sslmode=require";
-            self::$config["pdo"]["user"] = $dbopts["user"];
-            self::$config["pdo"]["password"] = $dbopts["pass"];
-        }
-        if(file_exists(self::$iniFile)) {
             $emailconfig = parse_ini_file(self::$iniFile, true)["email"];
             self::$config["email"]["apikey"] = $emailconfig["apikey"];
-        }elseif(isset($_ENV["EMAIL"])){
-            $emailopts = getenv('EMAIL');
-            self::$config["email"]["apikey"] = $emailopts;
+        } else {
+
+            if (isset($_ENV["DATABASE_URL"])) {
+                $dbopts = parse_url(getenv('DATABASE_URL'));
+                self::$config["pdo"]["dsn"] = "pgsql" . ":host=" . $dbopts["host"] . ";port=" . $dbopts["port"] . "; dbname=" . ltrim($dbopts["path"], '/') . "; sslmode=require";
+                self::$config["pdo"]["user"] = $dbopts["user"];
+                self::$config["pdo"]["password"] = $dbopts["pass"];
+            }
+            if (isset($_ENV["EMAIL"])) {
+                self::$config["email"]["apikey"] = getenv('EMAIL');;
+            }
         }
 
     }
