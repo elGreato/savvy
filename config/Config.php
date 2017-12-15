@@ -26,7 +26,7 @@ class Config
             $emailconfig = parse_ini_file(self::$iniFile, true)["email"];
             self::$config["email"]["apikey"] = $emailconfig["apikey"];
         }elseif(isset($_ENV["EMAIL"])){
-            $emailopts = parse_url(getenv('EMAIL'));
+            $emailopts = getenv('EMAIL');
             self::$config["email"]["apikey"] = $emailopts;
         }
 
