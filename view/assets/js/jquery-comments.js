@@ -2052,6 +2052,7 @@
             };
             return commentJSON;
         },
+     /*   setComment: function()*/
 
         isAllowedToDelete: function(commentId) {
             if(this.options.enableDeleting) {
