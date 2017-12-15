@@ -41,6 +41,7 @@ class Config
     }
     public static function emailConfig(){
         self::init();
+        echo "email: ". self::$config["email"]["apikey"]." end";
         return self::$config["email"]["apikey"];
     }
 }
