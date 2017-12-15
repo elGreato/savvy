@@ -27,7 +27,7 @@ class CommentDAO extends BasicDAO
         return $this->read($this->pdoInstance->lastInsertId());
     }
     public function getLastInsertId(Comment $comment){
-        return $this->pdoInstance->lastInsertId($comment);
+        return $this->pdoInstance->lastInsertId();
     }
     public function read($commentID)
     {

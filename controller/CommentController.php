@@ -51,7 +51,7 @@ class CommentController
             $newCom->setModuleid($moduleId);
             $newCom->setCreated($_POST['created']);
             // Tell Kev to turn off autoincrmenting comment ID
-            $newCom->setParent($_POST['parent']);
+          //  $newCom->setParent($_POST['parent']);
 
             $comSer = new CommentingServiceImpl();
             $comSer->addComment($newCom);
