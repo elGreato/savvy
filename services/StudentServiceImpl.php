@@ -215,5 +215,9 @@ class StudentServiceImpl implements StudentService {
 
         }
 	}
+	public function readStudentByEmail($email){
+        $studentDAO = new StudentDAO();
+        return $student = $studentDAO->findByEmail($email);
+    }
 }
 ?>

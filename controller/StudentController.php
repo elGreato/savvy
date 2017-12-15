@@ -5,6 +5,7 @@ use services\StudentServiceImpl;
 use view\TemplateView;
 use validator\studentValidator;
 use router\Router;
+use services\EmailService;
 /**
  * Created by PhpStorm.
  * User: Area-51
@@ -77,5 +78,18 @@ class StudentController
             $view->emailMsg = "Email already taken";
             echo $view->createView();
         }
+    }
+    public function resetPassword()
+    {
+       $student = StudentServiceImpl::getInstance()->readStudentByEmail($_POST['email']);
+       if($student == null)
+       {
+           $view = new TemplateView("view/register.php");
+           $view->errormsg = "Email already taken";
+           echo $view->createView();
+       }
+       else{
+           EmailService::passwordReset($student);
+       }
     }
 }

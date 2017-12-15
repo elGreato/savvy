@@ -22,10 +22,25 @@ class Config
             self::$config["pdo"]["user"] = $dbopts["user"];
             self::$config["pdo"]["password"] = $dbopts["pass"];
         }
+        if(file_exists(self::$iniFile)) {
+            $emailconfig = parse_ini_file(self::$iniFile, true)["email"];
+            self::$config["email"]["apikey"] = $emailconfig["apikey"];
+        }elseif(isset($_ENV["EMAIL"])){
+            $emailopts = parse_url(getenv('EMAIL'));
+            self::$config["email"]["apikey"] = $emailopts["apikey"];
+        }
+
     }
     public static function pdoConfig($key){
         if(empty(self::$config))
             self::init();
         return self::$config["pdo"][$key];
+    }
+    public static function emailConfig()
+    {
+        if(empty(self::$config)){
+            self::init();
+        }
+        return self::$config["email"]["apikey"];
     }
 }
