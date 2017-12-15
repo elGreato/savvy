@@ -89,12 +89,14 @@ class StudentController
        $student = StudentServiceImpl::getInstance()->readStudentByEmail($_POST['email']);
        if($student == null)
        {
-           $view = new TemplateView("view/paswordreset.php");
+           $view = new TemplateView("view/passwordreset.php");
            $view->errormsg = "Email not found";
            echo $view->createView();
        }
        else{
-           EmailService::passwordReset($student);
+           if(EmailService::passwordReset($student)){
+             Router::redirect("/passwordreset/successful");
+           }
        }
     }
     public static function requestSent()

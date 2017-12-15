@@ -9,15 +9,16 @@
 namespace services;
 use domain\Student;
 use config\Config;
+use services\StudentServiceImpl;
 
 class EmailService
 {
     public static function passwordReset(Student $student)
     {
+        $token = StudentServiceImpl::getInstance()->issueToken(StudentServiceImpl::RESET_TOKEN, $_POST["email"]);
         $mail = self::createEmail();
         $mail->personalizations[0]->to[0]->email = $student->getEmail();
-        $mail->subject = "Savvy - Password Reset";
-        $mail->content[0] = "Dear ". $student->getUsername()."\n Here is your new password:\nPassword: ";
+        $mail->content[0]->value = "<p>Dear" . $student->getUsername()."</p><br><p>Here is your new Password: </p><br><p>".StudentServiceImpl::getInstance()->resetPassword()."</p>";
         $options = ["http" => [
             "method" => "POST",
             "header" => ["Content-Type: application/json",
@@ -43,8 +44,8 @@ class EmailService
             }
           ],
           "from": {
-            "email": "noreply@savvy.ch",
-            "name": "savvy"
+            "email": "noreply@fhnw.ch",
+            "name": "WE-CRM"
           },
           "subject": "subject",
           "content": [
