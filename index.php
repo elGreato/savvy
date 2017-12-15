@@ -45,6 +45,23 @@ Router::route_auth("POST", "/contactus", true, function () {
     ContactUsController::handleContactUs();
 
 });
+Router::route_auth("GET", "/logout", $authFunction, function () {
+    if(AuthController::authenticate()) {
+        AuthController::logout();
+
+    }
+    Router::redirect("/login");
+
+});
+Router::route_auth("GET", "/passwordreset", $authFunction, function () {
+    StudentController::showPasswordReset();
+});
+Router::route_auth("POST", "/passwordreset", $authFunction, function () {
+    StudentController::resetPassword();
+});
+Router::route_auth("GET", "/passwordreset/successful", $authFunction, function () {
+    StudentController::requestSent();
+});
 Router::route_auth("GET", "/module", $authFunction, function () {
     if (AuthController::authenticate())
     ModelContentController::handleModule();

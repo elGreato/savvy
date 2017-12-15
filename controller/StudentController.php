@@ -79,17 +79,26 @@ class StudentController
             echo $view->createView();
         }
     }
-    public function resetPassword()
+    public static function showPasswordReset()
+    {
+        $view = new TemplateView("view/passwordreset.php");
+        echo $view->createView();
+    }
+    public static function resetPassword()
     {
        $student = StudentServiceImpl::getInstance()->readStudentByEmail($_POST['email']);
        if($student == null)
        {
-           $view = new TemplateView("view/register.php");
-           $view->errormsg = "Email already taken";
+           $view = new TemplateView("view/paswordreset.php");
+           $view->errormsg = "Email not found";
            echo $view->createView();
        }
        else{
            EmailService::passwordReset($student);
        }
+    }
+    public static function requestSent()
+    {
+        echo "Succesful";
     }
 }
