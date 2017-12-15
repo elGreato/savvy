@@ -18,7 +18,7 @@ class Config
             self::$config["pdo"]["user"] = $databaseConfig["user"];
             self::$config["pdo"]["password"] = $databaseConfig["password"];
             $emailconfig = parse_ini_file(self::$iniFile, true)["email"];
-            self::$config["email"]["apikey"] = $emailconfig["apikey"];
+            self::$config["email"]["sendgrid-apikey"] = $emailconfig["apikey"];
         } else {
 
             if (isset($_ENV["DATABASE_URL"])) {
@@ -27,10 +27,9 @@ class Config
                 self::$config["pdo"]["user"] = $dbopts["user"];
                 self::$config["pdo"]["password"] = $dbopts["pass"];
             }
-            //if (isset($_ENV["API_KEY"])) {
-                self::$config["email"]["apikey"] = getenv('API_KEY');
-
-           //}
+            if (isset($_ENV["SENDGRID_APIKEY"])) {
+                self::$config["email"]["sendgrid-apikey"] = getenv('SENDGRID_APIKEY');
+            }
         }
 
     }
@@ -39,9 +38,10 @@ class Config
             self::init();
         return self::$config["pdo"][$key];
     }
-    public static function emailConfig(){
-        self::init();
-        echo "email: ". self::$config["email"]["apikey"]." end";
-        return self::$config["email"]["apikey"];
+    public static function emailConfig()
+    {
+        if (empty(self::$config))
+            self::init();
+        return self::$config["email"]["sendgrid-apikey"];
     }
 }
