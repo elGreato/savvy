@@ -135,22 +135,22 @@ class Comment
     public function getVoteResult()
     {
         $result = 0;
-        global $vote;
-        if(is_array($vote)) {
-            foreach ($vote as $singleVote) {
+        $votecalc = $this->vote;
+        if(is_array($votecalc)) {
+            foreach ($votecalc as $singleVote) {
                 if ($singleVote->getVote() == 0) {
-                    $result -= 1;
-                } else {
                     $result += 1;
+                } else {
+                    $result -= 1;
                 }
             }
         }
-        else if(isset($vote))
+        elseif(isset($votecalc))
         {
-            if ($vote->getVote() == 0) {
-                $result -= 1;
-            } else {
+            if ($votecalc->getVote() == 0) {
                 $result += 1;
+            } else {
+                $result -= 1;
             }
         }
         else
