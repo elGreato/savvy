@@ -19,11 +19,11 @@ require_once "headerLoggedIn.php";
             <form>
                 <input type="hidden" name="username"value="<?php echo $this->username ?>">
                 <span class="label label-default inputDescription">New Password</span>
-                <input name="new_pw" class="form-control textInputs" type="text">
+                <input name="new_pw" class="form-control textInputs" type="password">
                 <span class="label label-default inputDescription">New Password (repeat)</span>
-                <input name="rep_new_pw" class="form-control textInputs" type="text">
+                <input name="rep_new_pw" class="form-control textInputs" type="password">
                 <span class="label label-default inputDescription">Old Password</span>
-                <input name="old_pw" class="form-control textInputs" type="text">
+                <input name="old_pw" class="form-control textInputs" type="password">
                  <p class="message" style="color: <?php if(isset($this->msg)){if($this->iserror){echo "red";}else {echo "green";}}?>;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->msg)){echo $this->msg;}?></p>
                 <button class="btn btn-default" type="submit" formmethod="post" style="margin-top:10px;">Confirm</button>
             </form>

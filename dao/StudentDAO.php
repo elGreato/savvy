@@ -67,7 +67,7 @@ class StudentDAO extends BasicDAO
     }
     public  function update(Student $student)
     {
-        $stmt = $this->pdoInstance->prepare('UPDATE "student" SET name = :name,description = :description, numcredits = :numcredits WHERE id=:id');
+        $stmt = $this->pdoInstance->prepare('UPDATE "student" SET username = :username, password = :password, email = :email WHERE id=:id');
         $stmt->bindValue(':id',$student->getId());
         $stmt->bindValue(':username',$student->getUsername());
         $stmt->bindValue(':password',$student->getPassword());

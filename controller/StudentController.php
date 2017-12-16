@@ -152,12 +152,14 @@ class StudentController
                 $view->username = $student->getUsername();
                 $view->msg = "Change Successful";
                 $view->iserror = false;
+                echo $view->createView();
             } else {
                 $view = new TemplateView("view/editProfile.php");
                 $student =StudentServiceImpl::getInstance()->readStudent();
                 $view->username = $student->getUsername();
                 $view->msg = "Old password wrong";
                 $view->iserror = true;
+                echo $view->createView();
             }
         }
         else{
@@ -166,6 +168,7 @@ class StudentController
             $view->username = $student->getUsername();
             $view->msg = "The two new passwords do not match";
             $view->iserror = true;
+            echo $view->createView();
         }
     }
 }

@@ -31,7 +31,7 @@ class AuthController
             Router::redirect("/main");
             if(isset($_POST["rememberme"]))
             {
-                setcookie("token",$_SESSION["loginData"]["token"], (new \DateTime('now'))->modify('+7 days')->getTimestamp());
+                setcookie("token",$_SESSION["loginData"]["token"], (new \DateTime('now'))->modify('+7 days')->getTimestamp(),"/");
             }
 
             return true;

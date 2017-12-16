@@ -54,7 +54,6 @@ class StudentServiceImpl implements StudentService {
 	 * @ReturnType boolean
 	 */
 	public function verifyAuth() {
-	    echo "student id: ".$this->currentStudentId;
         if(isset($this->currentStudentId))
             return true;
         return false;
@@ -229,7 +228,7 @@ class StudentServiceImpl implements StudentService {
        $student = $this->readStudent();
         if(password_verify($_POST["old_pw"],$student->getPassword()))
         {
-            $student->setPassword($_POST["new_pw"]);
+            $student->setPassword(password_hash($_POST["new_pw"], PASSWORD_DEFAULT));
             $this->updateStudent($student);
             return true;
         }
