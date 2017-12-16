@@ -44,5 +44,7 @@ class AuthController
     public static function logout()
     {
         session_destroy();
+        setcookie("token","",time() - 3600, "/");
+
     }
 }

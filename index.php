@@ -24,7 +24,14 @@ $authFunction = function () {
 };
 
 Router::route_auth("GET", "/", $authFunction, function () {
-    require_once("view/welcome.php");
+    if(AuthController::authenticate())
+    {
+        Router::redirect("/main");
+    }
+    else{
+        require_once("view/welcome.php");
+    }
+
 
 });
 
@@ -51,6 +58,26 @@ Router::route_auth("GET", "/logout", $authFunction, function () {
 
     }
     Router::redirect("/login");
+
+});
+Router::route_auth("GET", "/myprofile", $authFunction, function () {
+    if(AuthController::authenticate())
+    {
+        StudentController::showMyProfile();
+    }
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route_auth("POST", "/myprofile", $authFunction, function () {
+    if(AuthController::authenticate())
+    {
+        StudentController::changePassword();
+    }
+    else{
+        Router::redirect("/login");
+    }
 
 });
 Router::route_auth("GET", "/passwordreset", $authFunction, function () {

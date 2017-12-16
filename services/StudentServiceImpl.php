@@ -224,5 +224,19 @@ class StudentServiceImpl implements StudentService {
         $studentDAO = new StudentDAO();
         $studentDAO->update($student);
     }
+    public function changePassword()
+    {
+       $student = $this->readStudent();
+        if(password_verify($_POST["old_pw"],$student->getPassword()))
+        {
+            $student->setPassword($_POST["new_pw"]);
+            $this->updateStudent($student);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 ?>

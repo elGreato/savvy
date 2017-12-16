@@ -136,4 +136,36 @@ class StudentController
         }
 
     }
+    public static function showMyProfile()
+    {
+        $view = new TemplateView("view/editProfile.php");
+        $student =StudentServiceImpl::getInstance()->readStudent();
+        $view->username = $student->getUsername();
+        echo $view->createView();
+    }
+    public static function changePassword()
+    {
+        if($_POST["new_pw"] == $_POST["rep_new_pw"]) {
+            if (StudentServiceImpl::getInstance()->changePassword()) {
+                $view = new TemplateView("view/editProfile.php");
+                $student =StudentServiceImpl::getInstance()->readStudent();
+                $view->username = $student->getUsername();
+                $view->msg = "Change Successful";
+                $view->iserror = false;
+            } else {
+                $view = new TemplateView("view/editProfile.php");
+                $student =StudentServiceImpl::getInstance()->readStudent();
+                $view->username = $student->getUsername();
+                $view->msg = "Old password wrong";
+                $view->iserror = true;
+            }
+        }
+        else{
+            $view = new TemplateView("view/editProfile.php");
+            $student =StudentServiceImpl::getInstance()->readStudent();
+            $view->username = $student->getUsername();
+            $view->msg = "The two new passwords do not match";
+            $view->iserror = true;
+        }
+    }
 }
