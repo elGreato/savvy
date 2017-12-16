@@ -40,7 +40,7 @@ foreach ($comArray as $comment) {
     $com->profile_picture_url = null;
     $com->created_by_admin = false;
     $com->created_by_current_user = $comment->getIsFromUser();
-    $com->upvote_count = 3;
+    $com->upvote_count = $comment->getVoteResult();
     $com->has_upvoted = false;
     $com->is_new = $comment->isNew();
 
