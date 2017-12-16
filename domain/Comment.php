@@ -136,16 +136,26 @@ class Comment
     {
         $result = 0;
         global $vote;
-        foreach($vote as $singleVote)
+        if(is_array($vote)) {
+            foreach ($vote as $singleVote) {
+                if ($singleVote->getVote() == 0) {
+                    $result -= 1;
+                } else {
+                    $result += 1;
+                }
+            }
+        }
+        else if(isset($vote))
         {
-            if ($singleVote.getVote() ==0)
-            {
-                $result -=1;
+            if ($vote->getVote() == 0) {
+                $result -= 1;
+            } else {
+                $result += 1;
             }
-            else
-            {
-                $result +=1;
-            }
+        }
+        else
+        {
+            $result = 0;
         }
         return $result;
     }
