@@ -44,7 +44,7 @@ class CommentController
     {
             $newCom = new Comment();
 
-            // instead of a fucking GET request
+            // Get the module id
             $moduleId =(int) explode('=',$_SERVER['HTTP_REFERER'])[1];
 
             $newCom->setComment($_POST['content']);
@@ -65,6 +65,32 @@ class CommentController
         $json = json_encode($reply);
         echo $json;
 
+    }
+
+    public static function editComment(){
+        $commentDAO = new CommentDAO();
+        $commentToEdit = $commentDAO->read($_POST['id']);
+        $commentToEdit->setComment($_POST['content']);
+
+       $comSer = new CommentingServiceImpl();
+       $comSer->updateComment($commentToEdit);
+
+        $reply = new \StdClass();
+        //$reply->id = $comSer->getLastInsertId($commentToEdit);
+
+
+        $json = json_encode($reply);
+        echo $json;
+
+    }
+    public static function deleteComment(){
+        $commentDAO = new CommentDAO();
+        $commentDAO->delete($_GET['id']);
+    }
+    public static function upvote(){
+        $upvoted = true;
+        $commentSer = new CommentingServiceImpl();
+        $commentSer->voteOnComment($_GET['id'],$upvoted);
     }
 }
 ?>

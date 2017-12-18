@@ -55,6 +55,7 @@ class CommentDAO extends BasicDAO
     {
         $stmt=$this->pdoInstance->prepare('DELETE FROM "comment" where id = :id');
         $stmt->bindValue(':id', $commentID);
+        $stmt->execute();
     }
     public  function update(Comment $comment)
     {

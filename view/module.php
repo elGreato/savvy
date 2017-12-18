@@ -100,26 +100,10 @@ A callback function that is used to create a new comment to the server. The firs
 is commentJSON that contains the data of the new comment. The callback provides both success and error callbacks which should be
 called based on the result from the server. The success callback takes the created comment as a parameter.
              */
-               /* postComment: function(commentJSON, success, error) {
+            postComment: function(commentJSON, success, error) {
                     $.ajax({
                         type: 'POST',
-                        url: 'functions/commentPost.php',
-                      //  dataType: 'json',
-                        data: commentJSON,
-
-                        success: function (data) {
-                            console.log(data)
-                            success(commentJSON)
-                        },
-                        error: alert("now error")
-
-                    });
-                    console.log(commentJSON);
-                },*/
-                postComment: function(commentJSON, success, error) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'CommentController',
+                        url: 'saveComment',
                         data: commentJSON,
                        // dataType: 'json',
                      //   contentType: "application/json",
@@ -146,17 +130,55 @@ called based on the result from the server. The success callback takes the creat
 
             },
 
-            putComment: function(data, success, error) {
+            putComment: function(commentJSON, success, error) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'editComment',
+                    data: commentJSON,
+
+
+                    success: function(data) {
+                        console.log(data)
+
+                        var dataJ = data.substr(1,15)
+                        var numb = dataJ.match(/\d/g);
+                        var comment_id = numb.join("");
+
+                        console.log("id is "+comment_id);
+                        commentJSON.id =comment_id
+
+                        //    success(data);
+                    },
+                    error: error
+                })
                 setTimeout(function() {
-                    success(saveComment(data));
+                    success(saveComment(commentJSON));
                 }, 500);
             },
+
             deleteComment: function(data, success, error) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'deleteComment',
+                    data: data,
+                    success: function(){
+                       alert("The comment has been Deleted")
+                    }
+                })
                 setTimeout(function() {
                     success();
                 }, 500);
             },
             upvoteComment: function(data, success, error) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'upvote',
+                    data: data,
+                    success: function(){
+                        alert("The comment has been upvoted")
+                    }
+                })
+
                 setTimeout(function() {
                     success(data);
                 }, 500);
@@ -169,3 +191,10 @@ called based on the result from the server. The success callback takes the creat
         });
     });
 </script>
+<!--Activate this later to suppress warnings and bullshit errors-->
+<!--<script type="text/javascript">
+    window.onerror = function(message, url, lineNumber) {
+
+        return true; // prevents browser error messages
+    };
+</script>-->

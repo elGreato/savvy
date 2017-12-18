@@ -112,9 +112,33 @@ Router::route_auth("POST", "/register", $authFunction, function () {
    StudentController::register();
 
 });
-Router::route_auth("POST", "/CommentController", $authFunction, function () {
+Router::route_auth("POST", "/saveComment", $authFunction, function () {
     if (AuthController::authenticate())
     CommentController::saveComment();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route_auth("POST", "/editComment", $authFunction, function () {
+    if (AuthController::authenticate())
+        CommentController::editComment();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route_auth("GET", "/deleteComment", $authFunction, function () {
+    if (AuthController::authenticate())
+        CommentController::deleteComment();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route_auth("GET", "/upvote", $authFunction, function () {
+    if (AuthController::authenticate())
+        CommentController::upvote();
     else{
         Router::redirect("/login");
     }
