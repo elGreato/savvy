@@ -27,7 +27,7 @@
 </head>
 
 
-<div class="footer-dark" style="background-color:rgba(8,8,8,0.51);margin-top:25%;">
+<div class="footer-dark">
         <footer>
             <div class="container">
                 <div class="row">

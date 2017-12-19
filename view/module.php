@@ -41,7 +41,9 @@ foreach ($comArray as $comment) {
     $com->created_by_admin = false;
     $com->created_by_current_user = $comment->getIsFromUser();
     $com->upvote_count = $comment->getVoteResult();
-    $com->has_upvoted = false;
+    //check if user has like this comment
+
+    $com->has_upvoted = $comment->hasLiked();
     $com->is_new = $comment->isNew();
 
     $arrayOfArrays[] = $com;
@@ -175,7 +177,7 @@ called based on the result from the server. The success callback takes the creat
                     url: 'upvote',
                     data: commentJSON,
                     success: function(data){
-                        console.log(commentJSON);
+                        console.log(data);
                         alert("The comment has been upvoted")
                     }
                 })
