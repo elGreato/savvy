@@ -29,61 +29,64 @@ require_once "headerLoggedIn.php";
     <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/stylesModulesOverview.css">
+    <link rel="stylesheet" href="assets/css/mainPage.css">
 
 </head>
 
-<body>
+
 
     <div id="content">
         <div class="page-header" style="width:800px;">
             <h1>Modules List<small> FHNW </small></h1></div>
-        <div style="margin-top:10px;width:100%;max-width:800px;min-width:200px;border:2px solid lightgrey;padding-left:0px;padding-bottom:0px;">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th class="tableheader numberColumn" style="width:20px;">ID</th>
-                    <th class="tableheader" style="max-width:none;">Name </th>
-                    <th class="tableheader numberColumn" style="width:80px;">ECTS </th>
-                    <th class="tableheader numberColumn" style="width:80px;">Inscript. </th>
-                    <th class="tableheader" style="width:40px;"> </th>
-                    <th class="tableheader" style="width:40px;"> </th>
-                    <th class="tableheader" style="width:40px;"> </th>
-                </tr>
-                </thead>
-                <tbody>
+
+
+
                 <?php
                 foreach ($this->modules as $module):?>
-                <tr>
-                    <td class="numberColumn"><?php echo $module->getId()?></td>
-                    <td style="font-weight:bold;"><?php echo $module->getName()?></td>
-                    <td class="numberColumn"><?php echo $module->getNumCredits()?></td>
-                    <td class="numberColumn"><?php echo $module->getInscriptions()?> </td>
-                    <td style="color:rgb(100,0,0);">
-                        <a class="btn btn-default openButton" type="button" id="opnModuleBtn" href=" <?php echo $GLOBALS["ROOT_URL"]. "/module?id=".$module->getId(); ?> "> <i class="glyphicon glyphicon-search searchButton"></i></a>
-                    </td>
+                <div class="columns">
+                    <div class="price">
+                        <li class="header" style="font-weight:bold;"><?php echo $module->getName()?></li>
+                        <li class="grey"><?php echo $module->getId()?></li>
 
-                    <td>
-                        <?php if ($this->studentid == $module->getEditorid()):?>
-                        <a class="btn btn-default editButton" type="button" href="<?php echo $GLOBALS["ROOT_URL"]. "/main/editmodule?id=".$module->getId();?>"> <i class="glyphicon glyphicon-pencil"></i></a>
-                        <?php endif; ?>
-                        </td>
-                    <td>
-                        <?php  if ($this->studentid == $module->getEditorid()):?>
-                        <button class="btn btn-default deleteButton" type="button" onclick="deleteModule(<?php echo $module->getId();?>)"> <i class="glyphicon glyphicon-trash"></i></button>
-                        <?php endif; ?>
-                    </td>
 
-                </tr>
+                        <li ><strong>credits: <?php echo $module->getNumCredits()?></strong></li>
+                        <li class="numberColumn">number of students inscribed: <strong><?php echo $module->getInscriptions()?></strong> </li>
+                        <li >
+                            <a class="button" type="button" id="opnModuleBtn" href=" <?php echo $GLOBALS["ROOT_URL"]. "/module?id=".$module->getId(); ?> ">Discuss</a>
+                        </li>
+
+                        <li>
+                            <?php if ($this->studentid == $module->getEditorid()):?>
+                            <a class="button" type="button" style=" background-color: cornflowerblue" href="<?php echo $GLOBALS["ROOT_URL"]. "/main/editmodule?id=".$module->getId();?>"> <i class="glyphicon glyphicon-pencil"></i></a>
+                            <?php
+                            else:?>
+                                <a class="button" disabled style=" background-color: grey"> <i class="glyphicon glyphicon-pencil"></i></a>
+                            <?php
+                            endif; ?>
+                            </li>
+
+                        <li>
+                            <?php  if ($this->studentid == $module->getEditorid()):?>
+                            <button class="button" style=" background-color: red" type="button" onclick="deleteModule(<?php echo $module->getId();?>)"> <i class="glyphicon glyphicon-trash"></i></button>
+                                <?php
+                            else:?>
+                                <a class="button" disabled style=" background-color: grey"> <i class="glyphicon glyphicon-trash"></i></a>
+
+                            <?php endif; ?>
+                        </li>
+                    </div>
+                </div>
                 <?php  endforeach;?>
 
-                </tbody>
-            </table>
+
+
 
         </div>
 
         <button onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  class="btn btn-default addButton" type="button" style="margin-top: 10px"><a href="/main/addmodule">Add Module</a></button>
 
     </div>
+
     <script type="text/javascript">
         function deleteModule(id) {
             if(confirm("Do you really want to delete this module?"))

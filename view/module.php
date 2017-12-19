@@ -175,7 +175,7 @@ called based on the result from the server. The success callback takes the creat
                     url: 'upvote',
                     data: commentJSON,
                     success: function(data){
-                        console.log(data);
+                        console.log(commentJSON);
                         alert("The comment has been upvoted")
                     }
                 })

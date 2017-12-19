@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Features-Blue.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
+
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Projects-Horizontal.css">
     <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
@@ -27,13 +27,13 @@
 </head>
 
 
-<div class="footer-dark" style="background-color:rgba(8,8,8,0.51);margin-top:13%;">
+<div class="footer-dark" style="background-color:rgba(8,8,8,0.51);margin-top:25%;">
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-push-6 item text">
                         <h3>Savvy </h3>
-                        <p>A small paragraph about our vision and bla bla later to add on, Remind me Kevin</p>
+                        <p>Here you can discover all about your classes at FHNW</p>
                     </div>
                     <div class="col-md-3 col-md-pull-6 col-sm-4 item">
                         <h3>Services</h3>
