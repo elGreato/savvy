@@ -116,7 +116,6 @@ class CommentingServiceImpl implements CommentingService {
             $commentVote = new CommentVote();
             $commentVote->setCommentid($id);
             $commentVote->setStudentid($studentid);
-            $commentVote->setVote($isLike);
             $commentVoteDAO->create($commentVote);
 
        // }

@@ -138,20 +138,13 @@ class Comment
         $votecalc = $this->vote;
         if(is_array($votecalc)) {
             foreach ($votecalc as $singleVote) {
-                if ($singleVote->getVote() == 0) {
-                    $result += 1;
-                } else {
-                    $result -= 1;
-                }
+                $result += 1;
+
             }
         }
         elseif(isset($votecalc))
         {
-            if ($votecalc->getVote() == 0) {
-                $result += 1;
-            } else {
-                $result -= 1;
-            }
+            $result += 1;
         }
         else
         {

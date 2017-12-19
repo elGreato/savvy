@@ -12,7 +12,6 @@ namespace domain;
 class Commentvote
 {
     private $studentid;
-    private $vote;
     private $commentid;
     /**
      * @return mixed
@@ -46,19 +45,4 @@ class Commentvote
         $this->commentid = $commentid;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVote()
-    {
-        return $this->vote;
-    }
-
-    /**
-     * @param mixed $vote
-     */
-    public function setVote($vote)
-    {
-        $this->vote = $vote;
-    }
 }
