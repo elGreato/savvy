@@ -103,13 +103,9 @@ class CommentingServiceImpl implements CommentingService {
 	/**
 	 * @access public
 	 * @param int id
-     * @param boolean isLike
-	 * @return Comment
 	 * @ParamType id int
-     * @ParamType isLike boolean
-	 * @ReturnType Comment
 	 */
-	public function voteOnComment(&$id, &$isLike) {
+	public function voteOnComment(&$id) {
       //  if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $commentVoteDAO = new CommentVoteDAO();
             $studentid = StudentServiceImpl::getInstance()->getCurrentStudentId();
@@ -120,5 +116,18 @@ class CommentingServiceImpl implements CommentingService {
 
        // }
 	}
+    /**
+     * @access public
+     * @param int id
+     * @ParamType id int
+     */
+    public function deleteVote(&$id) {
+        //  if(StudentServiceImpl::getInstance()->verifyAuth()) {
+        $commentVoteDAO = new CommentVoteDAO();
+        $studentid = StudentServiceImpl::getInstance()->getCurrentStudentId();
+        $commentVoteDAO->delete($id,$studentid);
+
+        // }
+    }
 }
 ?>

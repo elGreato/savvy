@@ -48,11 +48,15 @@ interface CommentingService {
      * @access public
      * @param int id
      * @param boolean isLike
-     * @return Comment
      * @ParamType id int
-     * @ParamType isLike boolean
-     * @ReturnType Comment
 	 */
-	public function voteOnComment(&$id, &$isLike);
+	public function voteOnComment(&$id);
+    /**
+     * @access public
+     * @param int id
+     * @param boolean isLike
+     * @ParamType id int
+     */
+	public function deleteVote(&$id);
 }
 ?>
