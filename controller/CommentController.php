@@ -88,8 +88,9 @@ class CommentController
         $commentDAO->delete($_GET['id']);
     }
     public static function upvote(){
-        $upvoted = true;
+        $upvoted = $_GET['user_has_upvoted'];
         $commentSer = new CommentingServiceImpl();
+        echo "the comment that was voted is: "+$_GET['id']+" and its content is : "+$_GET['content'];
         $commentSer->voteOnComment($_GET['id'],$upvoted);
     }
 }

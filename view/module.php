@@ -169,12 +169,13 @@ called based on the result from the server. The success callback takes the creat
                     success();
                 }, 500);
             },
-            upvoteComment: function(data, success, error) {
+            upvoteComment: function(commentJSON, success, error) {
                 $.ajax({
                     type: 'GET',
                     url: 'upvote',
-                    data: data,
-                    success: function(){
+                    data: commentJSON,
+                    success: function(data){
+                        console.log(data);
                         alert("The comment has been upvoted")
                     }
                 })
