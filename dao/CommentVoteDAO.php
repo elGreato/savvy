@@ -17,7 +17,7 @@ class CommentVoteDAO extends BasicDAO
           (studentid,commentid) VALUES 
           (:studentid,:commentid);');
         $stmt->bindValue(':studentid',$commentlike->getStudentID());
-        $stmt->bindValue(':commentid',$commentlike->getSelector());
+        $stmt->bindValue(':commentid',$commentlike->getCommentid());
         $stmt->execute();
     }
     public function readCommentLikes($commentID)
