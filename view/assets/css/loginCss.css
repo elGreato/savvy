@@ -55,7 +55,7 @@
 .form .register-form {
     display: none;
 }
-.container {
+#containerLogin {
     position: relative;
     z-index: 1;
     max-width: 300px;

@@ -28,7 +28,7 @@
 
 <nav class="navbar navbar-default" style="height:90px;">
         <div class="container-fluid">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#" style="font-size:48px;height:55px;margin:-10px;padding:5px;"><strong><em>Savvy</em> </strong></a>
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="<?php echo $GLOBALS["ROOT_URL"]; ?>" style="font-size:48px;height:40px;margin:-10px;padding:5px;"><strong><em>Savvy</em> </strong></a>
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">

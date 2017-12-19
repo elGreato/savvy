@@ -40,13 +40,14 @@ require_once "headerLoggedIn.php";
             <h1>Modules List<small> FHNW </small></h1></div>
 
 
-
+                <form action="#" method="post">
                 <?php
+
                 foreach ($this->modules as $module):?>
                 <div class="columns">
                     <div class="price">
                         <li class="header" style="font-weight:bold;"><?php echo $module->getName()?></li>
-                        <li class="grey"><?php echo $module->getId()?></li>
+                        <li class="grey"> <input type="checkbox" name="<?php echo $module->getId()?>">Add this module to my list</li>
 
 
                         <li ><strong>credits: <?php echo $module->getNumCredits()?></strong></li>
@@ -77,15 +78,19 @@ require_once "headerLoggedIn.php";
                     </div>
                 </div>
                 <?php  endforeach;?>
+                </form>
 
 
 
 
         </div>
-
-        <button onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  class="btn btn-default addButton" type="button" style="margin-top: 10px"><a href="/main/addmodule">Add Module</a></button>
-
-    </div>
+        <div>
+         <a onclick=""  id="but2" ><span>Add Selected Modules </span></a>
+        </div>
+        <div>
+        <a onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  id="but"><span>Add New Module</span></a>
+        </div>
+        </div>
 
     <script type="text/javascript">
         function deleteModule(id) {

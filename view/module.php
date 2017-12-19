@@ -43,7 +43,7 @@ foreach ($comArray as $comment) {
     $com->upvote_count = $comment->getVoteResult();
     //check if user has like this comment
 
-    $com->has_upvoted = $comment->hasLiked();
+    $com->user_has_upvoted = $comment->hasLiked();
     $com->is_new = $comment->isNew();
 
     $arrayOfArrays[] = $com;
@@ -92,6 +92,7 @@ $myJson = json_encode($arrayOfArrays);
 
                     var ar =<?php print $myJson ?>;
                     success(ar);
+                    console.log(ar.user_has_upvoted)
 
 
                 }, 500);
