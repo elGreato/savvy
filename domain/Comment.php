@@ -9,6 +9,8 @@
 namespace domain;
 
 
+use services\StudentServiceImpl;
+
 class Comment
 {
     private $id;
@@ -137,10 +139,7 @@ class Comment
         $result = 0;
         $votecalc = $this->vote;
         if(is_array($votecalc)) {
-            foreach ($votecalc as $singleVote) {
-                $result += 1;
-
-            }
+            $result = sizeof($votecalc);
         }
         elseif(isset($votecalc))
         {
@@ -198,6 +197,27 @@ class Comment
     public function setIsFromUser($isFromUser)
     {
         $this->isFromUser = $isFromUser;
+    }
+    public function hasLiked(){
+        if(is_array($this->vote))
+        {
+            foreach ($this->vote as $singlevote)
+            {
+                if($singlevote->getStudentid()==StudentServiceImpl::getInstance()->getCurrentStudentId())
+                {
+                    return true;
+                }
+            }
+
+        }
+        elseif(isset($this->vote))
+        {
+            if($this->vote->getStudentid()==StudentServiceImpl::getInstance()->getCurrentStudentId())
+            {
+                return true;
+            }
+        }
+       return false;
     }
     public function isNew()
     {
