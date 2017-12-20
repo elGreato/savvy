@@ -49,7 +49,7 @@ class ModuleDAO extends BasicDAO
     }
     public function readAll()
     {
-        $stmt=$this->pdoInstance->prepare('SELECT module.*, COUNT(inscription.studentid) as inscriptions FROM module left outer join inscription on inscription.moduleid = module.id GROUP BY module.id ORDER BY module.id');
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM module ORDER BY module.id');
         $stmt->execute();
         $modules = $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
         return $modules;
@@ -57,7 +57,7 @@ class ModuleDAO extends BasicDAO
     }
     public function readInscribedModules($studentid)
     {
-        $stmt=$this->pdoInstance->prepare('SELECT module.* FROM inscription JOIN module on inscription.moduleid = module.id WHERE studentid = :studentid;');
+        $stmt=$this->pdoInstance->prepare('SELECT * FROM inscription INNER JOIN module on inscription.moduleid = module.id WHERE studentid = :studentid;');
         $stmt->bindValue(':student',$studentid);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Inscription");

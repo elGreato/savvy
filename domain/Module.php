@@ -9,6 +9,8 @@
 namespace domain;
 
 
+use services\StudentServiceImpl;
+
 class Module
 {
     private $id;
@@ -112,6 +114,21 @@ class Module
     public function setEditorid($editorid)
     {
         $this->editorid = $editorid;
+    }
+    public function isInscribed()
+    {
+        foreach ($this->inscriptions as $inscription)
+        {
+            if($inscription->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public function countInscriptions()
+    {
+        return sizeof($this->inscriptions);
     }
 
 }

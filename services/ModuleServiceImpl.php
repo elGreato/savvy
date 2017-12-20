@@ -1,6 +1,7 @@
 <?php
 namespace services;
 require_once(realpath(dirname(__FILE__)) . '/ModuleService.php');
+use dao\InscriptionDAO;
 use dao\ModuleDAO;
 use domain\Module;
 /**
@@ -67,7 +68,13 @@ class ModuleServiceImpl implements ModuleService {
 	public function readAllModules() {
        // if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
-            return $moduleDAO->readAll();
+            $modules = $moduleDAO->readAll();
+            foreach ($modules as $module)
+            {
+                $inscriptionDAO = new InscriptionDAO();
+                $module->setInscriptions($inscriptionDAO->readInscriptionsByModule($module->getId()));
+            }
+            return $modules;
        // }
 	}
 
