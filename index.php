@@ -72,7 +72,7 @@ Router::route_auth("GET", "/myprofile", $authFunction, function () {
     }
 
 });
-Router::route_auth("GET", "/pdfContent", $authFunction, function () {
+Router::route_auth("POST", "/pdfContent", $authFunction, function () {
     if(AuthController::authenticate())
     {
         PdfController::startPdf();

@@ -16,10 +16,12 @@ require_once "headerLoggedIn.php";
 <div>
 <?php
 $credit=0;
+
 foreach ($this->selected as $r):?>
 <span id="but" style="color: #000; display: inline-block; font-size: 30px">
     <?php
-echo $this->modService->readModule($r)->getName();?>
+echo $this->modService->readModule($r)->getName();
+     ?>
     <h4>amount of credits : </h4>
     <?php
 
@@ -37,7 +39,11 @@ endforeach;
 
 </div>
 <span id="but2"> total amount of credits registered are : <?php echo $credit?></span>
-<a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/pdfContent"> get pdf</a>
+<form method="post" action="<?php echo $GLOBALS["ROOT_URL"]; ?>/pdfContent" id="pdfForm">
+
+   <input name="mymods" type="hidden" value="<?php echo  base64_encode(serialize($this->selected)) ?>">
+<input type="submit" value="PDF">
+</form>
 </body>
 
 
