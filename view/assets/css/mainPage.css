@@ -4,18 +4,20 @@
 
 .columns {
     float: left;
-    width: 33.33%;
-    padding: 8px;
-    height: 55%;
+    width: 32%;
+    margin: 5px;
+    display: inline-block;
+  
 }
 
 .price {
     list-style-type: none;
     border: 1px solid #eee;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    width: 100%;
     -webkit-transition: 0.3s;
     transition: 0.3s;
+    display: inline-block;
 }
 
 .price:hover {

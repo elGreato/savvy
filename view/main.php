@@ -79,15 +79,11 @@ require_once "headerLoggedIn.php";
                 </div>
                 <?php  endforeach;?>
                 </form>
-
-
-
-
         </div>
-        <div>
+        <div class="btnContain">
          <a onclick=""  id="but2" ><span>Add Selected Modules </span></a>
         </div>
-        <div>
+        <div class="btnContain">
         <a onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  id="but"><span>Add New Module</span></a>
         </div>
         </div>
