@@ -117,10 +117,17 @@ class Module
     }
     public function isInscribed()
     {
-        foreach ($this->inscriptions as $inscription)
+        if(is_array($this->inscriptions))
         {
-            if($inscription->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId())
-            {
+            foreach ($this->inscriptions as $inscription) {
+                if ($inscription->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId()) {
+                    return true;
+                }
+            }
+        }
+        elseif (isset($this->inscriptions))
+        {
+            if ($this->inscriptions->getStudentid() == StudentServiceImpl::getInstance()->getCurrentStudentId()) {
                 return true;
             }
         }
