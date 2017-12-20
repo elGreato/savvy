@@ -30,7 +30,7 @@ class InscriptionDAO extends BasicDAO
     public function readInscriptionsByModule($moduleid)
     {
         $stmt=$this->pdoInstance->prepare('SELECT * FROM inscription WHERE moduleid = :moduleid;');
-        $stmt->bindValue(':module',$moduleid);
+        $stmt->bindValue(':moduleid',$moduleid);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Inscription");
 
