@@ -6,7 +6,7 @@
  * Time: 11:15 AM
  */
 require_once "headerLoggedIn.php";
-require_once "util/fpdf.php";
+
 ?>
 <head>
 <link rel="stylesheet" href="assets/css/mainPage.css">
@@ -37,16 +37,13 @@ endforeach;
 
 </div>
 <span id="but2"> total amount of credits registered are : <?php echo $credit?></span>
-<button href=""> get pdf</button>
+<button href="<?php echo $GLOBALS["ROOT_URL"]; ?>/main/pdfContent"> get pdf</button>
 </body>
 
 
 
 <?php
-$pdf = new FPDF();
-//var_dump(get_class_methods($pdf));
-$pdf->AddPage();
-$pdf->Output();
+
 
 require_once ("footer.php");
 ?>

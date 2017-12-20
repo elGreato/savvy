@@ -50,7 +50,7 @@ require_once "headerLoggedIn.php";
 
 
                         <li ><strong>credits: <?php echo $module->getNumCredits()?></strong></li>
-                        <li class="numberColumn">number of students inscribed: <strong><?php echo $module->getInscriptions()?></strong> </li>
+                        <li class="numberColumn">number of students inscribed: <strong><?php echo $module->countInscriptions()?></strong> </li>
                         <li >
                             <a class="button" type="button" id="opnModuleBtn" href=" <?php echo $GLOBALS["ROOT_URL"]. "/module?id=".$module->getId(); ?> ">Discuss</a>
                         </li>
