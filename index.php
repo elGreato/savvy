@@ -8,6 +8,7 @@ use controller\AuthController;
 use controller\ModuleController;
 use controller\ContactUsController;
 use controller\ModelContentController;
+use controller\MyModulesController;
 use view\TemplateView;
 use controller\CommentController;
 session_start();
@@ -123,6 +124,14 @@ Router::route_auth("POST", "/saveComment", $authFunction, function () {
 Router::route_auth("POST", "/editComment", $authFunction, function () {
     if (AuthController::authenticate())
         CommentController::editComment();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route_auth("POST", "/myModules", $authFunction, function () {
+    if (AuthController::authenticate())
+        myModulesController::handleSelectedModules();
     else{
         Router::redirect("/login");
     }

@@ -23,7 +23,6 @@ require_once "headerLoggedIn.php";
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Features-Blue.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Projects-Horizontal.css">
     <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
@@ -34,20 +33,20 @@ require_once "headerLoggedIn.php";
 </head>
 
 
-
+<form action="<?php echo $GLOBALS["ROOT_URL"]; ?>/myModules" method="post" id="modForm">
     <div id="content">
         <div class="page-header" style="width:800px;">
             <h1>Modules List<small> FHNW </small></h1></div>
 
 
-                <form action="#" method="post">
+
                 <?php
 
                 foreach ($this->modules as $module):?>
                 <div class="columns">
                     <div class="price">
                         <li class="header" style="font-weight:bold;"><?php echo $module->getName()?></li>
-                        <li class="grey"> <input type="checkbox" name="<?php echo $module->getId()?>">Add this module to my list</li>
+                        <li class="grey"> <input type="checkbox" name="modID[]" value="<?php echo $module->getId()?>">Add this module to my list</li>
 
 
                         <li ><strong>credits: <?php echo $module->getNumCredits()?></strong></li>
@@ -78,11 +77,13 @@ require_once "headerLoggedIn.php";
                     </div>
                 </div>
                 <?php  endforeach;?>
-                </form>
+
         </div>
         <div class="btnContain">
-         <a onclick=""  id="but2" ><span>Add Selected Modules </span></a>
+         <input type="submit" id="but2" value="Add Selected Modules"></a>
         </div>
+    <!--<input type="submit" value="Submit">-->
+        </form>
         <div class="btnContain">
         <a onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  id="but"><span>Add New Module</span></a>
         </div>

@@ -7,7 +7,7 @@
     width: 32%;
     margin: 5px;
     display: inline-block;
-  
+
 }
 
 .price {
@@ -60,7 +60,7 @@ body {
     text-align: center;
 }
 
-#but ,#but2  {
+#but  {
     display: inline-block;
     margin: 10px;
     -webkit-border-radius: 8px;
@@ -99,34 +99,26 @@ body {
     -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
     transition: background-color .2s ease-in-out, transform .1s ease-in-out;
 }
-#but2 span  {
-    display: inline-block;
-    padding: 20px 30px;
-    background-color: #ec971f;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(338, 90%, 80%, .8)), to(hsla(338, 90%, 70%, .2)));
-    background-image: -webkit-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    background-image: -moz-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    background-image: -o-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    font-family: 'Pacifico', Arial, sans-serif;
-    line-height: 1;
-    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
-    -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
-    -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
-    -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
-    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+#but2 {
+    display:inline;
+    alignment: center;
+    align-self: center;
+    border: 2px solid #f5f5f5;
+    border-radius: 30%;
+    color:#f5f5f5;
+    text-align:center;
+    text-decoration:none;
+    background: #464646;
+    box-shadow: 0 0 3px gray;
+    font-size:50px;
+    font-weight:bold;
 }
 
 #but:hover span  {
     background-color: #2b55ff;
     text-shadow: 0 -1px 1px rgba(175, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
 }
-#but2:hover span {
+#but2:hover {
      background-color: #76b852;
      text-shadow: 0 -1px 1px rgba(175, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
  }
