@@ -9,6 +9,7 @@ use controller\ModuleController;
 use controller\ContactUsController;
 use controller\ModelContentController;
 use controller\MyModulesController;
+use controller\PdfController;
 use view\TemplateView;
 use controller\CommentController;
 session_start();
@@ -65,6 +66,16 @@ Router::route_auth("GET", "/myprofile", $authFunction, function () {
     if(AuthController::authenticate())
     {
         StudentController::showMyProfile();
+    }
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route_auth("GET", "/pdfContent", $authFunction, function () {
+    if(AuthController::authenticate())
+    {
+        PdfController::startPdf();
     }
     else{
         Router::redirect("/login");

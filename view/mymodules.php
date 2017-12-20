@@ -37,7 +37,7 @@ endforeach;
 
 </div>
 <span id="but2"> total amount of credits registered are : <?php echo $credit?></span>
-<button href="<?php echo $GLOBALS["ROOT_URL"]; ?>/main/pdfContent"> get pdf</button>
+<a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/pdfContent"> get pdf</a>
 </body>
 
 
