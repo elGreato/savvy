@@ -123,7 +123,7 @@ class StudentServiceImpl implements StudentService {
                 if (hash_equals(hash('sha384', hex2bin($tokenArray[1])), $authToken->getValidator())) {
                     $this->currentStudentId = $authToken->getStudentid();
                     if($authToken->getType()===self::RESET_TOKEN){
-                        $authTokenDAO->delete($authToken);
+                        $authTokenDAO->delete($authToken->getId());
                     }
                     return true;
                 }

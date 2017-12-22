@@ -90,12 +90,16 @@ class StudentController
        if($student == null)
        {
            $view = new TemplateView("view/passwordreset.php");
-           $view->errormsg = "Email not found";
+           $view->msg = "Email not found";
+           $view->iserror = "true";
            echo $view->createView();
        }
        else{
            if(EmailService::passwordReset($student)){
-             Router::redirect("/passwordreset/successful");
+               $view = new TemplateView("view/passwordreset.php");
+               $view->msg = "Request Sent";
+               $view->iserror = "false";
+               echo $view->createView();
            }
            else{
                echo"not successful";
@@ -116,14 +120,14 @@ class StudentController
     {
         if(StudentServiceImpl::getInstance()->validateToken($_POST["token"])) {
             $studentValidator = new StudentValidator();
-            $student = new Student();
+            $studentService = StudentServiceImpl::getInstance();
+            $student = $studentService->readStudent();
             $student->setPassword($_POST["password"]);
             $studentValidator->validate($student);
             if ($_POST["password"] == $_POST["repeatpassword"] && $studentValidator->getPasswordError() == null) {
-                $studentService = StudentServiceImpl::getInstance();
+                $student->setPassword(password_hash($_POST["password"], PASSWORD_DEFAULT));
                 $studentService->updateStudent($student);
-                $view = new TemplateView("view/login.php");
-                echo $view->createView();
+                Router::redirect("/login");
             } elseif ($_POST["password"] == $_POST["repeatpassword"]) {
                 $view = new TemplateView("view/newpassword.php");
                 $view->errormsg = "The passwords do not match";

@@ -11,11 +11,28 @@ namespace domain;
 
 class Authtoken
 {
+    private $id;
     private $studentid;
     private $selector;
     private $validator;
     private $expiration;
     private $type;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     /**
      * @return mixed
      */

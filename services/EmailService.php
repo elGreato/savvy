@@ -18,7 +18,7 @@ class EmailService
         $token = StudentServiceImpl::getInstance()->issueToken(StudentServiceImpl::RESET_TOKEN, $_POST["email"]);
         $mail = self::createEmail();
         $mail->personalizations[0]->to[0]->email = $student->getEmail();
-        $mail->content[0]->value = "<p>Dear savvy user</p><br><p>Click this link to get your new password: </p><br><p>".$GLOBALS["ROOT_URL"] . "/password/reset?token=" . $token."</p>";
+        $mail->content[0]->value = "<p>Dear savvy user</p><br><p>Click this link to get your new password: </p><br><a href='".$_SERVER['HTTP_HOST'].$GLOBALS["ROOT_URL"] . "/passwordreset/reset?token=" . $token."'>Reset link</a>";
         $options = ["http" => [
             "method" => "POST",
             "header" => ["Content-Type: application/json",
@@ -30,6 +30,7 @@ class EmailService
         if(strpos($http_response_header[0],"202"))
             return true;
         return false;
+
     }
     private static function createEmail()
     {
@@ -44,10 +45,10 @@ class EmailService
             }
           ],
           "from": {
-            "email": "noreply@fhnw.ch",
-            "name": "WE-CRM"
+            "email": "noreply@savvy.ch",
+            "name": "Savvy"
           },
-          "subject": "subject",
+          "subject": "Savvy - Password reset",
           "content": [
             {
               "type": "text/html",

@@ -20,8 +20,8 @@ require_once "header.php";
     <h1>Reset Password</h1>
         <form method="post" class="login-form">
             <input type="text" name="email" placeholder="email">
-            <?php if (isset($this->errormsg)): ?>
-                <p class="message" style="color: red"><?php echo $this->errormsg ?></p>
+            <?php if (isset($this->msg)): ?>
+                <p class="message" style="color: <?php if(isset($this->error)&&$this->iserror){echo "red";}else{echo "green";}?>"><?php echo $this->msg ?></p>
             <?php endif ?>
             <button type="submit">Send request</button>
 
