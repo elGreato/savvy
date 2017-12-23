@@ -12,6 +12,8 @@ use controller\MyModulesController;
 use controller\PdfController;
 use view\TemplateView;
 use controller\CommentController;
+use controller\ErrorController;
+use http\HTTPException;
 session_start();
 require_once("config/Autoloader.php");
 /*require_once 'view/welcome.php';

@@ -6,7 +6,8 @@
  * Time: 9:19 PM
  */
 namespace router;
-
+use http\HTTPException;
+use http\HTTPStatusCode;
 class Router
 {
     protected static $routes = [];
@@ -41,7 +42,7 @@ class Router
             }
         }
         if(!array_key_exists($method, self::$routes) || !array_key_exists($path, self::$routes[$method])) {
-            //throw new HTTPException(HTTPStatusCode::HTTP_404_NOT_FOUND);
+            throw new HTTPException(HTTPStatusCode::HTTP_404_NOT_FOUND);
 
         }
 
