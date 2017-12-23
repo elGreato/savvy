@@ -24,22 +24,21 @@ class StudentController
         $student->setPassword($_POST["password"]);
         $student->setEmail($_POST["email"]);
         $studentVal = new StudentValidator($student);
-        if($studentVal->getNameError() == 'Oops! you didnt Enter a name')
+        if(!$studentVal->isValid())
         {
+            $nameError = $studentVal->getNameError();
+            $emailError  = $studentVal->getEmailError();
+            $passError = $studentVal->getPasswordError();
             $view = new TemplateView("view/register.php");
-            $view->usernameMsg = 'Oops! you didnt Enter a name';
-            echo $view->createView();
-        }
-        else if($studentVal->getEmailError() == 'You have forgot to enter an email address')
-        {
-            $view = new TemplateView("view/register.php");
-            $view->emailMsg = 'You have forgot to enter an email address';
-            echo $view->createView();
-        }
-        else if($studentVal->getPasswordError() == 'Please enter a password')
-        {
-            $view = new TemplateView("view/register.php");
-            $view->passwordMsg = 'Please enter a password';
+            if(isset($nameError)){
+                $view->usernameMsg = $nameError;
+            }
+            elseif (isset($emailError)){
+                $view->emailmsg = $emailError;
+            }
+            elseif (isset($passError)){
+                $view->passwordMsg = $passError;
+            }
             echo $view->createView();
         }
         else if ($_POST["password"]!=$_POST["password-repeat"])
@@ -125,8 +124,7 @@ class StudentController
             $student->setPassword($_POST["password"]);
             $studentValidator->validate($student);
             if ($_POST["password"] == $_POST["repeatpassword"] && $studentValidator->getPasswordError() == null) {
-                $student->setPassword(password_hash($_POST["password"], PASSWORD_DEFAULT));
-                $studentService->updateStudent($student);
+                $studentService->resetPassword($student);
                 Router::redirect("/login");
             } elseif ($_POST["password"] == $_POST["repeatpassword"]) {
                 $view = new TemplateView("view/newpassword.php");

@@ -26,6 +26,11 @@ class StudentValidator
                 $this->nameError = 'Oops! you didnt Enter a name';
                 $this->valid = false;
             }
+            else if (!ctype_alnum($student->getUsername()))
+            {
+                $this->nameError = 'Only numbers and letters are allowed in the username';
+                $this->valid = false;
+            }
             if (empty($student->getEmail())) {
                 $this->emailError = 'You have forgot to enter an email address';
                 $this->valid = false;

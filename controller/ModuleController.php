@@ -53,9 +53,9 @@ class ModuleController
     public static function addModule()
     {
         $module = new Module();
-        $module->setName($_POST["module_name"]);
-        $module->setDescription($_POST["module_description"]);
-        $module->setNumcredits($_POST["num_credits"]);
+        $module->setName(htmlspecialchars($_POST["module_name"]));
+        $module->setDescription(htmlspecialchars($_POST["module_description"]));
+        $module->setNumcredits(htmlspecialchars($_POST["num_credits"]));
         $editorid = StudentServiceImpl::getInstance()->getCurrentStudentId();
         $module->setEditorid($editorid);
         $moduleServiceImpl = new ModuleServiceImpl();

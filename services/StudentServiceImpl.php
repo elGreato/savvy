@@ -237,5 +237,10 @@ class StudentServiceImpl implements StudentService {
             return false;
         }
     }
+    public function resetPassword(Student $student)
+    {
+        $student->setPassword(password_hash($_POST["password"], PASSWORD_DEFAULT));
+        $this->updateStudent($student);
+    }
 }
 ?>
