@@ -9,6 +9,7 @@
 namespace controller;
 use view\TemplateView;
 use services\ModuleServiceImpl;
+use services\ModuleSelectionServiceImpl;
 
 class MyModulesController
 {
@@ -16,9 +17,10 @@ class MyModulesController
     {
 
         $conView = new TemplateView("view/mymodules.php");
-
+        //this is just for view
         $conView->modService = new ModuleServiceImpl();
-
+        //this is for the DB
+        $conView->modSelectService = new ModuleSelectionServiceImpl();
 
         $conView->selected = $_POST['modID'];
 
@@ -29,4 +31,5 @@ class MyModulesController
         echo $conView->createView();
 
     }
+    //add a method for myTopics
 }

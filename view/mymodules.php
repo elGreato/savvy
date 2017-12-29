@@ -20,7 +20,10 @@ $credit=0;
 foreach ($this->selected as $r):?>
 <span id="but" style="color: #000; display: inline-block; font-size: 30px">
     <?php
-echo $this->modService->readModule($r)->getName();
+    // this is to show the mods to the user
+    echo $this->modService->readModule($r)->getName();
+    //here add the mods to DB
+    $this->modSelectService->selectModule($r);
      ?>
     <h4>amount of credits : </h4>
     <?php
