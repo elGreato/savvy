@@ -51,9 +51,9 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
 	 */
 	public function showSelectedModules() {
         if(StudentServiceImpl::getInstance()->verifyAuth()) {
-            //$studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
+            $studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
             $moduleDAO = new ModuleDAO();
-            $modules = $moduleDAO->readInscribedModules(7);
+            $modules = $moduleDAO->readInscribedModules($studentId);
             foreach ($modules as $module)
             {
                 $inscriptionDAO = new InscriptionDAO();
