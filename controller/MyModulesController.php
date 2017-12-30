@@ -34,6 +34,9 @@ class MyModulesController
     //add a method for myTopics
     public static function showMyModules()
     {
-
+        $conView = new TemplateView("view/allmymodules.php");
+        $conView->modSelectService = new ModuleSelectionServiceImpl();
+        $conView->modService = new ModuleServiceImpl();
+        $conView->allmods = $conView->modSelectService->showSelectedModules();
     }
 }

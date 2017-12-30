@@ -6,7 +6,7 @@ use dao\ModuleDAO;
 use domain\Module;
 /**
  * @access public
- * @author Kevin
+ * @author Kevin + Ali
  */
 class ModuleServiceImpl implements ModuleService {
 
@@ -92,5 +92,8 @@ class ModuleServiceImpl implements ModuleService {
             $moduleDAO->update($module);
         }
 	}
+	public function getModId(Module $mod){
+	    return $mod->getId();
+    }
 }
 ?>

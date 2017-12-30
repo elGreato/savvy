@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active" role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/main"><strong>All topics</strong></a></li>
-                    <li class="active" role="presentation"><a href="#"><strong>My Topics</strong></a></li>
+                    <li class="active" role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/mymodules"><strong>My Topics</strong></a></li>
                     <li class="active" role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/myprofile"><strong>My Profile</strong></a></li>
                     <li class="active" role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/logout"><strong>Logout</strong></a></li>
                 </ul>
