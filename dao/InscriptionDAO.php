@@ -37,7 +37,7 @@ class InscriptionDAO extends BasicDAO
     }
     public function delete($moduleid,$studentID)
     {
-        $stmt=$this->pdoInstance->prepare('DELETE FROM "inscription" where moduleid = :moduleid AND $studentID = :$studentID');
+        $stmt=$this->pdoInstance->prepare('DELETE FROM "inscription" where moduleid = :moduleid AND studentid = :$studentID');
         $stmt->bindValue(':moduleid', $moduleid);
         $stmt->bindValue(':studentid', $studentID);
         $stmt->execute();

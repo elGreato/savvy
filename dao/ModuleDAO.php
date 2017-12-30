@@ -57,10 +57,10 @@ class ModuleDAO extends BasicDAO
     }
     public function readInscribedModules($studentid)
     {
-        $stmt=$this->pdoInstance->prepare('SELECT * FROM inscription INNER JOIN module on inscription.moduleid = module.id WHERE studentid = :studentid;');
-        $stmt->bindValue(':student',$studentid);
+        $stmt=$this->pdoInstance->prepare('SELECT module.* FROM inscription INNER JOIN module on inscription.moduleid = module.id WHERE studentid = :studentid;');
+        $stmt->bindValue(':studentid',$studentid);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Inscription");
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,"domain\\Module");
     }
     public function delete($moduleID)
     {
