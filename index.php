@@ -74,6 +74,16 @@ Router::route_auth("GET", "/myprofile", $authFunction, function () {
     }
 
 });
+Router::route_auth("GET", "/mymodules", $authFunction, function () {
+    if(AuthController::authenticate())
+    {
+        MyModulesController::showMyModules();
+    }
+    else{
+        Router::redirect("/login");
+    }
+
+});
 Router::route_auth("POST", "/pdfContent", $authFunction, function () {
     if(AuthController::authenticate())
     {

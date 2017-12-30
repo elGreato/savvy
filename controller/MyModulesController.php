@@ -32,4 +32,8 @@ class MyModulesController
 
     }
     //add a method for myTopics
+    public static function showMyModules()
+    {
+
+    }
 }
