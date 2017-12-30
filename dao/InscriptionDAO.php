@@ -16,7 +16,7 @@ class InscriptionDAO extends BasicDAO
           (studentid,moduleid) VALUES 
           (:studentid,:moduleid);');
         $stmt->bindValue(':studentid',$inscription->getStudentID());
-        $stmt->bindValue(':moduleid',$inscription->getSelector());
+        $stmt->bindValue(':moduleid',$inscription->getModuleid());
         $stmt->execute();
     }
     public function readInscriptionsOfStudent($studentid)
