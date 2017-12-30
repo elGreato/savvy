@@ -36,76 +36,90 @@ require_once "headerLoggedIn.php";
 <form action="<?php echo $GLOBALS["ROOT_URL"]; ?>/myModules" method="post" id="modForm">
     <div id="content">
         <div class="page-header" style="width:800px;">
-            <h1>Modules List<small> FHNW </small></h1></div>
+            <h1>Modules List
+                <small> FHNW</small>
+            </h1>
+        </div>
 
+        <div id="allmods">
 
+            <?php
 
-                <?php
-
-                foreach ($this->modules as $module):?>
+            foreach ($this->modules as $module):?>
                 <div class="columns">
                     <div class="price">
-                        <li class="header" style="font-weight:bold;"><?php echo $module->getName()?></li>
-                        <li class="grey"> <input type="checkbox" name="modID[]" value="<?php echo $module->getId()?>">Add this module to my list</li>
+                        <li class="header" style="font-weight:bold;"><?php echo $module->getName() ?></li>
+                        <li class="grey"><input type="checkbox" name="modID[]" value="<?php echo $module->getId() ?>">Add
+                            this module to my list
+                        </li>
 
 
-                        <li ><strong>credits: <?php echo $module->getNumCredits()?></strong></li>
-                        <li class="numberColumn">number of students inscribed: <strong><?php echo $module->countInscriptions()?></strong> </li>
-                        <li >
-                            <a class="button" type="button" id="opnModuleBtn" href=" <?php echo $GLOBALS["ROOT_URL"]. "/module?id=".$module->getId(); ?> ">Discuss</a>
+                        <li><strong>credits: <?php echo $module->getNumCredits() ?></strong></li>
+                        <li class="numberColumn">number of students inscribed:
+                            <strong><?php echo $module->countInscriptions() ?></strong></li>
+                        <li>
+                            <a class="button" type="button" id="opnModuleBtn"
+                               href=" <?php echo $GLOBALS["ROOT_URL"] . "/module?id=" . $module->getId(); ?> ">Discuss</a>
                         </li>
 
                         <li>
-                            <?php if ($this->studentid == $module->getEditorid()):?>
-                            <a class="button" type="button" style=" background-color: cornflowerblue" href="<?php echo $GLOBALS["ROOT_URL"]. "/main/editmodule?id=".$module->getId();?>"> <i class="glyphicon glyphicon-pencil"></i></a>
-                            <?php
-                            else:?>
-                                <a class="button" disabled style=" background-color: grey"> <i class="glyphicon glyphicon-pencil"></i></a>
-                            <?php
-                            endif; ?>
-                            </li>
-
-                        <li>
-                            <?php  if ($this->studentid == $module->getEditorid()):?>
-                            <button class="button" style=" background-color: red" type="button" onclick="deleteModule(<?php echo $module->getId();?>)"> <i class="glyphicon glyphicon-trash"></i></button>
+                            <?php if ($this->studentid == $module->getEditorid()): ?>
+                                <a class="button" type="button" style=" background-color: cornflowerblue"
+                                   href="<?php echo $GLOBALS["ROOT_URL"] . "/main/editmodule?id=" . $module->getId(); ?>">
+                                    <i class="glyphicon glyphicon-pencil"></i></a>
                                 <?php
                             else:?>
-                                <a class="button" disabled style=" background-color: grey"> <i class="glyphicon glyphicon-trash"></i></a>
+                                <a class="button" disabled style=" background-color: grey"> <i
+                                            class="glyphicon glyphicon-pencil"></i></a>
+                                <?php
+                            endif; ?>
+                        </li>
+
+                        <li>
+                            <?php if ($this->studentid == $module->getEditorid()): ?>
+                                <button class="button" style=" background-color: red" type="button"
+                                        onclick="deleteModule(<?php echo $module->getId(); ?>)"><i
+                                            class="glyphicon glyphicon-trash"></i></button>
+                                <?php
+                            else:?>
+                                <a class="button" disabled style=" background-color: grey"> <i
+                                            class="glyphicon glyphicon-trash"></i></a>
 
                             <?php endif; ?>
                         </li>
                     </div>
                 </div>
-                <?php  endforeach;?>
+            <?php endforeach; ?>
 
-        </div>
-        <div class="btnContain">
-         <input type="submit" id="but2" value="Add Selected Modules"></a>
-        </div>
-    <!--<input type="submit" value="Submit">-->
-        </form>
-        <div class="btnContain">
-        <a onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'"  id="but"><span>Add New Module</span></a>
-        </div>
-        </div>
 
-    <script type="text/javascript">
-        function deleteModule(id) {
-            if(confirm("Do you really want to delete this module?"))
-            {
-               location.replace(location.href + "/deletemodule?id="+id);
+            <div class="btnContain">
+                <input type="submit" id="but2" value="Add Selected Modules"></a>
+            </div>
+            <!--<input type="submit" value="Submit">-->
+</form>
+<div class="btnContain">
+    <a onclick="location.href='<?php echo $GLOBALS["ROOT_URL"]; ?>/main/addmodule'" id="but"><span>Add New Module</span></a>
+</div>
 
-            }
+
+<script type="text/javascript">
+    function deleteModule(id) {
+        if (confirm("Do you really want to delete this module?")) {
+            location.replace(location.href + "/deletemodule?id=" + id);
+
         }
+    }
 
-    </script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <
 
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</div>
 </body>
-
+</div>
 </html>
 <?php
 
-require_once ("footer.php");
+require_once("footer.php");
 ?>

@@ -14,6 +14,7 @@ require_once "headerLoggedIn.php";
 </head>
 <body>
 <div>
+    <h3> My newly Selected Modules</h3>
 <?php
 $credit=0;
 

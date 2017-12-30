@@ -95,5 +95,6 @@ class ModuleServiceImpl implements ModuleService {
 	public function getModId(Module $mod){
 	    return $mod->getId();
     }
+
 }
 ?>
