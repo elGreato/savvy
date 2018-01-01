@@ -18,7 +18,7 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType String
 	 */
 	public function addModule(Module $module) {
-      //  if(StudentServiceImpl::getInstance()->verifyAuth()) {
+      if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             $searchedModule = $moduleDAO->readByName($module->getName());
             if(!isset($searchedModule)){
@@ -28,7 +28,7 @@ class ModuleServiceImpl implements ModuleService {
             else{
                 return $module;
             }
-       // }
+       }
 	}
 
 	/**
@@ -37,13 +37,13 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ParamType id int
 	 */
 	public function deleteModule(&$id) {
-        //if(StudentServiceImpl::getInstance()->verifyAuth()) {
-        $readModule = $this->readModule($id);
-        if(StudentServiceImpl::getInstance()->getCurrentStudentId()==$readModule->getEditorid()) {
-            $moduleDAO = new ModuleDAO();
-            $moduleDAO->delete($id);
-        }
-       // }
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $readModule = $this->readModule($id);
+            if(StudentServiceImpl::getInstance()->getCurrentStudentId()==$readModule->getEditorid()) {
+                $moduleDAO = new ModuleDAO();
+                $moduleDAO->delete($id);
+            }
+       }
 	}
 
 	/**
@@ -54,10 +54,10 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module
 	 */
 	public function readModule(&$id) {
-       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
+       if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             return $moduleDAO->read($id);
-       // }
+       }
 	}
 
 	/**
@@ -66,7 +66,7 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module[]
 	 */
 	public function readAllModules() {
-       // if(StudentServiceImpl::getInstance()->verifyAuth()) {
+       if(StudentServiceImpl::getInstance()->verifyAuth()) {
             $moduleDAO = new ModuleDAO();
             $modules = $moduleDAO->readAll();
             foreach ($modules as $module)
@@ -75,7 +75,7 @@ class ModuleServiceImpl implements ModuleService {
                 $module->setInscriptions($inscriptionDAO->readInscriptionsByModule($module->getId()));
             }
             return $modules;
-       // }
+       }
 	}
 
 	/**
@@ -86,14 +86,19 @@ class ModuleServiceImpl implements ModuleService {
 	 * @ReturnType Module
 	 */
 	public function updateModule(Module $module) {
-	    $readModule = $this->readModule($module->getId());
-       if(StudentServiceImpl::getInstance()->getCurrentStudentId()==$readModule->getEditorid()) {
-            $moduleDAO = new ModuleDAO();
-            $moduleDAO->update($module);
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+            $readModule = $this->readModule($module->getId());
+            if(StudentServiceImpl::getInstance()->getCurrentStudentId()==$readModule->getEditorid()) {
+                $moduleDAO = new ModuleDAO();
+                $moduleDAO->update($module);
+            }
         }
 	}
 	public function getModId(Module $mod){
-	    return $mod->getId();
+
+        if(StudentServiceImpl::getInstance()->verifyAuth()) {
+	        return $mod->getId();
+        }
     }
 
 }

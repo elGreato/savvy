@@ -77,7 +77,7 @@ require_once "headerLoggedIn.php";
 
                         <li>
                             <?php if ($this->studentid == $module->getEditorid()): ?>
-                                <button class="button" style=" background-color: red" type="button"
+                                <button id="deletebutton" class="button" style=" background-color: red" type="button"
                                         onclick="deleteModule(<?php echo $module->getId(); ?>)"><i
                                             class="glyphicon glyphicon-trash"></i></button>
                                 <?php
@@ -110,7 +110,6 @@ require_once "headerLoggedIn.php";
         }
     }
 
-    <
 
 </script>
 <script src="assets/js/jquery.min.js"></script>
