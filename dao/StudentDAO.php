@@ -60,11 +60,6 @@ class StudentDAO extends BasicDAO
         }
         return $student;
     }
-    public function delete($studentID)
-    {
-        $stmt=$this->pdoInstance->prepare('DELETE FROM "student" where id = :id');
-        $stmt->bindValue(':id', $studentID);
-    }
     public  function update(Student $student)
     {
         $stmt = $this->pdoInstance->prepare('UPDATE "student" SET username = :username, password = :password, email = :email WHERE id=:id');

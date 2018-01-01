@@ -11,7 +11,7 @@ use domain\Commentvote;
 use \PDO;
 class CommentVoteDAO extends BasicDAO
 {
-    public function create(Commentvote $commentlike)
+    public function create(Commentvote $commentvote)
     {
         $stmt=$this->pdoInstance->prepare('INSERT INTO commentvote 
           (studentid,commentid) VALUES 
