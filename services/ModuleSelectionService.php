@@ -15,14 +15,6 @@ interface ModuleSelectionService {
 	 */
 	public function selectModule(&$id);
 
-	/**
-	 * @access public
-	 * @param int moduleId
-	 * @return Module
-	 * @ParamType moduleId int
-	 * @ReturnType Module
-	 */
-	public function deselectModule(&$moduleId);
 
 	/**
 	 * @access public

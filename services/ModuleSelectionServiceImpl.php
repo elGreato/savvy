@@ -29,20 +29,6 @@ class ModuleSelectionServiceImpl implements ModuleSelectionService {
         }
 	}
 
-	/**
-	 * @access public
-	 * @param int moduleId
-	 * @return Module
-	 * @ParamType moduleId int
-	 * @ReturnType Module
-	 */
-	public function deselectModule(&$moduleId) {
-        if(StudentServiceImpl::getInstance()->verifyAuth()) {
-            $studentId = StudentServiceImpl::getInstance()->getCurrentStudentId();
-            $inscriptionDAO = new InscriptionDAO();
-            $inscriptionDAO->delete($moduleId,$studentId);
-        }
-	}
 
 	/**
 	 * @access public
