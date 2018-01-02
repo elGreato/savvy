@@ -2,7 +2,7 @@
 ## Analysis
 ### Scenario
 
-Online service where users can post their ultimate wisdom and interact with other wisdoms. FHNW students can go to savvy.io ( for example) and choose what topics they want to take, calculate their points, choose a path for graduation (180 ECTS), post their thoughts about a specific topic. Other users can vote up or vote down this post to make it reach to the top of a specific topic or to the bottom. Moreover, topics will be divided between electives or main or core 
+Savvy is an online service where that students can use for module management. FHNW students can go to savvy.io ( for example) and choose what topics they want to take, calculate their points and post their thoughts about a specific topic. Other users can like this post to make it reach to the top of a specific topic or to the bottom.
 
 ### Requirements
 
