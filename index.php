@@ -48,6 +48,18 @@ Router::route_auth("GET", "/contactus", $authFunction, function () {
     require_once("view/contactUs.php");
 
 });
+Router::route_auth("GET", "/terms", $authFunction, function () {
+
+    $view = new TemplateView("view/terms.php");
+    if(AuthController::authenticate()){
+        $view->loggedIn = true;
+    }
+    else{
+        $view->loggedIn = false;
+    }
+    echo $view->createView();
+
+});
 Router::route_auth("POST", "/login", $authFunction, function () {
     AuthController::login();
 

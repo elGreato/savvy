@@ -48,7 +48,7 @@ require_once "header.php";
                 <div class="form-group">
                     <div class="checkbox">
                         <label class="control-label">
-                            <input type="checkbox" name="agreement">I agree to the license terms.</label>
+                            <input type="checkbox" name="agreement">I agree to the <a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/terms">license terms</a>.</label>
                         <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->agreementMsg)){echo $this->agreementMsg;}?></p></div>
                 </div>
                 <div class="form-group">
