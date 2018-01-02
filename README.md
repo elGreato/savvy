@@ -43,6 +43,60 @@ The following picture shows the page where the users can create a comment about 
 ### Step 1 : Structure
 ### Step 2 : Routing
 ### Step 3 : Database
+The database was created using the following code
+```SQL
+CREATE TABLE Student (
+  ID       SERIAL NOT NULL, 
+  username varchar(15) NOT NULL UNIQUE, 
+  password varchar(30) NOT NULL, 
+  email    varchar(255) NOT NULL UNIQUE, 
+  PRIMARY KEY (ID));
+CREATE TABLE Comment (
+  ID        SERIAL NOT NULL, 
+  comment   varchar(255) NOT NULL, 
+  ModuleID  int4 NOT NULL, 
+  StudentID int4 NOT NULL, 
+  image     bytea, 
+  CommentID int4 NOT NULL, 
+  created   date NOT NULL, 
+  PRIMARY KEY (ID));
+CREATE TABLE CommentVote (
+  CommentID int4 NOT NULL, 
+  StudentID int4 NOT NULL, 
+  PRIMARY KEY (CommentID, 
+  StudentID));
+CREATE TABLE Inscription (
+  ModuleID  int4 NOT NULL, 
+  StudentID int4 NOT NULL, 
+  PRIMARY KEY (ModuleID, 
+  StudentID));
+CREATE TABLE AuthToken (
+  ID         SERIAL NOT NULL, 
+  StudentID  int4 NOT NULL, 
+  selector   varchar(255) NOT NULL, 
+  validator  varchar(255) NOT NULL, 
+  expiration timestamp NOT NULL, 
+  type       int4 NOT NULL, 
+  CONSTRAINT ID 
+    PRIMARY KEY (ID));
+CREATE TABLE Module (
+  ID          SERIAL NOT NULL, 
+  name        varchar(30) NOT NULL UNIQUE, 
+  description varchar(255), 
+  numCredits  int4, 
+  StudentID   int4 NOT NULL, 
+  PRIMARY KEY (ID));
+ALTER TABLE CommentVote ADD CONSTRAINT isVoted FOREIGN KEY (CommentID) REFERENCES Comment (ID);
+ALTER TABLE Comment ADD CONSTRAINT FKComment524391 FOREIGN KEY (ModuleID) REFERENCES Module (ID);
+ALTER TABLE CommentVote ADD CONSTRAINT votes FOREIGN KEY (StudentID) REFERENCES Student (ID);
+ALTER TABLE AuthToken ADD CONSTRAINT FKAuthToken902530 FOREIGN KEY (StudentID) REFERENCES Student (ID);
+ALTER TABLE Inscription ADD CONSTRAINT hasInscriptions FOREIGN KEY (ModuleID) REFERENCES Module (ID);
+ALTER TABLE Comment ADD CONSTRAINT writes FOREIGN KEY (StudentID) REFERENCES Student (ID);
+ALTER TABLE Inscription ADD CONSTRAINT isInscribed FOREIGN KEY (StudentID) REFERENCES Student (ID);
+ALTER TABLE Module ADD CONSTRAINT creates FOREIGN KEY (StudentID) REFERENCES Student (ID);
+ALTER TABLE Comment ADD CONSTRAINT parent FOREIGN KEY (CommentID) REFERENCES Comment (ID);
+
+```
 ### Step 4 : Database Access
 ### Step 5 : Services
 ### Step 6 : Register/Login frontend
