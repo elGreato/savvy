@@ -2,7 +2,7 @@
 ## Analysis
 ### Scenario
 
-Savvy is an online service where that students can use for module management. FHNW students can go to savvy.io ( for example) and choose what topics they want to take, calculate their points and post their thoughts about a specific topic. Other users can like this post to make it reach to the top of a specific topic or to the bottom.
+Savvy is an online service where that students can use for module management. FHNW students can go to savvy-fhnw.herokuapp.com and choose what topics they want to take, calculate their points and post their thoughts about a specific topic. Other users can like this post to make it reach to the top of a specific topic or to the bottom.
 
 ### Requirements
 
