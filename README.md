@@ -97,7 +97,7 @@ The database was created using the following code:
 CREATE TABLE Student (
   ID       SERIAL NOT NULL, 
   username varchar(15) NOT NULL UNIQUE, 
-  password varchar(30) NOT NULL, 
+  password varchar(255) NOT NULL, 
   email    varchar(255) NOT NULL UNIQUE, 
   PRIMARY KEY (ID));
 CREATE TABLE Comment (
