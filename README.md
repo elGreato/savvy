@@ -24,5 +24,7 @@ Savvy is an online service where that students can use for module management. FH
 ## Implementation
 
 ## Deployment
-The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:\n\n
+The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
+
+
 [savvy](https://savvy-fhnw.herokuapp.com/)
