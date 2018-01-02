@@ -22,17 +22,39 @@ savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calcula
 - (Optional) Users should have the ability to post images as a comment.
 - (Optional) Create PDF files from chosen topics.
 
-## Use Cases
+### Use Cases
 
 ## Design
-## Mockups
+### Mockups
+The following picture shows the *login* screen of savvy.
 
-![](modeling/mockups/Savvy - Initial.jpg)
+![](modeling/mockups/Savvy-Initial.jpg)
+
+The following picture shows the page where the users can create a comment about a module.
+
+![](modeling/mockups/Savvy-Main.jpg)
+### Entity Relationship Diagram
+### Domain Model
+### Data Access Model
+### Busines Logic Model
+### Layering Structure
 
 ## Implementation
+### Step 1 : Structure
+### Step 2 : Routing
+### Step 3 : Database
+### Step 4 : Database Access
+### Step 5 : Services
+### Step 6 : Register/Login frontend
+### Step 7 : Module view frontend
+### Step 8 : Comementing frontend
+### Step 9 : Module Selection frontend
+### Step 10 : PDF creation
+
 
 ## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
 
 
 [savvy](https://savvy-fhnw.herokuapp.com/)
+
