@@ -29,6 +29,10 @@ class ModuleValidator
                 $this->nameError = 'Please enter a name';
                 $this->valid = false;
             }
+            if (strlen($module->getName())>30) {
+                $this->nameError = 'The module name cannot have more than 30 characters';
+                $this->valid = false;
+            }
             if (empty($module->getDescription())) {
                 $this->descriptionError = 'Please enter a description';
                 $this->valid = false;

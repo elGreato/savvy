@@ -33,10 +33,10 @@ class StudentController
             if(isset($nameError)){
                 $view->usernameMsg = $nameError;
             }
-            elseif (isset($emailError)){
-                $view->emailmsg = $emailError;
+            if (isset($emailError)){
+                $view->emailMsg = $emailError;
             }
-            elseif (isset($passError)){
+            if (isset($passError)){
                 $view->passwordMsg = $passError;
             }
             echo $view->createView();

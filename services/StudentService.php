@@ -1,6 +1,8 @@
 <?php
 namespace services;
+use domain\Student;
 //require_once(realpath(dirname(__FILE__)) . '/Student.php');
+
 
 /**
  * @access public
@@ -76,12 +78,12 @@ interface StudentService {
      * @param Student student
      * @ParamType Student student
      */
-    public function resetPassword($student);
+    public function resetPassword(Student $student);
     /**
      * @access public
      * @param Student student
      * @ParamType Student student
      */
-    public function changePassword($student);
+    public function changePassword();
 }
 ?>

@@ -26,6 +26,11 @@ class StudentValidator
                 $this->nameError = 'Oops! you didnt Enter a name';
                 $this->valid = false;
             }
+            else if (strlen($student->getUsername()) > 15)
+            {
+                $this->nameError = 'The username cannot have more than 15 characters';
+                $this->valid = false;
+            }
             else if (!ctype_alnum($student->getUsername()))
             {
                 $this->nameError = 'Only numbers and letters are allowed in the username';
