@@ -20,9 +20,7 @@ interface CommentingService {
 	/**
 	 * @access public
 	 * @param int id
-	 * @return Comment
 	 * @ParamType id int
-	 * @ReturnType Comment
 	 */
 	public function deleteComment(&$id);
 
@@ -38,23 +36,19 @@ interface CommentingService {
 	/**
 	 * @access public
 	 * @param Comment comment
-	 * @return Comment
 	 * @ParamType comment Comment
-	 * @ReturnType Comment
 	 */
 	public function updateComment(Comment $comment);
 
 	/**
      * @access public
      * @param int id
-     * @param boolean isLike
      * @ParamType id int
 	 */
 	public function voteOnComment(&$id);
     /**
      * @access public
      * @param int id
-     * @param boolean isLike
      * @ParamType id int
      */
 	public function deleteVote(&$id);

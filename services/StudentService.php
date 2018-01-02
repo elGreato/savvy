@@ -65,5 +65,23 @@ interface StudentService {
 	 * @ReturnType boolean
 	 */
 	public function addStudent($username, $password, $email);
+    /**
+     * @access public
+     * @param Student student
+     * @ParamType Student student
+     */
+    public function updateStudent($student);
+    /**
+     * @access public
+     * @param Student student
+     * @ParamType Student student
+     */
+    public function resetPassword($student);
+    /**
+     * @access public
+     * @param Student student
+     * @ParamType Student student
+     */
+    public function changePassword($student);
 }
 ?>

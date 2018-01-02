@@ -18,7 +18,6 @@ class CommentingServiceImpl implements CommentingService {
 	 * @param Comment comment
 	 * @return Comment
 	 * @ParamType comment Comment
-	 * @ReturnType Comment
 	 */
 	public function addComment(Comment $comment) {
        if(StudentServiceImpl::getInstance()->verifyAuth()) {
@@ -40,7 +39,6 @@ class CommentingServiceImpl implements CommentingService {
 	 * @param int id
 	 * @return Comment
 	 * @ParamType id int
-	 * @ReturnType Comment
 	 */
 	public function deleteComment(&$id) {
         if(StudentServiceImpl::getInstance()->verifyAuth()) {
@@ -87,9 +85,7 @@ class CommentingServiceImpl implements CommentingService {
 	/**
 	 * @access public
 	 * @param Comment comment
-	 * @return Comment
 	 * @ParamType comment Comment
-	 * @ReturnType Comment
 	 */
 	public function updateComment(Comment $comment) {
         if(StudentServiceImpl::getInstance()->verifyAuth()) {
