@@ -32,6 +32,25 @@ class EmailService
         return false;
 
     }
+    public static function contactUs()
+    {
+        $mail = self::createEmail();
+        $mail->personalizations[0]->to[0]->email = "savvymail@protonmail.ch";
+        $mail->content[0]->value = "<p>Dear admin</p><br><p>Request from a savvy user: </p><br><p>".$_POST["message"]."</p><br><p>Contact Details: </p><br><br><p>Contact Details: </p><br><p>Name: ".$_POST["name"]."</p><br><p>Email: ".$_POST["email"]."</p>";
+        $mail->subject = "Savvy - Request";
+        $options = ["http" => [
+            "method" => "POST",
+            "header" => ["Content-Type: application/json",
+                "Authorization: Bearer ".Config::emailConfig().""],
+            "content" => json_encode($mail)
+        ]];
+        $context = stream_context_create($options);
+        $response = file_get_contents("https://api.sendgrid.com/v3/mail/send", false, $context);
+        if(strpos($http_response_header[0],"202"))
+            return true;
+        return false;
+
+    }
     private static function createEmail()
     {
         return json_decode('{

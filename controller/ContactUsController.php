@@ -8,13 +8,14 @@
 
 namespace controller;
 use router\Router;
+use services\EmailService;
 use view\TemplateView;
 
 class ContactUsController
 {
     public static function handleContactUs(){
-
+        EmailService::contactUs();
         $conView = new TemplateView("view/thanks.php");
-       echo $conView->createView();
+        echo $conView->createView();
     }
 }
