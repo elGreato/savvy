@@ -1,10 +1,10 @@
 # savvy - Web Engineering Project
-##Analysis
-###Scenario
+## Analysis
+### Scenario
 
 Online service where users can post their ultimate wisdom and interact with other wisdoms. FHNW students can go to savvy.io ( for example) and choose what topics they want to take, calculate their points, choose a path for graduation (180 ECTS), post their thoughts about a specific topic. Other users can vote up or vote down this post to make it reach to the top of a specific topic or to the bottom. Moreover, topics will be divided between electives or main or core 
 
-###Requirements
+### Requirements
 
 - Users must be able to login using a username and a password.
 - The system shall provide a remember me function for login data.
@@ -20,7 +20,7 @@ Online service where users can post their ultimate wisdom and interact with othe
 - The system shall be able to calculate the total of the ECTS points of all modules a user has selected.
 - (Optional) Users should have the ability to post images as a comment.
 - (Optional) Create PDF files from chosen topics
-##Implementation
-##Deployment
+## Implementation
+## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
 [savvy](https://savvy-fhnw.herokuapp.com/)
