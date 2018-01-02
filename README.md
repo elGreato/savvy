@@ -25,7 +25,7 @@ savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calcula
 ### Use Cases
 The use cases were divided into four groups.
 
-User Management:
+#### User Management:
 
 ![](modeling/usecases/User-Management.jpg)
 - UC 101: A user must be able to create an account consisting of username password and email address.
@@ -34,7 +34,7 @@ User Management:
 - UC 104: A user should be able to change the password of the account in case it is forgotten.
 - UC 105: A system should provide a remember me function, that automatically logs in a user after a field was checked in the login window.
 
-Module Management:
+#### Module Management:
 
 ![](modeling/usecases/Module-Management.jpg)
 - UC 201: A user must be able to add a module to the modules list. A module must consist of a name, a description and a field that shows the number of credits the module yields.
@@ -42,19 +42,20 @@ Module Management:
 - UC 203: A user must be able to delete her or his modules.
 - UC 204: A user must be able to see a list of all the modules that have been added to the database.
 - UC 205: A user should be able to see detailed information about a module. In savvy this is achieved by clicking the discuss button which also shows the comments.
-Commenting:
+
+#### Commenting:
 
 ![](modeling/usecases/Commenting.jpg)
-- UC 301:
-- UC 302:
-- UC 303:
-- UC 304:
-- UC 305:
-- UC 306:
-- UC 307:
-- UC 308:
+- UC 301: The user must be able to read comments posted about a module.
+- UC 302: The user must be able to create a comment for a module.
+- UC 303: The user must be able to edit comments the user created.
+- UC 304: The user must be able to delete comments the user created.
+- UC 305: The user must be able to edit comments the user created.
+- UC 306: The user should be able to reply to a comment.
+- UC 307: The user should be able to like a comment.
+- UC 308: A user should be able to add a picture to a comment.
 
-Module Selection:
+#### Module Selection:
 
 ![](modeling/usecases/Module-Selection.jpg)
 - UC 401: A user must be able to inscribe into a module.
