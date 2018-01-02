@@ -23,27 +23,50 @@ savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calcula
 - (Optional) Create PDF files from chosen topics.
 
 ### Use Cases
+The use cases were divided into four groups.
+
+User Management:
+
+![](modeling/usecases/User-Management.jpg)
+
+Module Management:
+
+![](modeling/usecases/Module-Management.jpg)
+
+Module Selection:
+
+![](modeling/usecases/Module-Selection.jpg)
+
+Commenting:
+
+![](modeling/usecases/Commenting.jpg)
 
 ## Design
 ### Mockups
-The following picture shows the *login* screen of savvy.
+The following picture shows the *login* screen of savvy:
 
 ![](modeling/mockups/Savvy-Initial.jpg)
 
-The following picture shows the page where the users can create a comment about a module.
+The following picture shows the page where the users can create a *comment* about a module:
 
 ![](modeling/mockups/Savvy-Main.jpg)
+
 ### Entity Relationship Diagram
+![](modeling/architecture.WebpageData.jpg)
 ### Domain Model
-### Data Access Model
+![](modeling/architecture.Class-Diagram.jpg.jpg)
+### Data Access Model 
+![](modeling/architecture.Data-Access-Model.jpg)
 ### Busines Logic Model
+![](modeling/architecture.Services.jpg)
 ### Layering Structure
+![](modeling/architecture.Layering-Structure.jpg) 	
 
 ## Implementation
 ### Step 1 : Structure
 ### Step 2 : Routing
 ### Step 3 : Database
-The database was created using the following code
+The database was created using the following code:
 ```SQL
 CREATE TABLE Student (
   ID       SERIAL NOT NULL, 
