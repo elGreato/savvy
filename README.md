@@ -22,6 +22,10 @@ savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calcula
 - (Optional) Users should have the ability to post images as a comment.
 - (Optional) Create PDF files from chosen topics.
 
+## Use Cases
+
+## Design
+
 ## Implementation
 
 ## Deployment
