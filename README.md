@@ -1,4 +1,4 @@
-# savvy - Web Engineering Project
+# SAVVY - Web Engineering Project
 ## Analysis
 ### Scenario
 
@@ -19,8 +19,10 @@ Savvy is an online service where that students can use for module management. FH
 - The system shall provide the user with the information how many users have inscribed into a module.
 - The system shall be able to calculate the total of the ECTS points of all modules a user has selected.
 - (Optional) Users should have the ability to post images as a comment.
-- (Optional) Create PDF files from chosen topics
+- (Optional) Create PDF files from chosen topics.
+
 ## Implementation
+
 ## Deployment
-The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
+The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:\n\n
 [savvy](https://savvy-fhnw.herokuapp.com/)
