@@ -185,7 +185,7 @@ In this step, the frontend for the module management has been created.
 ### Step 10 : PDF creation
 ### Step 11 : Email Service
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
-- Created account on [sendgrid](sendgrid.com).
+- Created account on [sendgrid](https://sendgrid.com).
 - Retrieved and API key.
 - Created EmailService class.
 - Created Email template. Email sends a link with a random argument to the savvy page where the user can change the password.
