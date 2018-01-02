@@ -52,15 +52,15 @@ The following picture shows the page where the users can create a *comment* abou
 ![](modeling/mockups/Savvy-Main.jpg)
 
 ### Entity Relationship Diagram
-![](modeling/architecture.WebpageData.jpg)
+![](modeling/architecture/WebpageData.jpg)
 ### Domain Model
-![](modeling/architecture.Class-Diagram.jpg.jpg)
+![](modeling/architecture/Class-Diagram.jpg)
 ### Data Access Model 
-![](modeling/architecture.Data-Access-Model.jpg)
+![](modeling/architecture/Data-Access-Model.jpg)
 ### Busines Logic Model
-![](modeling/architecture.Services.jpg)
+![](modeling/architecture/Services.jpg)
 ### Layering Structure
-![](modeling/architecture.Layering-Structure.jpg) 	
+![](modeling/architecture/Layering-Structure.jpg) 	
 
 ## Implementation
 ### Step 1 : Structure
