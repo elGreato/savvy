@@ -145,6 +145,7 @@ In this step, the frontend of the register and the login functionality have been
 - Added dynamic entries, such as possible error messages, with PHP.
 - Created corresponding routes and added required methods to the StudentController class.
 - Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class.
+- Created StudentValidator class that prevents user from entering invalid or malicious data when registering.
 
 ### Step 7 : Module view frontend
 In this step, the frontend for the module management has been created.
@@ -155,6 +156,7 @@ In this step, the frontend for the module management has been created.
 - Added dynamic entries to the main.php file, such as modules list, edit or delete buttons.
 - Created corresponding routes and added required methods to the ModuleController class.
 - Filled methods to read, add, update or delete Modules entries using business services in ModuleServiceImpl class.
+- Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module.
 
 ### Step 8 : Comementing frontend
 ### Step 9 : Module Selection frontend
@@ -168,6 +170,7 @@ In this step, the email service was created that is responsible to send emails w
 - Created method that sends the email template. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html).
 - Created pages for password reset using variations of the login.php page.
 - Added dynamic entries, such as error messages, using PHP.
+
 ## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
 
