@@ -3,7 +3,7 @@
 ### Scenario
 
 Savvy is an online service where that students can use for module management. FHNW students can go to 
-savvy&#8209fhnw.herokuapp.com and choose what topics they want to take, calculate their points and post their thoughts about a specific topic. Other users can like this post to make it reach to the top of a specific topic or to the bottom.
+savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calculate their points and post their thoughts about a specific topic. Other users can like this post to make it reach to the top of a specific topic or to the bottom.
 
 ### Requirements
 
