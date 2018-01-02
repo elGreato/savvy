@@ -121,12 +121,41 @@ ALTER TABLE Comment ADD CONSTRAINT parent FOREIGN KEY (CommentID) REFERENCES Com
 
 ```
 ### Step 4 : Database Access
-### Step 5 : Services
+In this step the DAO objects have been created. The database was accessed using PDO funcntionality.
+- Created classes and methods required for accessing the database.
+- Created SQL statement retrieving or creating the correct entry for every method.
+- Implemented these statements into the PDO environment.
+
+### Step 5 : Business Services
+In this step the services have been created. All the services correspond to a use case.
+- Created a service class for every use case group.
+- Added a method for every use case.
+- Implemented basic business functionality (Retrieve/edit/add/delete data from DAO).
+- Added functionality to hash entries where necessary (password etc.)
+
 ### Step 6 : Register/Login frontend
+In this step the frontend of the register and the login functionality have been created.
+- Created static login and register pages using Bootstrap Studio.
+- Added pages to PHP project.
+- Converted pages into php files.
+- Added dynamic entries, such as possible error messages, with PHP.
+- Created corresponding routes and added required methods to the StudentController class.
+- Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class.
+
 ### Step 7 : Module view frontend
+In this step the frontend for the module management has been created.
+- Created static HTML pages for viewing and adding modules using Bootstrap Studio.
+- Added pages to PHP project.
+- Converted pages into php files.
+- Added dynamic entries to the addModule.php file, such as error messages.
+- Added dynamic entries to the main.php file, such as modules list, edit or delete buttons.
+- Created corresponding routes and added required methods to the ModuleController class.
+- Filled methods to read, add, update or delete Modules entries using business services in ModuleServiceImpl class.
+
 ### Step 8 : Comementing frontend
 ### Step 9 : Module Selection frontend
 ### Step 10 : PDF creation
+### Step 11 : Email Service
 
 
 ## Deployment
