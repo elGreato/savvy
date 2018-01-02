@@ -28,18 +28,39 @@ The use cases were divided into four groups.
 User Management:
 
 ![](modeling/usecases/User-Management.jpg)
+- UC 101: A user must be able to create an account consisting of username password and email address.
+- UC 102: A user must be able to login to the account once it was created.
+- UC 103: A user should be able to change the password of the account.
+- UC 104: A user should be able to change the password of the account in case it is forgotten.
+- UC 105: A system should provide a remember me function, that automatically logs in a user after a field was checked in the login window.
 
 Module Management:
 
 ![](modeling/usecases/Module-Management.jpg)
+- UC 201: A user must be able to add a module to the modules list. A module must consist of a name, a description and a field that shows the number of credits the module yields.
+- UC 202: A user must be able to edit her or his modules.
+- UC 203: A user must be able to delete her or his modules.
+- UC 204: A user must be able to see a list of all the modules that have been added to the database.
+- UC 205: A user should be able to see detailed information about a module. In savvy this is achieved by clicking the discuss button which also shows the comments.
+Commenting:
+
+![](modeling/usecases/Commenting.jpg)
+- UC 301:
+- UC 302:
+- UC 303:
+- UC 304:
+- UC 305:
+- UC 306:
+- UC 307:
+- UC 308:
 
 Module Selection:
 
 ![](modeling/usecases/Module-Selection.jpg)
-
-Commenting:
-
-![](modeling/usecases/Commenting.jpg)
+- UC 401: A user must be able to inscribe into a module.
+- UC 402: A user must be able to see the modules the user has inscribed into.
+- UC 403: A user should be able to see the total of ECTS achieved with the selected modules.
+- UC 404: A user should be able to create a PDF page of the modules the user selected.
 
 ## Design
 ### Mockups
