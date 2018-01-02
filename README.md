@@ -26,7 +26,9 @@ savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calcula
 
 ## Design
 ## Mockups
+
 ![](modeling/mockups/Savvy - Initial.jpg)
+
 ## Implementation
 
 ## Deployment
