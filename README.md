@@ -200,5 +200,6 @@ The system was deployed on the PaaS platform heroku. It can be accessed with the
 [savvy](https://savvy-fhnw.herokuapp.com/)
 
 ## Authors
-Ali Habbabeh
 Kevin Neuschwander
+
+Ali Habbabeh
