@@ -85,13 +85,13 @@ The following picture shows the page where the users can create a *comment* abou
 ![](modeling/architecture/Layering-Structure.jpg) 	
 
 ## Implementation
-### Step 1 : Structure
-### Step 2 : Routing
+### Step 1 : Structure (Ali)
+### Step 2 : Routing (Kevin)
 In this step, the routing was created.
 - Created Router and Routing Expeption files as suggested by our lecturer Andreas Martin.
 - Created index.php file where the routes were added in the next steps.
 
-### Step 3 : Database
+### Step 3 : Database (Kevin)
 The database was created using the following code:
 ```SQL
 CREATE TABLE Student (
@@ -146,20 +146,20 @@ ALTER TABLE Module ADD CONSTRAINT creates FOREIGN KEY (StudentID) REFERENCES Stu
 ALTER TABLE Comment ADD CONSTRAINT parent FOREIGN KEY (CommentID) REFERENCES Comment (ID);
 
 ```
-### Step 4 : Database Access
+### Step 4 : Database Access (Kevin)
 In this step, the DAO objects have been created. The database was accessed using PDO funcntionality.
 - Created classes and methods required for accessing the database.
 - Created SQL statement retrieving or creating the correct entry for every method. (These statements can be discovered in the classes inside the DAO folder)
 - Implemented these statements into the PDO environment.
 
-### Step 5 : Business Services
+### Step 5 : Business Services (Kevin)
 In this step, the services have been created. All the services correspond to a use case.
 - Created a service class for every use case group.
 - Added a method for every use case.
 - Implemented basic business functionality (Retrieve/edit/add/delete data from DAO).
 - Added functionality to hash entries where necessary (password etc.)
 
-### Step 6 : Register/Login frontend
+### Step 6 : Register/Login frontend (Kevin)
 In this step, the frontend of the register and the login functionality have been created.
 - Created static login and register pages using Bootstrap Studio.
 - Added pages to PHP project.
@@ -169,21 +169,21 @@ In this step, the frontend of the register and the login functionality have been
 - Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class.
 - Created StudentValidator class that prevents user from entering invalid or malicious data when registering.
 
-### Step 7 : Module view frontend
+### Step 7 : Module view frontend (Kevin / Ali)
 In this step, the frontend for the module management has been created.
-- Created static HTML pages for viewing and adding modules using Bootstrap Studio.
-- Added pages to PHP project.
-- Converted pages into php files.
-- Added dynamic entries to the addModule.php file, such as error messages.
-- Added dynamic entries to the main.php file, such as modules list, edit or delete buttons.
-- Created corresponding routes and added required methods to the ModuleController class.
-- Filled methods to read, add, update or delete Modules entries using business services in ModuleServiceImpl class.
-- Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module.
+- Created static HTML pages for viewing and adding modules using Bootstrap Studio. (Ali)
+- Added pages to PHP project. (Ali)
+- Converted pages into php files. (Ali)
+- Added dynamic entries to the addModule.php file, such as error messages. (Kevin)
+- Added dynamic entries to the main.php file, such as modules list, edit or delete buttons. (Ali)
+- Created corresponding routes and added required methods to the ModuleController class. (Kevin)
+- Filled methods to read, add, update or delete Modules entries using business services in ModuleServiceImpl class. (Kevin)
+- Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
-### Step 8 : Comementing frontend
-### Step 9 : Module Selection frontend
-### Step 10 : PDF creation
-### Step 11 : Email Service
+### Step 8 : Comementing frontend (Ali)
+### Step 9 : Module Selection frontend (Ali)
+### Step 10 : PDF creation (Ali)
+### Step 11 : Email Service (Kevin)
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
 - Created account on [sendgrid](https://sendgrid.com).
 - Retrieved and API key.
@@ -192,6 +192,11 @@ In this step, the email service was created that is responsible to send emails w
 - Created method that sends the email template. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html).
 - Created pages for password reset using variations of the login.php page.
 - Added dynamic entries, such as error messages, using PHP.
+### Step 12 : Misc (Kevin / Ali)
+In this step some missing pages were added.
+- Created *contact us* us form. (Ali)
+- Connected *contact us* form to email service. (Kevin)
+- Created license agreement. (Kevin)
 
 ## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
@@ -199,3 +204,6 @@ The system was deployed on the PaaS platform heroku. It can be accessed with the
 
 [savvy](https://savvy-fhnw.herokuapp.com/)
 
+## Authors
+- Kevin Neuschwander
+- Ali Habbabeh
