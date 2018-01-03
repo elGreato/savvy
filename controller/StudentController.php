@@ -139,7 +139,12 @@ class StudentController
     }
     public static function changePassword()
     {
-        if($_POST["new_pw"] == $_POST["rep_new_pw"]) {
+        $studentValidator = new StudentValidator();
+        $studentService = StudentServiceImpl::getInstance();
+        $student = $studentService->readStudent();
+        $student->setPassword($_POST["new_pw"]);
+        $studentValidator->validate($student);
+        if($_POST["new_pw"] == $_POST["rep_new_pw"]&& $studentValidator->getPasswordError() == null) {
             if (StudentServiceImpl::getInstance()->changePassword()) {
                 $view = new TemplateView("view/editProfile.php");
                 $student =StudentServiceImpl::getInstance()->readStudent();
@@ -156,11 +161,19 @@ class StudentController
                 echo $view->createView();
             }
         }
-        else{
+        else if ($_POST["new_pw"] != $_POST["rep_new_pw"]){
             $view = new TemplateView("view/editProfile.php");
             $student =StudentServiceImpl::getInstance()->readStudent();
             $view->username = $student->getUsername();
             $view->msg = "The two new passwords do not match";
+            $view->iserror = true;
+            echo $view->createView();
+        }
+        else {
+            $view = new TemplateView("view/editProfile.php");
+            $student =StudentServiceImpl::getInstance()->readStudent();
+            $view->username = $student->getUsername();
+            $view->msg = $studentValidator->getPasswordError();
             $view->iserror = true;
             echo $view->createView();
         }

@@ -21,7 +21,6 @@ class StudentValidator
     }
     public function validate(Student $student)
     {
-        echo strlen($student->getEmail());
         if (!is_null($student)) {
             if (empty($student->getUsername())) {
                 $this->nameError = 'Oops! you didnt Enter a name';
