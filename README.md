@@ -192,6 +192,11 @@ In this step, the email service was created that is responsible to send emails w
 - Created method that sends the email template. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html).
 - Created pages for password reset using variations of the login.php page.
 - Added dynamic entries, such as error messages, using PHP.
+### Step 12 : Misc (Kevin / Ali)
+In this step some missing pages were added.
+- Created *contact us* us form. (Ali)
+- Connected *contact us* form to email service. (Kevin)
+- Created license agreement. (Kevin)
 
 ## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
@@ -200,6 +205,5 @@ The system was deployed on the PaaS platform heroku. It can be accessed with the
 [savvy](https://savvy-fhnw.herokuapp.com/)
 
 ## Authors
-Kevin Neuschwander
-
-Ali Habbabeh
+- Kevin Neuschwander
+- Ali Habbabeh
