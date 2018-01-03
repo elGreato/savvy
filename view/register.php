@@ -31,7 +31,7 @@ require_once "header.php";
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
                     <input class="form-control" type="text" name="username" placeholder="Username">
-                    <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->usernameMsg)){echo $this->usernameMsg;}?>></p>
+                    <p class="message" style="color: red;margin-top: 0; padding-top: 0; margin-bottom: 10px;"><?php if(isset($this->usernameMsg)){echo $this->usernameMsg;}?></p>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="email" name="email" placeholder="Email">

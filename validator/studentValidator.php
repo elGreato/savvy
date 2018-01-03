@@ -26,16 +26,17 @@ class StudentValidator
                 $this->nameError = 'Oops! you didnt Enter a name';
                 $this->valid = false;
             }
-            else if (strlen($student->getUsername()) > 15)
-            {
-                $this->nameError = 'The username cannot have more than 15 characters';
-                $this->valid = false;
-            }
             else if (!ctype_alnum($student->getUsername()))
             {
                 $this->nameError = 'Only numbers and letters are allowed in the username';
                 $this->valid = false;
             }
+            if (strlen($student->getUsername()) > 15)
+            {
+                $this->nameError = 'The username cannot have more than 15 characters';
+                $this->valid = false;
+            }
+
             if (empty($student->getEmail())) {
                 $this->emailError = 'You have forgot to enter an email address';
                 $this->valid = false;
@@ -45,6 +46,11 @@ class StudentValidator
             }
             if (empty($student->getPassword())) {
                 $this->passwordError = 'Please enter a password';
+                $this->valid = false;
+            }
+            if (strlen($student->getPassword()) < 5 || strlen($student->getPassword()) > 255)
+            {
+                $this->passwordError = 'The password should have between 5 and 255 letters';
                 $this->valid = false;
             }
         } else {
