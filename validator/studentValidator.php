@@ -21,6 +21,7 @@ class StudentValidator
     }
     public function validate(Student $student)
     {
+        echo strlen($student->getEmail());
         if (!is_null($student)) {
             if (empty($student->getUsername())) {
                 $this->nameError = 'Oops! you didnt Enter a name';
@@ -40,7 +41,7 @@ class StudentValidator
             if (empty($student->getEmail())) {
                 $this->emailError = 'You have forgot to enter an email address';
                 $this->valid = false;
-            } else if (!filter_var($student->getEmail(), FILTER_VALIDATE_EMAIL)) {
+            } else if (strlen($student->getEmail())>254||!filter_var($student->getEmail(), FILTER_VALIDATE_EMAIL)) {
                 $this->emailError = 'Please enter a valid email address';
                 $this->valid = false;
             }

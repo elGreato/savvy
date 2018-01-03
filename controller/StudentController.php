@@ -17,8 +17,6 @@ class StudentController
 {
     public static function register()
     {
-        $studentService = StudentServiceImpl::getInstance();
-        $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
         $student = new Student();
         $student->setUsername($_POST["username"]);
         $student->setPassword($_POST["password"]);
@@ -40,42 +38,36 @@ class StudentController
                 $view->passwordMsg = $passError;
             }
             echo $view->createView();
-        }
-        else if ($_POST["password"]!=$_POST["password-repeat"])
-        {
+        } else if ($_POST["password"] != $_POST["password-repeat"]) {
             $view = new TemplateView("view/register.php");
             $view->passwordMsg = 'Passwords do not match';
             echo $view->createView();
-        }
-        else if (!isset($_POST["agreement"]))
-        {
+        } else if (!isset($_POST["agreement"])) {
             $view = new TemplateView("view/register.php");
             $view->passwordMsg = 'Please accept the license agreement';
             echo $view->createView();
         }
-        else if($workStatus == 'successful')
-        {
-            Router::redirect('/main');
+        else {
+            $studentService = StudentServiceImpl::getInstance();
+            $workStatus = $studentService->addStudent($_POST["username"],$_POST["password"], $_POST["email"]);
 
-        }
-        else if($workStatus == 'usernameTaken')
-        {
-            $view = new TemplateView("view/register.php");
-            $view->usernameMsg = "Username already taken";
-            echo $view->createView();
-        }
-        else if($workStatus == 'emailTaken')
-        {
-            $view = new TemplateView("view/register.php");
-            $view->emailMsg = "Email already taken";
-            echo $view->createView();
-        }
-        else
-        {
-            $view = new TemplateView("view/register.php");
-            $view->usernameMsg = "Username already taken";
-            $view->emailMsg = "Email already taken";
-            echo $view->createView();
+            if ($workStatus == 'successful') {
+                Router::redirect('/main');
+
+            } else if ($workStatus == 'usernameTaken') {
+                $view = new TemplateView("view/register.php");
+                $view->usernameMsg = "Username already taken";
+                echo $view->createView();
+            } else if ($workStatus == 'emailTaken') {
+                $view = new TemplateView("view/register.php");
+                $view->emailMsg = "Email already taken";
+                echo $view->createView();
+            } else {
+                $view = new TemplateView("view/register.php");
+                $view->usernameMsg = "Username already taken";
+                $view->emailMsg = "Email already taken";
+                echo $view->createView();
+            }
         }
     }
     public static function showPasswordReset()
