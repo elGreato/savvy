@@ -90,8 +90,9 @@ For this project, we have used a framework that offered by our lecturer Andreas 
 
 ### Step 2 : Routing (Kevin)
 In this step, the routing was created.
-- Created Router and Routing Expeption files as suggested by our lecturer Andreas Martin.
-- Created index.php file where the routes were added in the next steps.
+- Created Router and Routing Expeption files using the method suggested by our lecturer Andreas Martin.
+- Added corresponding routes to index.php file.
+- "Get" routes were mainly used for loading pages only while "post" requests were used when data had to be sent to the server.
 
 ### Step 3 : Database (Kevin)
 The database was created using the following code:
@@ -148,34 +149,36 @@ ALTER TABLE Module ADD CONSTRAINT creates FOREIGN KEY (StudentID) REFERENCES Stu
 ALTER TABLE Comment ADD CONSTRAINT parent FOREIGN KEY (CommentID) REFERENCES Comment (ID);
 
 ```
-### Step 4 : Database Access (Kevin)
+### Step 4 : Database Access and Domain Objects (Kevin)
 In this step, the DAO objects have been created. The database was accessed using PDO funcntionality.
 - Created classes and methods required for accessing the database.
-- Created SQL statement retrieving or creating the correct entry for every method. (These statements can be discovered in the classes inside the DAO folder)
+- Created SQL statements for adding, editing, deleting or loading data from the database. (These statements can be discovered in the classes inside the DAO folder)
 - Implemented these statements into the PDO environment.
+- Created domain objects to hold the data retrieved from the database.
+- Added getters, setters and other required methods
 
 ### Step 5 : Business Services (Ali/Kevin)
 In this step, the services have been created. All the services correspond to a use case.
 - Created a service class for every use case group.
 - Added a method for every use case.
 - Implemented basic business functionality (Retrieve/edit/add/delete data from DAO).
-- Added functionality to hash entries where necessary (password etc.)
+- Added functionality to hash entries where necessary (storing passwords etc.)
+- Added functionality to calculate credits.
 
 ### Step 6 : Register/Login frontend (Ali/Kevin)
 In this step, the frontend of the register and the login functionality have been created.
-- Created static login and register pages using Bootstrap Studio (Ali).
-- Added pages to PHP project.(Ali)
-- Converted pages into php files.(Ali)
-- Added dynamic entries, such as possible error messages, with PHP.(Kevin)
-- Created corresponding routes and added required methods to the StudentController class.(Kevin)
-- Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class.(Kevin)
-- Created StudentValidator class that prevents user from entering invalid or malicious data when registering.(Kevin)
+- Created a static login and register pages using Bootstrap Studio. (Ali)
+- Added pages to PHP project and converted them into php files. (Ali)
+- Added dynamic entries, such as possible error messages, with PHP. (Kevin)
+- Created corresponding routes and added required methods to the StudentController class. (Kevin)
+- Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class. (Kevin)
+- Created StudentValidator class that prevents user from entering invalid or malicious data when registering. (Kevin)
 
 ### Step 7 : Module view frontend (Kevin / Ali)
 In this step, the frontend for the module management has been created.
-- Created static HTML pages for viewing and adding modules using Bootstrap Studio. (Ali)
-- Added pages to PHP project. (Ali)
-- Converted pages into php files. (Ali)
+- Created static HTML pages for viewing modules using Bootstrap Studio. (Ali)
+- Created static HTML pages for adding and editing modules. (Kevin)
+- Added pages to PHP project and converted them into php files. (Ali)
 - Added dynamic entries to the addModule.php file, such as error messages. (Kevin)
 - Added dynamic entries to the main.php file, such as modules list, edit or delete buttons. (Ali)
 - Created corresponding routes and added required methods to the ModuleController class. (Kevin)
@@ -183,7 +186,7 @@ In this step, the frontend for the module management has been created.
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
 ### Step 8 : Comementing frontend (Ali)
--for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database.
+- for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database.
 ![](modeling/Commenting/comment1.png)
 all comments show the data, weather they are new or not ( anything written in less than 24 hours is new) and the person who wrote them. 
 - only users who wrote a comment can delete it. 
@@ -206,17 +209,18 @@ all comments show the data, weather they are new or not ( anything written in le
 ### Step 11 : Email Service (Kevin)
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
 - Created account on [sendgrid](https://sendgrid.com).
-- Retrieved and API key.
-- Created EmailService class.
-- Created Email template. Email sends a link with a random argument to the savvy page where the user can change the password.
-- Created method that sends the email template. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html).
-- Created pages for password reset using variations of the login.php page.
+- Retrieved an API key.
+- Created the EmailService class which will be responsible to treat email sending requests.
+- Created an email template for all emails the website will send.
+- Created a method that fills and sends the email template in case a user resets the password. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html).
+- The reset-Email sends a link with a random get-argument to the website where the user can proceed to change the password.
+- Created static pages needed for password reset using based on the login.php page.
 - Added dynamic entries, such as error messages, using PHP.
 ### Step 12 : Misc (Kevin / Ali)
 In this step some missing pages were added.
 - Created *contact us* us form. (Ali)
 - Connected *contact us* form to email service. (Kevin)
-- Created license agreement. (Kevin)
+- Added license agreement. (Kevin)
 
 ## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
