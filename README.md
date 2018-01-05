@@ -86,6 +86,8 @@ The following picture shows the page where the users can create a *comment* abou
 
 ## Implementation
 ### Step 1 : Structure (Ali)
+For this project, we have used a framework that offered by our lecturer Andreas Martin (@andreasmartin) with little adaptations. a detailed description of the framework can be found at https://github.com/andreasmartin/WE-CRM 
+
 ### Step 2 : Routing (Kevin)
 In this step, the routing was created.
 - Created Router and Routing Expeption files as suggested by our lecturer Andreas Martin.
@@ -161,13 +163,13 @@ In this step, the services have been created. All the services correspond to a u
 
 ### Step 6 : Register/Login frontend (Ali/Kevin)
 In this step, the frontend of the register and the login functionality have been created.
-- Created static login and register pages using Bootstrap Studio.
-- Added pages to PHP project.
-- Converted pages into php files.
-- Added dynamic entries, such as possible error messages, with PHP.
-- Created corresponding routes and added required methods to the StudentController class.
-- Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class.
-- Created StudentValidator class that prevents user from entering invalid or malicious data when registering.
+- Created static login and register pages using Bootstrap Studio (Ali).
+- Added pages to PHP project.(Ali)
+- Converted pages into php files.(Ali)
+- Added dynamic entries, such as possible error messages, with PHP.(Kevin)
+- Created corresponding routes and added required methods to the StudentController class.(Kevin)
+- Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class.(Kevin)
+- Created StudentValidator class that prevents user from entering invalid or malicious data when registering.(Kevin)
 
 ### Step 7 : Module view frontend (Kevin / Ali)
 In this step, the frontend for the module management has been created.
@@ -181,6 +183,7 @@ In this step, the frontend for the module management has been created.
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
 ### Step 8 : Comementing frontend (Ali)
+for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database 
 ### Step 9 : Module Selection frontend (Ali)
 ### Step 10 : PDF creation (Ali)
 ### Step 11 : Email Service (Kevin)
