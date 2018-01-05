@@ -183,7 +183,8 @@ In this step, the frontend for the module management has been created.
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
 ### Step 8 : Comementing frontend (Ali)
-for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database 
+for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database.
+![](savvy/modeling/Commenting/Screen Shot 2018-01-05 at 13.51.21.png)
 ### Step 9 : Module Selection frontend (Ali)
 ### Step 10 : PDF creation (Ali)
 ### Step 11 : Email Service (Kevin)
