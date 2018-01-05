@@ -16,18 +16,11 @@ use controller\ErrorController;
 use http\HTTPException;
 session_start();
 require_once("config/Autoloader.php");
-/*require_once 'view/welcome.php';
-require_once 'view/footer.php';*/
 
 
-$authFunction = function () {
-   if (AuthController::authenticate())
-        return true;
-    Router::redirect("/login");
-    return false;
-};
 
-Router::route_auth("GET", "/", $authFunction, function () {
+
+Router::route("GET", "/", function () {
     if(AuthController::authenticate())
     {
         Router::redirect("/main");
@@ -38,17 +31,33 @@ Router::route_auth("GET", "/", $authFunction, function () {
 
 
 });
+Router::route("GET", "/register", function () {
+    $view = new TemplateView("view/register.php");
+    echo $view->createView();
 
-Router::route_auth("GET", "/login", $authFunction, function () {
+});
+Router::route("POST", "/register", function () {
+    StudentController::register();
+
+});
+Router::route("GET", "/login" , function () {
     $view = new TemplateView("view/login.php");
     echo $view->createView();
 
 });
-Router::route_auth("GET", "/contactus", $authFunction, function () {
+Router::route("POST", "/login", function () {
+    AuthController::login();
+
+});
+Router::route("GET", "/contactus", function () {
     require_once("view/contactUs.php");
 
 });
-Router::route_auth("GET", "/terms", $authFunction, function () {
+Router::route("POST", "/contactus", function () {
+    ContactUsController::handleContactUs();
+
+});
+Router::route("GET", "/terms" , function () {
 
     $view = new TemplateView("view/terms.php");
     if(AuthController::authenticate()){
@@ -60,15 +69,9 @@ Router::route_auth("GET", "/terms", $authFunction, function () {
     echo $view->createView();
 
 });
-Router::route_auth("POST", "/login", $authFunction, function () {
-    AuthController::login();
 
-});
-Router::route_auth("POST", "/contactus", true, function () {
-    ContactUsController::handleContactUs();
 
-});
-Router::route_auth("GET", "/logout", $authFunction, function () {
+Router::route("GET", "/logout", function () {
     if(AuthController::authenticate()) {
         AuthController::logout();
 
@@ -76,7 +79,7 @@ Router::route_auth("GET", "/logout", $authFunction, function () {
     Router::redirect("/login");
 
 });
-Router::route_auth("GET", "/myprofile", $authFunction, function () {
+Router::route("GET", "/myprofile", function () {
     if(AuthController::authenticate())
     {
         StudentController::showMyProfile();
@@ -86,27 +89,7 @@ Router::route_auth("GET", "/myprofile", $authFunction, function () {
     }
 
 });
-Router::route_auth("GET", "/mymodules", $authFunction, function () {
-    if(AuthController::authenticate())
-    {
-        MyModulesController::showMyModules();
-    }
-    else{
-        Router::redirect("/login");
-    }
-
-});
-Router::route_auth("POST", "/pdfContent", $authFunction, function () {
-    if(AuthController::authenticate())
-    {
-        PdfController::startPdf();
-    }
-    else{
-        Router::redirect("/login");
-    }
-
-});
-Router::route_auth("POST", "/myprofile", $authFunction, function () {
+Router::route("POST", "/myprofile", function () {
     if(AuthController::authenticate())
     {
         StudentController::changePassword();
@@ -116,55 +99,25 @@ Router::route_auth("POST", "/myprofile", $authFunction, function () {
     }
 
 });
-Router::route_auth("GET", "/passwordreset", $authFunction, function () {
-    StudentController::showPasswordReset();
+Router::route("GET", "/main", function () {
+    if(AuthController::authenticate()) {
+        ModuleController::showModules();
+    }
+    else{
+        Router::redirect("/login");
+    }
 });
-Router::route_auth("POST", "/passwordreset", $authFunction, function () {
-    StudentController::resetPassword();
-});
-Router::route_auth("GET", "/passwordreset/successful", $authFunction, function () {
-    StudentController::requestSent();
-});
-Router::route_auth("GET", "/passwordreset/reset", $authFunction, function () {
-    StudentController::showNewPassword();
-});
-Router::route_auth("POST", "/passwordreset/reset", $authFunction, function () {
-    StudentController::confirmNewPassword();
-});
-Router::route_auth("GET", "/module", $authFunction, function () {
-    if (AuthController::authenticate())
-    ModelContentController::handleModule();
+Router::route("GET", "/mymodules", function () {
+    if(AuthController::authenticate())
+    {
+        MyModulesController::showMyModules();
+    }
     else{
         Router::redirect("/login");
     }
 
 });
-Router::route_auth("GET", "/register", $authFunction, function () {
-    $view = new TemplateView("view/register.php");
-    echo $view->createView();
-
-});
-Router::route_auth("POST", "/register", $authFunction, function () {
-   StudentController::register();
-
-});
-Router::route_auth("POST", "/saveComment", $authFunction, function () {
-    if (AuthController::authenticate())
-    CommentController::saveComment();
-    else{
-        Router::redirect("/login");
-    }
-
-});
-Router::route_auth("POST", "/editComment", $authFunction, function () {
-    if (AuthController::authenticate())
-        CommentController::editComment();
-    else{
-        Router::redirect("/login");
-    }
-
-});
-Router::route_auth("POST", "/myModules", $authFunction, function () {
+Router::route("POST", "/myModules", function () {
     if (AuthController::authenticate())
         myModulesController::handleSelectedModules();
     else{
@@ -172,7 +125,59 @@ Router::route_auth("POST", "/myModules", $authFunction, function () {
     }
 
 });
-Router::route_auth("GET", "/deleteComment", $authFunction, function () {
+Router::route("POST", "/pdfContent", function () {
+    if(AuthController::authenticate())
+    {
+        PdfController::startPdf();
+    }
+    else{
+        Router::redirect("/login");
+    }
+
+});
+
+Router::route("GET", "/passwordreset", function () {
+    StudentController::showPasswordReset();
+});
+Router::route("POST", "/passwordreset", function () {
+    StudentController::resetPassword();
+});
+Router::route("GET", "/passwordreset/successful", function () {
+    StudentController::requestSent();
+});
+Router::route("GET", "/passwordreset/reset", function () {
+    StudentController::showNewPassword();
+});
+Router::route("POST", "/passwordreset/reset", function () {
+    StudentController::confirmNewPassword();
+});
+Router::route("GET", "/module", function () {
+    if (AuthController::authenticate())
+    ModelContentController::handleModule();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+
+Router::route("POST", "/saveComment", function () {
+    if (AuthController::authenticate())
+    CommentController::saveComment();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route("POST", "/editComment", function () {
+    if (AuthController::authenticate())
+        CommentController::editComment();
+    else{
+        Router::redirect("/login");
+    }
+
+});
+
+Router::route("GET", "/deleteComment", function () {
     if (AuthController::authenticate())
         CommentController::deleteComment();
     else{
@@ -180,7 +185,7 @@ Router::route_auth("GET", "/deleteComment", $authFunction, function () {
     }
 
 });
-Router::route_auth("GET", "/upvote", $authFunction, function () {
+Router::route("GET", "/upvote", function () {
     if (AuthController::authenticate())
         CommentController::upvote();
     else{
@@ -188,7 +193,7 @@ Router::route_auth("GET", "/upvote", $authFunction, function () {
     }
 
 });
-Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
+Router::route("GET", "/main/addmodule",function () {
     if(AuthController::authenticate())
     {
         ModuleController::showAddModule();
@@ -197,35 +202,7 @@ Router::route_auth("GET", "/main/addmodule", $authFunction, function () {
         Router::redirect("/login");
     }
 });
-Router::route_auth("GET", "/main/deletemodule", $authFunction, function () {
-    if(AuthController::authenticate())
-    {
-        ModuleController::deleteModule();
-    }
-    else{
-        Router::redirect("/login");
-    }
-
-});
-Router::route_auth("GET", "/main/editmodule", $authFunction, function () {
-    if(AuthController::authenticate())
-    {
-        ModuleController::showEditModule();
-    }
-    else{
-        Router::redirect("/login");
-    }
-});
-Router::route_auth("POST", "/main/editmodule", $authFunction, function () {
-    if(AuthController::authenticate())
-    {
-        ModuleController::editModule();
-    }
-    else{
-        Router::redirect("/login");
-    }
-});
-Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
+Router::route("POST", "/main/addmodule", function () {
     if(AuthController::authenticate()) {
         ModuleController::addModule();
         Router::redirect("/main");
@@ -236,14 +213,36 @@ Router::route_auth("POST", "/main/addmodule", $authFunction, function () {
 
 
 });
-Router::route_auth("GET", "/main", $authFunction, function () {
-    if(AuthController::authenticate()) {
-    ModuleController::showModules();
+Router::route("GET", "/main/deletemodule", function () {
+    if(AuthController::authenticate())
+    {
+        ModuleController::deleteModule();
+    }
+    else{
+        Router::redirect("/login");
+    }
+
+});
+Router::route("GET", "/main/editmodule", function () {
+    if(AuthController::authenticate())
+    {
+        ModuleController::showEditModule();
     }
     else{
         Router::redirect("/login");
     }
 });
+Router::route("POST", "/main/editmodule", function () {
+    if(AuthController::authenticate())
+    {
+        ModuleController::editModule();
+    }
+    else{
+        Router::redirect("/login");
+    }
+});
+
+
 try {
     Router::call_route($_SERVER['REQUEST_METHOD'], $_SERVER['PATH_INFO']);
 } catch (HTTPException $exception) {

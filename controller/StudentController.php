@@ -118,12 +118,14 @@ class StudentController
             if ($_POST["password"] == $_POST["repeatpassword"] && $studentValidator->getPasswordError() == null) {
                 $studentService->resetPassword($student);
                 Router::redirect("/login");
-            } elseif ($_POST["password"] == $_POST["repeatpassword"]) {
+            } elseif ($_POST["password"] != $_POST["repeatpassword"]) {
                 $view = new TemplateView("view/newpassword.php");
+                $view->token =$_POST["token"];
                 $view->errormsg = "The passwords do not match";
                 echo $view->createView();
             } else {
                 $view = new TemplateView("view/newpassword.php");
+                $view->token =$_POST["token"];
                 $view->errormsg = $studentValidator->getPasswordError();
                 echo $view->createView();
             }

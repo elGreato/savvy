@@ -21,13 +21,10 @@ class Router
         }
     }
     public static function route($method, $path, $routeFunction) {
-        self::route_auth($method, $path, null, $routeFunction);
-    }
-    public static function route_auth($method, $path, $authFunction, $routeFunction) {
         if(empty(self::$routes))
             self::init("/index.php");
         $path = trim($path, '/');
-        self::$routes[$method][$path] = array("authFunction" => $authFunction, "routeFunction" => $routeFunction);
+        self::$routes[$method][$path] = array("routeFunction" => $routeFunction);
     }
     public static function call_route($method, $path) {
 
@@ -47,11 +44,7 @@ class Router
         }
 
         $route = self::$routes[$method][$path];
-        /*if(isset($route["authFunction"])) {
-            if (!$route["authFunction"]()) {
-                return;
-            }
-        }*/
+
 
 
 

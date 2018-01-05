@@ -36,7 +36,7 @@ class EmailService
     {
         $mail = self::createEmail();
         $mail->personalizations[0]->to[0]->email = "savvymail@protonmail.ch";
-        $mail->content[0]->value = "<p>Dear admin</p><br><p>Request from a savvy user: </p><br><p>".$_POST["message"]."</p><br><p>Contact Details: </p><br><br><p>Contact Details: </p><br><p>Name: ".$_POST["name"]."</p><br><p>Email: ".$_POST["email"]."</p>";
+        $mail->content[0]->value = "<h1>Dear admin</h1><br><h2>Request from a savvy user: </h2><br><p>".$_POST["message"]."</p><br><h2>Contact Details: </h2><br><p>Name: ".$_POST["name"]."</p><br><p>Email: ".$_POST["email"]."</p>";
         $mail->subject = "Savvy - Request";
         $options = ["http" => [
             "method" => "POST",
