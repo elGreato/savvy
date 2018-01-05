@@ -90,10 +90,10 @@ For this project, we have used a framework that offered by our lecturer Andreas 
 
 ### Step 2 : Routing (Kevin)
 In this step, the routing was created.
-- Created Router and Routing Expeption files using the method suggested by our lecturer Andreas Martin.
-- Added corresponding routes to index.php file.
+- Created Router and Routing Expeption files using the framework suggested by our lecturer Andreas Martin.
+- Added corresponding routes to the index.php file.
 - "Get" routes were mainly used for loading pages only while "post" requests were used when data had to be sent to the server.
-
+- For routes, that requires the user to be logged in, a validation was added in order to prevent unauthorized access.
 ### Step 3 : Database (Kevin)
 The database was created using the following code:
 ```SQL
@@ -150,12 +150,12 @@ ALTER TABLE Comment ADD CONSTRAINT parent FOREIGN KEY (CommentID) REFERENCES Com
 
 ```
 ### Step 4 : Database Access and Domain Objects (Kevin)
-In this step, the DAO objects have been created. The database was accessed using PDO funcntionality.
+In this step, the DAO objects have been created. The database was accessed using PDO functionality.
 - Created classes and methods required for accessing the database.
 - Created SQL statements for adding, editing, deleting or loading data from the database. (These statements can be discovered in the classes inside the DAO folder)
 - Implemented these statements into the PDO environment.
 - Created domain objects to hold the data retrieved from the database.
-- Added getters, setters and other required methods
+- Added getters, setters and other required methods (such as a method to calculate the number of likes of a comment).
 
 ### Step 5 : Business Services (Ali/Kevin)
 In this step, the services have been created. All the services correspond to a use case.
@@ -173,6 +173,7 @@ In this step, the frontend of the register and the login functionality have been
 - Created corresponding routes and added required methods to the StudentController class. (Kevin)
 - Filled methods to read, add, update or delete Authtoken and Student entries using business services in StudentServiceImpl class. (Kevin)
 - Created StudentValidator class that prevents user from entering invalid or malicious data when registering. (Kevin)
+- Added a remember me function that creates a cookie on the users computer and keeps them logged in when accessing the page again. (Kevin)
 
 ### Step 7 : Module view frontend (Kevin / Ali)
 In this step, the frontend for the module management has been created.
@@ -181,8 +182,8 @@ In this step, the frontend for the module management has been created.
 - Added pages to PHP project and converted them into php files. (Ali)
 - Added dynamic entries to the addModule.php file, such as error messages. (Kevin)
 - Added dynamic entries to the main.php file, such as modules list, edit or delete buttons. (Ali)
-- Created corresponding routes and added required methods to the ModuleController class. (Kevin)
-- Filled methods to read, add, update or delete Modules entries using business services in ModuleServiceImpl class. (Kevin)
+- Created corresponding routes and added the required methods to the ModuleController class. (Kevin)
+- Filled these methods with instructions which business services in ModuleServiceImpl to execute and which page to load. (Kevin)
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
 ### Step 8 : Comementing frontend (Ali)
@@ -201,14 +202,16 @@ all comments show the data, weather they are new or not ( anything written in le
 - a student can as many modules as he or she wants
 - an automatic calculations of ECTS take place on the server side for the modules registerd. 
 - Each module show the amount of students registerd in each module.
+
 ### Step 10 : PDF creation (Ali)
 - for pdf creattion we have used an open-source tool called fpdf
 - a dynamic pdf will be generated that contains all the modules a student selected ( currently or in total) 
 - a student can print his or her selected modules directly from the browser.
 - Future improvment: add the amount of credits to the list
+
 ### Step 11 : Email Service (Kevin)
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
-- Created account on [sendgrid](https://sendgrid.com).
+- Created an account on [sendgrid](https://sendgrid.com).
 - Retrieved an API key.
 - Created the EmailService class which will be responsible to treat email sending requests.
 - Created an email template for all emails the website will send.
@@ -216,17 +219,19 @@ In this step, the email service was created that is responsible to send emails w
 - The reset-Email sends a link with a random get-argument to the website where the user can proceed to change the password.
 - Created static pages needed for password reset using based on the login.php page.
 - Added dynamic entries, such as error messages, using PHP.
+
 ### Step 12 : Misc (Kevin / Ali)
 In this step some missing pages were added.
 - Created *contact us* us form. (Ali)
-- Connected *contact us* form to email service. (Kevin)
-- Added license agreement. (Kevin)
+- Created email account for a savvy admin. (Kevin)
+- Created a method in the EmailService class to send the *contact us* request to the savvy email address. (Kevin)
+- Added a license agreement. (Kevin)
 
 ## Deployment
 The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
 
 
-[savvy](https://savvy-fhnw.herokuapp.com/)
+[savvy-website](https://savvy-fhnw.herokuapp.com/)
 
 ## Authors
 - Ali Habbabeh
