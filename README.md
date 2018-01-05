@@ -152,14 +152,14 @@ In this step, the DAO objects have been created. The database was accessed using
 - Created SQL statement retrieving or creating the correct entry for every method. (These statements can be discovered in the classes inside the DAO folder)
 - Implemented these statements into the PDO environment.
 
-### Step 5 : Business Services (Kevin)
+### Step 5 : Business Services (Ali/Kevin)
 In this step, the services have been created. All the services correspond to a use case.
 - Created a service class for every use case group.
 - Added a method for every use case.
 - Implemented basic business functionality (Retrieve/edit/add/delete data from DAO).
 - Added functionality to hash entries where necessary (password etc.)
 
-### Step 6 : Register/Login frontend (Kevin)
+### Step 6 : Register/Login frontend (Ali/Kevin)
 In this step, the frontend of the register and the login functionality have been created.
 - Created static login and register pages using Bootstrap Studio.
 - Added pages to PHP project.
