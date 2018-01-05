@@ -183,10 +183,26 @@ In this step, the frontend for the module management has been created.
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
 ### Step 8 : Comementing frontend (Ali)
-for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database.
+-for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database.
 ![](modeling/Commenting/comment1.png)
+all comments show the data, weather they are new or not ( anything written in less than 24 hours is new) and the person who wrote them. 
+- only users who wrote a comment can delete it. 
+- a comment that has replies can't be deleted. 
+- replies use the orginal comment as a parent 
+- the UI asks for confirmations (JS) before deleting a comment to prevent deletion by mistake
+- responsive UI that uses ajax calls make it extremly user friendly 
+- possiblity to add attachments functionality in the future. 
+
 ### Step 9 : Module Selection frontend (Ali)
+- every Module has a check box to be added to the current student list
+- a student can as many modules as he or she wants
+- an automatic calculations of ECTS take place on the server side for the modules registerd. 
+- Each module show the amount of students registerd in each module.
 ### Step 10 : PDF creation (Ali)
+- for pdf creattion we have used an open-source tool called fpdf
+- a dynamic pdf will be generated that contains all the modules a student selected ( currently or in total) 
+- a student can print his or her selected modules directly from the browser.
+- Future improvment: add the amount of credits to the list
 ### Step 11 : Email Service (Kevin)
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
 - Created account on [sendgrid](https://sendgrid.com).
@@ -209,5 +225,6 @@ The system was deployed on the PaaS platform heroku. It can be accessed with the
 [savvy](https://savvy-fhnw.herokuapp.com/)
 
 ## Authors
-- Kevin Neuschwander
 - Ali Habbabeh
+- Kevin Neuschwander
+
