@@ -186,8 +186,23 @@ In this step, the frontend for the module management has been created.
 - Filled these methods with instructions which business services in ModuleServiceImpl to execute and which page to load. (Kevin)
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
-### Step 8 : Comementing frontend (Ali)
+### Step 8 : Comementing Functionalty (Ali)
 - for every module, there is a commenting section attached to it. For this functionality, we have used a javascript framework called jquery comments with alot of adaptations to it. the user interface provides ajax callbacks that communicate with our server and our postgre database.
+- Each comment is a json object that consist of the following attributes: 
+  -  "id": a unique ID for each comment on each module
+ -   "parent": if a comment is a reply on another comment, then the orginal comment is its parent. 
+ -   "created": creation date of a comment
+ -   "modified": modification date of a comment
+ -   "content": the content of a comment. 
+-    "creator": it student ID of the writer of a comment
+   - "fullname": the name of the comment writer ( taken from the ID) 
+  -  "profile_picture_url": at the moment all the commenters has the same picture, for later improvment, we can allow users to upload their own pictures. "https://app.viima.com/static/media/user_profiles/user-icon.png"
+   - "created_by_current_user":if true, then the comment name becomes "You" instead of the current student name.
+  -  "upvote_count": the amount of upvotes a comment receive. 
+  -  "user_has_upvoted": each user is only allowed to upvote once on a comment, so this is to make sure he or she doesn't upvote twice.
+  -  "is_new": a comment is new if it was written in the last 24 hours. 
+   
+   
 ![](modeling/Commenting/comment1.png)
 all comments show the data, weather they are new or not ( anything written in less than 24 hours is new) and the person who wrote them. 
 - only users who wrote a comment can delete it. 
