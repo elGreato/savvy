@@ -8,14 +8,15 @@ savvy&#8209;fhnw.herokuapp.com and choose what topics they want to take, calcula
 ### Requirements
 
 - Users must be able to login using a username and a password.
-- The system shall provide a remember me function for login data.
-- If the password is forgotten, it should be possible to get a new one using email.  
+- The system should provide a remember me function for login data.
+- If the user forgets the password, the user should be able to get a new password by email.
 - The password must be securely stored.  
-- There must be a database to store modules, comments and users.
+- There must be a database to store modules, comments, and users.
+- The database should store inscriptions and likes.
 - The system should provide a list of comments that where posted about a specific topic. 
 - Users should be able to like comments.
 - Users must have the ability to edit and delete their own posts.
-- Users must be able to create modules including a name, a descirption and a value for the number of credits.
+- Users must be able to create modules which must contain a name, a descirption and a value for the number of credits.
 - Users must be able to update and delete the modules they have added.
 - The system shall provide the user with the information how many users have inscribed into a module.
 - The system shall be able to calculate the total of the ECTS points of all modules a user has selected.
@@ -88,12 +89,13 @@ The following picture shows the page where the users can create a *comment* abou
 ### Step 1 : Structure (Ali)
 For this project, we have used a framework that offered by our lecturer Andreas Martin (@andreasmartin) with little adaptations. a detailed description of the framework can be found at https://github.com/andreasmartin/WE-CRM 
 
-### Step 2 : Routing (Kevin)
+### Step 2 : Autoloader and Routing (Ali/Kevin)
 In this step, the routing was created.
-- Created Router and Routing Expeption files using the framework suggested by our lecturer Andreas Martin.
-- Added corresponding routes to the index.php file.
-- "Get" routes were mainly used for loading pages only while "post" requests were used when data had to be sent to the server.
-- For routes, that requires the user to be logged in, a validation was added in order to prevent unauthorized access.
+- Created Autoloader using the methods suggested by our lecturer Andreas Martin. (Ali)
+- Created Router and Routing Expeption files using the framework suggested by our lecturer Andreas Martin. (Kevin)
+- Added corresponding routes to the index.php file.(Kevin)
+- "Get" routes were mainly used for loading pages only while "post" requests were used when data had to be sent to the server.(Kevin)
+- For routes, that requires the user to be logged in, a validation was added in order to prevent unauthorized access. (Kevin)
 ### Step 3 : Database (Kevin)
 The database was created using the following code:
 ```SQL
