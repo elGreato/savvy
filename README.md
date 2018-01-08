@@ -246,7 +246,7 @@ In this step some missing pages were added.
 - Added a license agreement. (Kevin)
 
 ## Deployment
-The system was deployed on the PaaS platform heroku. It can be accessed with the following URL:
+The system and the postgre-sql database containing all the data were deployed on the PaaS platform heroku. The website can be accessed using the following URL:
 
 
 [savvy-website](https://savvy-fhnw.herokuapp.com/)
