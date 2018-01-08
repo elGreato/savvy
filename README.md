@@ -164,6 +164,7 @@ In this step, the services have been created. All the services correspond to a u
 - Implemented basic business functionality (Retrieve/edit/add/delete data from DAO).
 - Added functionality to hash entries where necessary (storing passwords etc.)
 - Added functionality to calculate credits.
+- The student management services were implemented as suggested by our lecturer Andreas Martin. (Hashing/AuthTokens/Cookies)
 
 ### Step 6 : Register/Login frontend (Ali/Kevin)
 In this step, the frontend of the register and the login functionality have been created.
