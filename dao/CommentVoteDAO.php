@@ -16,8 +16,8 @@ class CommentVoteDAO extends BasicDAO
         $stmt=$this->pdoInstance->prepare('INSERT INTO commentvote 
           (studentid,commentid) VALUES 
           (:studentid,:commentid);');
-        $stmt->bindValue(':studentid',$commentlike->getStudentID());
-        $stmt->bindValue(':commentid',$commentlike->getCommentid());
+        $stmt->bindValue(':studentid',$commentvote->getStudentID());
+        $stmt->bindValue(':commentid',$commentvote->getCommentid());
         $stmt->execute();
     }
     public function readCommentLikes($commentID)
