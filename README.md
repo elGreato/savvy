@@ -159,12 +159,12 @@ In this step, the DAO objects have been created. The database was accessed using
 
 ### Step 5 : Business Services (Ali/Kevin)
 In this step, the services have been created. All the services correspond to a use case.
-- Created a service class for every use case group.
-- Added a method for every use case.
-- Implemented basic business functionality (Retrieve/edit/add/delete data from DAO).
-- Added functionality to hash entries where necessary (storing passwords etc.)
-- Added functionality to calculate credits.
-- The student management services were implemented as suggested by our lecturer Andreas Martin. (Hashing/AuthTokens/Cookies)
+- Created a service class for every use case group. (Kevin)
+- Added a method for every use case. (Kevin)
+- Implemented basic business functionality (Retrieve/edit/add/delete data from DAO). (Kevin)
+- Added functionality to hash entries where necessary (storing passwords etc.) (Kevin)
+- Added backend functionality to calculate credits.(Kevin/Ali)
+- The student management services were implemented using methods suggested by our lecturer Andreas Martin. (Hashing/AuthTokens)(Kevin)
 
 ### Step 6 : Register/Login frontend (Ali/Kevin)
 In this step, the frontend of the register and the login functionality have been created.
@@ -239,7 +239,7 @@ In this step, the email service was created that is responsible to send emails w
 ### Step 12 : Misc (Kevin / Ali)
 In this step some missing pages were added.
 - Created *contact us* us form. (Ali)
-- Created email account for a savvy admin. (Kevin)
+- Created an email account for a savvy admin. (Kevin)
 - Created a method in the EmailService class to send the *contact us* request to the savvy email address. (Kevin)
 - Added a license agreement. (Kevin)
 
@@ -248,6 +248,8 @@ The system was deployed on the PaaS platform heroku. It can be accessed with the
 
 
 [savvy-website](https://savvy-fhnw.herokuapp.com/)
+
+The source code of the website can be found in this repository. The project contains a .gitignore file which ignores certain files. In order to make the source code work a config.env file has to be added to the config folder that contains the database credentials as well as the sendgrid API key. The deployed application has stored these values in the heroku configuration.
 
 ## Authors
 - Ali Habbabeh
