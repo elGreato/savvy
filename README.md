@@ -251,7 +251,7 @@ The system was deployed on the PaaS platform heroku. It can be accessed with the
 
 [savvy-website](https://savvy-fhnw.herokuapp.com/)
 
-The source code of the website can be found in this repository. The project contains a .gitignore file which ignores certain files. In order to make the source code work a config.env file has to be added to the config folder that contains the database credentials as well as the sendgrid API key. The deployed application has stored these values in the heroku configuration.
+The source code of the website can be found in this repository. The project contains a .gitignore file which ignores certain files. In order to make the source code work a config.env that contains the database credentials as well as the sendgrid API key file has to be added to the config folder. The deployed application has stored these values in the heroku configuration.
 
 ## Authors
 - Ali Habbabeh
