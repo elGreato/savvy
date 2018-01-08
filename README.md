@@ -227,16 +227,16 @@ all comments show the data, weather they are new or not ( anything written in le
 - a student can print his or her selected modules directly from the browser.
 - Future improvment: add the amount of credits to the list
 
-### Step 11 : Email Service (Kevin)
+### Step 11 : Email Service (Ali/Kevin)
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
-- Created an account on [sendgrid](https://sendgrid.com).
-- Retrieved an API key.
-- Created the EmailService class which will be responsible to treat email sending requests.
-- Created an email template for all emails the website will send.
-- Created a method that fills and sends the email template in case a user resets the password. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html).
-- The reset-Email sends a link with a random get-argument to the website where the user can proceed to change the password.
-- Created static pages needed for password reset using based on the login.php page.
-- Added dynamic entries, such as error messages, using PHP.
+- Created an account on [sendgrid](https://sendgrid.com).(Ali)
+- Retrieved an API key.(Ali)
+- Created the EmailService class which will be responsible to treat email sending requests. (Kevin)
+- Created an email template for all emails the website will send. (Kevin)
+- Created a method that fills and sends the email template in case a user resets the password. The emails were send using the method described in the [sendgrid documentation](https://sendgrid.com/docs/index.html). (Kevin)
+- The reset-Email sends a link with a random get-argument to the website where the user can proceed to change the password. (Kevin)
+- Created static pages needed for password reset using based on the login.php page. (Kevin)
+- Added dynamic entries, such as error messages, using PHP. (Kevin)
 
 ### Step 12 : Misc (Kevin / Ali)
 In this step some missing pages were added.
