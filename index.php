@@ -255,6 +255,6 @@ try {
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
 <script type="text/javascript" src="view/assets/js/jquery-comments.js"></script>
-
+<script type="text/javascript" src="data/comments-data.js"></script>
 
 
