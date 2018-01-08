@@ -89,7 +89,7 @@ The following picture shows the page where the users can create a *comment* abou
 ### Step 1 : Structure (Ali)
 For this project, we have used a framework that offered by our lecturer Andreas Martin (@andreasmartin) with little adaptations. a detailed description of the framework can be found at https://github.com/andreasmartin/WE-CRM 
 
-### Step 2 : Autoloader and Routing (Ali/Kevin)
+### Step 2 : Autoloader and Routing (Ali / Kevin)
 In this step, the routing was created.
 - Created Autoloader using the methods suggested by our lecturer Andreas Martin. (Ali)
 - Created Router and Routing Expeption files using the framework suggested by our lecturer Andreas Martin. (Kevin)
@@ -157,18 +157,18 @@ In this step, the DAO objects have been created. The database was accessed using
 - Created SQL statements for adding, editing, deleting or loading data from the database. (These statements can be discovered in the classes inside the DAO folder)
 - Implemented these statements into the PDO environment.
 - Created domain objects to hold the data retrieved from the database.
-- Added getters, setters and other required methods (such as a method to calculate the number of likes of a comment).
+- Added getters, setters and other required methods (e.g. calculate likes of comment) to domain objects.
 
-### Step 5 : Business Services (Ali/Kevin)
+### Step 5 : Business Services (Ali / Kevin)
 In this step, the services have been created. All the services correspond to a use case.
 - Created a service class for every use case group. (Kevin)
 - Added a method for every use case. (Kevin)
-- Implemented basic business functionality (Retrieve/edit/add/delete data from DAO). (Kevin)
+- Implemented basic business functionality to the methods (Retrieve/edit/add/delete data from DAO). (Kevin)
 - Added functionality to hash entries where necessary (storing passwords etc.) (Kevin)
 - Added backend functionality to calculate credits.(Kevin/Ali)
 - The student management services were implemented using methods suggested by our lecturer Andreas Martin. (Hashing/AuthTokens)(Kevin)
 
-### Step 6 : Register/Login frontend (Ali/Kevin)
+### Step 6 : Register/Login frontend (Ali / Kevin)
 In this step, the frontend of the register and the login functionality have been created.
 - Created a static login and register pages using Bootstrap Studio. (Ali)
 - Added pages to PHP project and converted them into php files. (Ali)
@@ -183,10 +183,10 @@ In this step, the frontend for the module management has been created.
 - Created static HTML pages for viewing modules using Bootstrap Studio. (Ali)
 - Created static HTML pages for adding and editing modules. (Kevin)
 - Added pages to PHP project and converted them into php files. (Ali)
-- Added dynamic entries to the addModule.php file, such as error messages. (Kevin)
+- Added dynamic entries to the addModule.php and editModule.php files, such as error messages. (Kevin)
 - Added dynamic entries to the main.php file, such as modules list, edit or delete buttons. (Ali)
 - Created corresponding routes and added the required methods to the ModuleController class. (Kevin)
-- Filled these methods with instructions which business services in ModuleServiceImpl to execute and which page to load. (Kevin)
+- Filled these controller methods with instructions which business services in ModuleServiceImpl to execute, which validations to do and which pages to load. (Kevin)
 - Created ModuleValidator class that prevents users from entering invalid or malicous data when creating or editing a module. (Kevin)
 
 ### Step 8 : Comementing Functionalty (Ali)
@@ -227,7 +227,7 @@ all comments show the data, weather they are new or not ( anything written in le
 - a student can print his or her selected modules directly from the browser.
 - Future improvment: add the amount of credits to the list
 
-### Step 11 : Email Service (Ali/Kevin)
+### Step 11 : Email Service (Ali / Kevin)
 In this step, the email service was created that is responsible to send emails when users have forgotten their passwords.
 - Created an account on [sendgrid](https://sendgrid.com).(Ali)
 - Retrieved an API key.(Ali)
