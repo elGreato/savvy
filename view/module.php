@@ -108,12 +108,11 @@ called based on the result from the server. The success callback takes the creat
                         type: 'POST',
                         url: 'saveComment',
                         data: commentJSON,
-                       // dataType: 'json',
-                     //   contentType: "application/json",
+
 
                         success: function(data,status,xhr) {
                             console.log(data)
-                           // console.log("what about "+data[0].id )
+
                             var dataJ = data.substr(1,15)
                             var numb = dataJ.match(/\d/g);
                             var comment_id = numb.join("");
@@ -121,7 +120,6 @@ called based on the result from the server. The success callback takes the creat
                             console.log("id is "+comment_id);
                             commentJSON.id =comment_id
 
-                        //    success(data);
                         },
                         error: error
                     })
